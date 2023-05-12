@@ -55,7 +55,7 @@ function Navbar() {
                 <div className="flex justify-center cursor-pointer" onClick={(e) => {
                     e.preventDefault();
                     navigate('/');
-                }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'http://singhpublication.in/#/' || window.location.href == 'http://singhpublication.in/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
+                }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/' || window.location.href == 'https://singhpublication.in/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
                 <div className="flex justify-center mx-5 cursor-pointer" onClick={(e) => {
                     e.preventDefault();
                     navigate('/about');
@@ -162,7 +162,7 @@ function Navbar() {
                     <div className="flex justify-center cursor-pointer" onClick={(e) => {
                         e.preventDefault();
                         navigate('/');
-                    }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'http://singhpublication.in/#/' || window.location.href == 'http://singhpublication.in/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
+                    }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/' || window.location.href == 'https://singhpublication.in/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
                     <div className="flex justify-center mx-5 cursor-pointer" onClick={(e) => {
                         e.preventDefault();
                         navigate('/about');
