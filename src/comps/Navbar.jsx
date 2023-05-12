@@ -209,7 +209,7 @@ function Navbar() {
                     <div className={Visibility + " " + `absolute right-0 px-4 py-2 top-16 h-max w-48 rounded flex justify-center flex-col items-center related`}>
                         <div style={{
                             'border': '1px solid #777777',
-
+                            
 
 
 

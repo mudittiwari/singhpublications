@@ -47,7 +47,8 @@
 .related
 {
   box-shadow: 0px 0px 8.052555084228516px 5.751824855804443px #00000040;
-
+  background-color: white;
+  z-index: 100;
 }
 #root
 {
