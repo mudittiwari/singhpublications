@@ -59,9 +59,9 @@ function Navbar() {
                 <div className="flex justify-start cursor-pointer" onClick={(e) => {
                     e.preventDefault();
                     navigate('/about');
-                }}><h1 className=" mx-2 font-semibold mt-1" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/about' ? '#315ED2' : '#D1D1D1'} ` }}>About Us</h1> </div>
+                }}><h1 className=" mx-2 font-semibold mt-3" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/about' ? '#315ED2' : '#D1D1D1'} ` }}>About Us</h1> </div>
 
-                <div className="flex justify-start cursor-pointer"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/contact' ? '#315ED2' : '#D1D1D1'} ` }} className="mx-2 font-semibold" onClick={(e) => {
+                <div className="flex justify-start cursor-pointer"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/contact' ? '#315ED2' : '#D1D1D1'} ` }} className="mx-2 font-semibold mt-3" onClick={(e) => {
                     e.preventDefault();
                     navigate('/contact');
                 }}>Contact Us</h1> </div>
@@ -70,23 +70,23 @@ function Navbar() {
                 localStorage.getItem('pubuser') != null ? <ul className="flex flex-col items-end">
 
 
-                    <li className="w-56 py-2 px-2 rounded" >
+                    <li className="w-56 mt-3 px-2 rounded" >
                         <Box onClick={toggleDrawer(anchor, false)}>
                             <Link style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/cart' ? '#315ED2' : '#D1D1D1'} ` }} className="no-underline mx-2 font-semibold" to="/cart">Cart</Link>
                         </Box>
                     </li>
 
-                    <li className="w-56 py-2 px-2 rounded" >
+                    <li className="w-56 mt-3 px-2 rounded" >
                         <Box onClick={toggleDrawer(anchor, false)}>
                             <Link className="no-underline  mx-2 font-semibold" to="/wishlist" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/wishlist' ? '#315ED2' : '#D1D1D1'} ` }}>Wishlist</Link>
                         </Box>
                     </li>
-                    <li className="w-56 py-2 px-2 rounded" >
+                    <li className="w-56 mt-3 px-2 rounded" >
                         <Link style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/about' ? '#315ED2' : '#D1D1D1'} ` }} className="no-underline  mx-2 font-semibold" to="/accountsetting">Account Settings</Link>
                     </li>
 
 
-                    <li className="w-56 py-2 px-2 rounded" >
+                    <li className="w-56 mt-3 px-2 rounded" >
                         <Box onClick={toggleDrawer(anchor, false)}>
                             <h1 style={{ 'color': '#D1D1D1'  }} className="no-underline  mx-2 font-semibold" onClick={(e) => {
                                 e.preventDefault();
