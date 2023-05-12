@@ -52,16 +52,16 @@ function Navbar() {
 
 
             <div className="flex flex-col mb-5">
-                <div className="flex justify-center cursor-pointer" onClick={(e) => {
+                <div className="flex justify-start cursor-pointer" onClick={(e) => {
                     e.preventDefault();
                     navigate('/');
-                }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/' || window.location.href == 'https://singhpublication.in/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
-                <div className="flex justify-center mx-5 cursor-pointer" onClick={(e) => {
+                }}><h1 className=" mx-2 font-semibold mt-1" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/' || window.location.href == 'https://singhpublication.in/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
+                <div className="flex justify-start cursor-pointer" onClick={(e) => {
                     e.preventDefault();
                     navigate('/about');
-                }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/about' ? '#315ED2' : '#D1D1D1'} ` }}>About Us</h1> </div>
+                }}><h1 className=" mx-2 font-semibold mt-1" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/about' ? '#315ED2' : '#D1D1D1'} ` }}>About Us</h1> </div>
 
-                <div className="flex justify-center cursor-pointer"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/contact' ? '#315ED2' : '#D1D1D1'} ` }} className="font-semibold text-xs mt-1" onClick={(e) => {
+                <div className="flex justify-start cursor-pointer"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/contact' ? '#315ED2' : '#D1D1D1'} ` }} className="mx-2 font-semibold" onClick={(e) => {
                     e.preventDefault();
                     navigate('/contact');
                 }}>Contact Us</h1> </div>
@@ -72,23 +72,23 @@ function Navbar() {
 
                     <li className="w-56 py-2 px-2 rounded" >
                         <Box onClick={toggleDrawer(anchor, false)}>
-                            <Link className="no-underline text-black mx-2 font-semibold" to="/cart">Cart</Link>
+                            <Link style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/cart' ? '#315ED2' : '#D1D1D1'} ` }} className="no-underline mx-2 font-semibold" to="/cart">Cart</Link>
                         </Box>
                     </li>
 
                     <li className="w-56 py-2 px-2 rounded" >
                         <Box onClick={toggleDrawer(anchor, false)}>
-                            <Link className="no-underline text-black mx-2 font-semibold" to="/wishlist">Wishlist</Link>
+                            <Link className="no-underline  mx-2 font-semibold" to="/wishlist" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/wishlist' ? '#315ED2' : '#D1D1D1'} ` }}>Wishlist</Link>
                         </Box>
                     </li>
                     <li className="w-56 py-2 px-2 rounded" >
-                        <Link className="no-underline text-black mx-2 font-semibold" to="/accountsetting">Account Settings</Link>
+                        <Link style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/about' ? '#315ED2' : '#D1D1D1'} ` }} className="no-underline  mx-2 font-semibold" to="/accountsetting">Account Settings</Link>
                     </li>
 
 
                     <li className="w-56 py-2 px-2 rounded" >
                         <Box onClick={toggleDrawer(anchor, false)}>
-                            <h1 className="no-underline text-black mx-2 font-semibold" onClick={(e) => {
+                            <h1 style={{ 'color': '#D1D1D1'  }} className="no-underline  mx-2 font-semibold" onClick={(e) => {
                                 e.preventDefault();
                                 localStorage.removeItem("pubuser");
                                 auth.signOut();
