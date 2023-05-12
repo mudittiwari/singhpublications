@@ -97,7 +97,7 @@ function Navbar() {
                         </Box>
                     </li>
 
-                </ul> : <div className="flex justify-around">
+                </ul> : <div className="flex justify-around mt-5">
                     <button className=" text-white md:text-base text-xs  px-4 py-1 rounded-xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }} onClick={(e) => {
                         // console.log(user.accessToken);
                         e.preventDefault();
