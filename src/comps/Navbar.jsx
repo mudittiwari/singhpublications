@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Logo from '../assets/logo.jfif';
+import Logo from '../assets/logofinal.png';
 import profile from '../assets/profile.png';
 import { Save } from "@mui/icons-material";
 import cart from '../assets/cart.png';
@@ -55,7 +55,7 @@ function Navbar() {
                 <div className="flex justify-center cursor-pointer" onClick={(e) => {
                     e.preventDefault();
                     navigate('/');
-                }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'http://singhpublication.in/#/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
+                }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'http://singhpublication.in/#/' || window.location.href == 'http://singhpublication.in/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
                 <div className="flex justify-center mx-5 cursor-pointer" onClick={(e) => {
                     e.preventDefault();
                     navigate('/about');
@@ -155,14 +155,14 @@ function Navbar() {
                     e.preventDefault();
                     navigate('/');
                 }} className="flex items-center pl-4 cursor-pointer">
-                    <img src={Logo} className="w-10 h-full" alt="" />
-                    <h1 className="text-2xl font-bold w-max mb-5 mt-5 ml-3" style={{ 'color': '#315ED2' }}>Singh Publication</h1>
+                    <img src={Logo} className="w-24 h-full" alt="" />
+                    
                 </div>
-                <div className="w-max flex justify-center">
+                <div className="w-max pl-4 flex justify-center">
                     <div className="flex justify-center cursor-pointer" onClick={(e) => {
                         e.preventDefault();
                         navigate('/');
-                    }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'http://singhpublication.in/#/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
+                    }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'http://singhpublication.in/#/' || window.location.href == 'http://singhpublication.in/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
                     <div className="flex justify-center mx-5 cursor-pointer" onClick={(e) => {
                         e.preventDefault();
                         navigate('/about');
@@ -172,6 +172,10 @@ function Navbar() {
                         e.preventDefault();
                         navigate('/contact');
                     }}>Contact Us</h1> </div>
+                    <div className="flex justify-center cursor-pointer ml-5"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/books' ? '#315ED2' : '#D1D1D1'} ` }} className="font-semibold text-xs mt-1" onClick={(e) => {
+                        e.preventDefault();
+                        navigate('/books');
+                    }}>Books</h1> </div>
                 </div>
                 {localStorage.getItem('pubuser') != null ? <div className="flex items-center relative" >
                     {/* <div className="rounded-3xl flex items-center p-3 mr-6" style={{ 'border': '1px solid #D1D1D1' }}>

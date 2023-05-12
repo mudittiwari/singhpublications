@@ -17,6 +17,7 @@ function Orderplaced() {
     }
     useEffect(() => {
         checkuser();
+        document.title = 'Singh Publication';
     }, []);
 
     return (

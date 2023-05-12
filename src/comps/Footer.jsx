@@ -29,16 +29,16 @@ function Footer() {
                 </div>
                 <div className="w-full h-full items-center flex md:flex-row flex-col justify-around">
                     <div className="w-max md:my-0 my-2">
-                        <a className="mx-2" href="https://www.facebook.com/singhpublication">
+                        <a className="mx-2" target="_blank" href="https://www.facebook.com/singhpublication">
                             <Facebook style={{ 'fontSize': '40px', 'color': '#315ED2' }} />
                         </a>
-                        <a className="mx-2" href="https://www.instagram.com/singhpublication/">
+                        <a className="mx-2" target="_blank" href="https://www.instagram.com/singhpublication/">
                             <Instagram style={{ 'fontSize': '40px', 'color': '#315ED2' }} />
                         </a>
-                        <a className="mx-2" href="https://twitter.com/SinghPub_Jaipur">
+                        <a className="mx-2 " target="_blank" href="https://twitter.com/SinghPub_Jaipur">
                             <Twitter style={{ 'fontSize': '40px', 'color': '#315ED2' }} />
                         </a>
-                        <a className="mx-2" href="https://www.linkedin.com/company/singh-publication/">
+                        <a className="mx-2" target="_blank" href="https://www.linkedin.com/company/singh-publication/">
                             <WhatsApp style={{ 'fontSize': '40px', 'color': '#315ED2' }} />
                         </a>
 

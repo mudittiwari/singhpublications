@@ -63,6 +63,7 @@ function Orderdetails() {
     const location = useLocation();
     useEffect(() => {
         checkuser();
+        document.title = 'Singh Publication | Order Details';
     }, []);
     return (
         <>

@@ -11,6 +11,7 @@ const Contact = () => {
     const [description, setDescription] = useState('');
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.title = 'Singh Publication | Contact Us';
     }, [])
     return (
         <>
@@ -42,7 +43,10 @@ const Contact = () => {
 
             </div>
             <div className='w-full flex flex-col md:flex-row h-max justify-center md:items-start items-center py-5 mt-5' style={{ 'backgroundColor': '#315ED2' }}>
-                <img src={map} className="w-40" alt="..." />
+                <div className='w-max rounded-2xl overflow-hidden'>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.6169804468354!2d75.76172679999999!3d26.883907599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5558aea2575%3A0xd53fbb24d469e795!2sSingh%20Publication!5e0!3m2!1sen!2sin!4v1683869607111!5m2!1sen!2sin" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                
+                </div>
                 <div className='flex flex-col ml-5'> 
                     <div className='flex'> <h1 className="text-sm font-semibold   mt-2" style={{ 'color': 'white' }}>Address: </h1>
                         <h1 className="text-sm font-normal mt-2 ml-2" style={{ 'color': 'white' }}> 401, katewa nagar, New sanganer road, Sodala, Jaipur, Jaipur, Rajasthan, 302019</h1>

@@ -49,7 +49,8 @@ function PurchasedBooks() {
         });
     }
     useEffect(() => {
-        checkuser();
+        // checkuser();
+        document.title = 'Singh Publication | Books';
     },[]);
     return (
         <>

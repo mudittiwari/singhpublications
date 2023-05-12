@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
-
+    useEffect(() => {
+        document.title = 'Singh Publication | Login';
+    }, []);
     return (
         <>
             <div className="w-screen h-max py-8 flex items-center justify-center

@@ -21,6 +21,7 @@ function ProfileSetting() {
     }
     useEffect(() => {
         checkuser();
+        document.title = 'Singh Publication | Profile Settings';
     },[]);
     return (
         <>

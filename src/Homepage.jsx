@@ -4,6 +4,7 @@ import star from './assets/star.png';
 import author from './assets/author.png';
 import playstore from './assets/playstore.png';
 import homepagebg from './assets/homepagebg.png';
+import homepagebg2 from './assets/homepagebg2.png';
 import app from './Firebase';
 import axios from 'axios';
 import Carousel from 'react-material-ui-carousel'
@@ -103,12 +104,13 @@ function Home() {
         // }
         // checkuser();
         getallprods();
+        document.title = 'Singh Publication | Home';
     }, []);
-    function Item() {
+    function Item(props) {
         return (
             // <Paper style={{'borderRadius':'0px !important'}}>
             <div>
-                <img src={homepagebg} className="w-full" alt="..." />
+                <img src={props.image} className="w-full" style={{'maxHeight':'450px'}} alt="..." />
             </div>
             // </Paper>
         )
@@ -147,9 +149,8 @@ function Home() {
 
                     <Carousel navButtonsAlwaysVisible="true" indicators="false" animation='slide' duration="800">
 
-                        <Item />
-                        <Item />
-                        <Item />
+                        <Item image={homepagebg} />
+                        <Item image={homepagebg2} />
 
                     </Carousel>
 
@@ -219,7 +220,10 @@ function Home() {
                 <div className='w-full flex h-52 flex-col justify-center items-center' style={{ 'backgroundColor': '#315ED2' }}>
                     <h1 className="text-3xl font-bold mx-auto mt-5" style={{ 'color': 'white' }}>Become our retail partner</h1>
                     
-                    <button className='bg-white text-center px-8 py-4 rounded-xl font-bold mt-8' style={{'color':'#315ED2'}}>Join Now</button>
+                    <button onClick={(e)=>{
+                        e.preventDefault();
+                        navigate('/contact');
+                    }} className='bg-white text-center px-8 py-4 rounded-xl font-bold mt-8' style={{'color':'#315ED2'}}>Join Now</button>
                 </div>
             </div>
         </>

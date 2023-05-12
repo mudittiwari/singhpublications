@@ -60,6 +60,7 @@ function Otp() {
     useEffect(() => {
         verifyuser();
         console.log(location.state.user)
+        document.title = 'Singh Publication | Login';
     }, []);
 
     return (

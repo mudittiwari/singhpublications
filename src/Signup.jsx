@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 function Signup() {
@@ -16,7 +16,9 @@ function Signup() {
     const handleChange = (event) => {
         setGender(event.target.value);
     };
-
+    useEffect(() => {
+        document.title = 'Singh Publication | Sign Up';
+    }, []);
 
     return (
         <>

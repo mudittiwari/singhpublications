@@ -16,6 +16,7 @@ function AccountSetting() {
    
     useEffect(() => {
         checkuser();
+        document.title = 'Singh Publication | Account Settings';
     }, []);
     return (
         <>

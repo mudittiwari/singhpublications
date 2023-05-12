@@ -24,6 +24,7 @@ function ShippingAddress() {
     }
     useEffect(() => {
         checkuser();
+        document.title = 'Singh Publication | Shipping Address';
     },[]);
     return (
         <>

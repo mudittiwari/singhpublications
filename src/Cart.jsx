@@ -105,6 +105,7 @@ function Cart() {
     useEffect(() => {
         checkuser();
         getitems();
+        document.title = 'Singh Publication | Cart';
     }, []);
 
     return (

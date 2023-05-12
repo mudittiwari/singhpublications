@@ -103,6 +103,7 @@ function Wishlist() {
     useEffect(() => {
         checkuser();
         getitems();
+        document.title = 'Singh Publication | Wishlist';
     }, []);
     return (
         <>

@@ -26,6 +26,7 @@ function Product() {
         {
             setuser(JSON.parse(localStorage.getItem('pubuser')));
         }
+        document.title = 'Singh Publication | Book';
     }, []);
     return (
         <>

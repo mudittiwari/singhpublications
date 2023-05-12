@@ -37,6 +37,7 @@ function App() {
           <Route path="/deliveryaddress" element={<Deliveryaddress />} />
           <Route path="/profilesetting" element={<ProfileSetting />} />
           <Route path="/accountsetting" element={<AccountSetting />} />
+          <Route path="/books" element={<PurchasedBooks />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           

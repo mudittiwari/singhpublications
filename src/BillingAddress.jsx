@@ -23,6 +23,7 @@ function BillingAddress() {
     }
     useEffect(() => {
         checkuser();
+        document.title = 'Singh Publication | Billing Address';
     },[]);
     return (
         <>

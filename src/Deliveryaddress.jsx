@@ -25,6 +25,7 @@ function Deliveryaddress() {
     }
     useEffect(() => {
         checkuser();
+        document.title = 'Singh Publication | Delivery Address';
     },[]);
     return (
         <>

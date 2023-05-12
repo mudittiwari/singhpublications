@@ -99,6 +99,7 @@ function Orders() {
     useEffect(() => {
         checkuser();
         getitems();
+        document.title = 'Singh Publication | Orders';
     }, []);
     return (
         <>

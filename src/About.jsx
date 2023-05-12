@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 function About() {
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.title = 'Singh Publication | About Us';
       }, []);
     return (
         <>
