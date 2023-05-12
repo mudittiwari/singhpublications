@@ -187,7 +187,7 @@ function Home() {
 
                 </div>
                 <h1 className="text-2xl font-medium mb-5 mx-auto w-max mt-5" style={{ 'color': '#315ED2' }}>Best Sellers</h1>
-                <div className='w-full md:w-1/2 flex mx-auto flex-wrap justify-between'>
+                <div className='w-full md:w-1/2 flex px-3 mx-auto flex-wrap justify-between'>
                     {/* <BookComp />
                         <BookComp />
                         <BookComp />
