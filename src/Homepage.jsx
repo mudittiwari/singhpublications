@@ -64,6 +64,9 @@ function BookComp(props) {
                     }
                     )
                 }
+                else {
+                    alert("Please login to add to wishlist");
+                }
             }} className='w-8 flex items-center justify-center h-8 py-1 rounded-full absolute bottom-12  right-5' style={{ 'border': '2px solid rgba(217, 217, 217, 1)' }} >
                 <Favorite style={{ 'color': 'rgba(217, 217, 217, 1)' }} />
             </div>
@@ -116,7 +119,7 @@ function Home() {
                 else
                 alert("Wait for the prodcts to load")
             }} >
-                <img  src={props.image} className="w-full" style={{'height':'40vw'}} alt="..." />
+                <img  src={props.image} className='w-full h-72 md:h-max' style={{"maxHeight":'50vw'}} alt="..." />
             </div>
             // </Paper>
         )
@@ -192,7 +195,7 @@ function Home() {
                     </div>
 
                 </div>
-                <h1 className="text-2xl font-medium mb-5 mx-auto w-max mt-5" style={{ 'color': '#315ED2' }}>Best Sellers</h1>
+                <h1 className="text-2xl font-medium mb-5 mx-auto w-max mt-5 md:mt-20" style={{ 'color': '#315ED2' }}>Best Sellers</h1>
                 <div className='w-full md:w-1/2 flex md:px-0 px-3 mx-auto flex-wrap justify-between'>
                     {/* <BookComp />
                         <BookComp />
