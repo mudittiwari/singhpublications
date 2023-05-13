@@ -1,5 +1,5 @@
 
-import { Facebook, Twitter, WhatsApp, Instagram, Call } from "@mui/icons-material";
+import { Facebook, Twitter, LinkedIn, Instagram, Call } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 function Footer() {
     const navigate = useNavigate();
@@ -39,7 +39,7 @@ function Footer() {
                             <Twitter style={{ 'fontSize': '40px', 'color': '#315ED2' }} />
                         </a>
                         <a className="mx-2" target="_blank" href="https://www.linkedin.com/company/singh-publication/">
-                            <WhatsApp style={{ 'fontSize': '40px', 'color': '#315ED2' }} />
+                            <LinkedIn style={{ 'fontSize': '40px', 'color': '#315ED2' }} />
                         </a>
 
 

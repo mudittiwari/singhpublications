@@ -111,11 +111,12 @@ function Wishlist() {
                 <div className='md:w-4/5 w-full  flex justify-center flex-col items-center flex-wrap' >
                     <h1 className="text-2xl w-max font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>Wishlist</h1>
                     <div className='w-full flex justify-around flex-wrap'>
-                        {items.map((item,index) => {
+
+                        {items.length!=0?items.map((item,index) => {
                             return (
                                 <BookComp key={index} prod={item} user={user} setuser={setuser} getitems={getitems} />
                             )
-                        })
+                        }):<h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>No items in wishlist</h1>
                         }
                     </div>
                 </div>

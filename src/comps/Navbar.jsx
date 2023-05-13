@@ -177,7 +177,7 @@ function Navbar() {
                         navigate('/books');
                     }}>Books</h1> </div>
                 </div>
-                {localStorage.getItem('pubuser') != null ? <div className="flex items-center relative" >
+                {localStorage.getItem('pubuser') != null ? <div className="flex items-center relative mr-4" >
                     {/* <div className="rounded-3xl flex items-center p-3 mr-6" style={{ 'border': '1px solid #D1D1D1' }}>
                         <input type="text" className="focus:outline-none text-center" placeholder="Search Here" />
                         <img className="w-6 cursor-pointer" src={search} alt="" />

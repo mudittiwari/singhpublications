@@ -68,13 +68,13 @@ function Product() {
                                 newuser['accessToken'] = user.accessToken;
                                 localStorage.setItem('pubuser', JSON.stringify(newuser));
                                 setuser(newuser);
-                                alert("Added to wishlist");
+                                alert("Added to cart");
                                 // localStorage.setItem('pubuser', JSON.stringify(res.data));
                             }
                             ).catch((err) => {
                                 console.log(err);
                                 if (err.response.status === 400) {
-                                    alert("Product already in wishlist");
+                                    alert("Product already in cart");
                                 }
                             }
                             )

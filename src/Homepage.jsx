@@ -35,7 +35,7 @@ function BookComp(props) {
             <div onClick={(e) => {
                 let user = JSON.parse(localStorage.getItem('pubuser'));
                 e.preventDefault();
-                if (!user) {
+                if (user) {
 
                     axios.post("https://singh-publication.onrender.com/api/user/addtowishlist", {
 
@@ -107,10 +107,16 @@ function Home() {
         document.title = 'Singh Publication | Home';
     }, []);
     function Item(props) {
+        const navigate = useNavigate();
         return (
             // <Paper style={{'borderRadius':'0px !important'}}>
-            <div>
-                <img src={props.image} className="w-full" style={{'maxHeight':'450px'}} alt="..." />
+            <div onClick={()=>{
+                if(props.prod)
+                navigate('/product',{state:props.prod})
+                else
+                alert("Wait for the prodcts to load")
+            }} >
+                <img  src={props.image} className="w-full" style={{'height':'40vw'}} alt="..." />
             </div>
             // </Paper>
         )
@@ -149,16 +155,16 @@ function Home() {
 
                     <Carousel navButtonsAlwaysVisible="true" indicators="false" animation='slide' duration="800">
 
-                        <Item image={homepagebg} />
-                        <Item image={homepagebg2} />
+                        <Item image={homepagebg} prod={products[0]} />
+                        <Item image={homepagebg2} prod={products[0]} />
 
                     </Carousel>
 
                 </div>
                 <div className="w-full ">
                     <div className='w-full h-max justify-center lg:h-72 xl:h-72 2xl:h-72 flex flex-col lg:flex-row sm:flex-col md:flex-col items-center mt-5 lg:mt-20'>
-                        <div className='w-full items-center justify-center lg:w-1/3 py-8 px-8 lg:p-14 flex flex-col'>
-                            <img src={author} className="w-40" alt="..." />
+                        <div className='w-full items-center justify-center lg:w-1/3 py-8 px-8 lg:p-0 flex flex-col'>
+                            <img src={author} className="w-4/5" alt="..." />
 
                         </div>
                         <div className='w-full lg:w-2/2  py-0 px-8 lg:p-14 '>
