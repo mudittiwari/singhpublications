@@ -177,10 +177,10 @@ function Navbar() {
                         e.preventDefault();
                         navigate('/contact');
                     }}>Contact Us</h1> </div>
-                    <div className="flex justify-center cursor-pointer ml-5"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/books' ? '#315ED2' : '#D1D1D1'} ` }} className="font-semibold text-xs mt-1" onClick={(e) => {
+                    {localStorage.getItem('pubuser')!=null?<div className="flex justify-center cursor-pointer ml-5"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/books' ? '#315ED2' : '#D1D1D1'} ` }} className="font-semibold text-xs mt-1" onClick={(e) => {
                         e.preventDefault();
                         navigate('/books');
-                    }}>Books</h1> </div>
+                    }}>Books</h1> </div>:null}
                 </div>
                 {localStorage.getItem('pubuser') != null ? <div className="flex items-center relative mr-4" >
                     {/* <div className="rounded-3xl flex items-center p-3 mr-6" style={{ 'border': '1px solid #D1D1D1' }}>
