@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import app from './Firebase';
 function AccountSetting() {
+    const [loading, setloading] = React.useState(false);
     const navigate = useNavigate();
     async function checkuser() {
         const auth = getAuth(app);

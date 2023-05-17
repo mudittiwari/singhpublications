@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import app from './Firebase';
+import LoadingBar from "./comps/Loadingbar";
 function ShippingAddress() {
     const navigate = useNavigate();
     const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
@@ -13,6 +14,7 @@ function ShippingAddress() {
     const [area, setarea] = useState(user.shipping_address.area);
     const [city, setcity] = useState(user.shipping_address.city);
     const [pincode, setpincode] = useState(user.shipping_address.pincode);
+    const [loading,setloading] = useState(false);
     async function checkuser() {
         const auth = getAuth(app);
         auth.onAuthStateChanged(async (user) => {
@@ -28,6 +30,7 @@ function ShippingAddress() {
     },[]);
     return (
         <>
+        {loading && <LoadingBar/>}
             <div className="w-screen h-max py-8 flex items-center justify-center
             ">
                 <div className="w-4/5 h-max bg-white flex flex-col items-center justify-center rounded-lg
@@ -92,8 +95,9 @@ function ShippingAddress() {
                     />
                     <button className=" text-white px-12 py-2 mt-5 mb-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }} onClick={(e) => {
                             // console.log(user.accessToken);
+                            setloading(true);
                             e.preventDefault();
-                            axios.post("https://singh-publication.onrender.com/api/user/updateshippingaddress", {
+                            axios.post("http://localhost:5000/api/user/updateshippingaddress", {
 
 
                                 "house": house,
@@ -110,6 +114,7 @@ function ShippingAddress() {
                                     'id': user.id
                                 }
                             },).then((res) => {
+                                setloading(false);
                                 let newuser=res.data;
                                 newuser['accessToken']=user.accessToken;
                                 localStorage.setItem('pubuser', JSON.stringify(newuser));
@@ -119,6 +124,7 @@ function ShippingAddress() {
                                 // localStorage.setItem('pubuser', JSON.stringify(res.data));
                             }
                             ).catch((err) => {
+                                setloading(false);
                                 console.log(err);
                                 alert("error");
                             }

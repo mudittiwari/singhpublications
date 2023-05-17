@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import app from './Firebase';
+import LoadingBar from "./comps/Loadingbar";
 function BillingAddress() {
     const navigate = useNavigate();
     const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
@@ -12,6 +13,7 @@ function BillingAddress() {
     const [area, setarea] = useState(user.billing_address.area);
     const [city, setcity] = useState(user.billing_address.city);
     const [pincode, setpincode] = useState(user.billing_address.pincode);
+    const [loading, setloading] = useState(false);
     async function checkuser() {
         const auth = getAuth(app);
         auth.onAuthStateChanged(async (user) => {
@@ -27,6 +29,7 @@ function BillingAddress() {
     },[]);
     return (
         <>
+        {loading && <LoadingBar/>}
             <div className="w-screen h-max py-8 flex items-center justify-center
             ">
                 <div className="w-4/5 h-max bg-white flex flex-col items-center justify-center rounded-lg
@@ -91,8 +94,10 @@ function BillingAddress() {
                     />
                     <button className=" text-white px-12 py-2 mt-5 mb-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }} onClick={(e) => {
                             // console.log(user.accessToken);
+                            
                             e.preventDefault();
-                            axios.post("https://singh-publication.onrender.com/api/user/updatebillingaddress", {
+                            setloading(true);
+                            axios.post("http://localhost:5000/api/user/updatebillingaddress", {
 
 
                                 "house": house,
@@ -109,6 +114,7 @@ function BillingAddress() {
                                     'id': user.id
                                 }
                             },).then((res) => {
+                                setloading(false);
                                 let newuser=res.data;
                                 newuser['accessToken']=user.accessToken;
                                 localStorage.setItem('pubuser', JSON.stringify(newuser));
@@ -118,6 +124,7 @@ function BillingAddress() {
                                 // localStorage.setItem('pubuser', JSON.stringify(res.data));
                             }
                             ).catch((err) => {
+                                setloading(false);
                                 alert("error");
                                 console.log(err);
                             }

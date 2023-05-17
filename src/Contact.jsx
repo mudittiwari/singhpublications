@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import map from './assets/map.png';
+import axios from 'axios';
+import LoadingBar from './comps/Loadingbar';
 
 const Contact = () => {
-
+    const [loading, setloading] = useState(false);
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [subject, setSubject] = useState('');
@@ -15,6 +17,7 @@ const Contact = () => {
     }, [])
     return (
         <>
+        {loading && <LoadingBar/>}
             <div className="md:w-1/2 w-full mx-auto justify-center px-10 py-5">
                 <h1 className="text-2xl font-medium mb-5 mx-auto w-max mt-5" style={{ 'color': '#315ED2' }}>Contact Us</h1>
                 <input value={name} onChange={(e) => {
@@ -36,8 +39,22 @@ const Contact = () => {
                 <div className='w-full flex justify-center'>
                     <button className=" text-white px-12 py-2 mt-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }}
                         onClick={(e) => {
+                            setloading(true);
                             e.preventDefault();
-
+                            axios.post('http://localhost:5000/contact', {
+                                name: name,
+                                phone: phone,
+                                subject: subject,
+                                email: email,
+                                message: description
+                            }).then((res) => {
+                                setloading(false);
+                                console.log(res);
+                            }).catch((err) => {
+                                setloading(false);
+                                console.log(err);
+                            }
+                            )
                         }}>Send</button>
                 </div>
 

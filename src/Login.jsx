@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import LoadingBar from "./comps/Loadingbar";
 function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [loading, setloading] = React.useState(false);
     useEffect(() => {
         document.title = 'Singh Publication | Login';
     }, []);
     return (
         <>
+        {loading && <LoadingBar />}
             <div className="w-screen h-max py-8 flex items-center justify-center
             ">
                 <div className="w-4/5 py-5 h-max bg-white flex flex-col items-center justify-center rounded-lg
@@ -50,12 +53,14 @@ function Login() {
                             alert("Password is required");
                             return;
                         }
-                        axios.post("https://singh-publication.onrender.com/api/user/login", {
+                        setloading(true);
+                        axios.post("http://localhost:5000/api/user/login", {
                             email: email,
                             // mobileNumber: mobileNumber,
                             password: password,
                         }).then((res) => {
                             console.log(res);
+                            setloading(false);
                             if (res.status===200) {
                                 // localStorage.setItem("pubuser", JSON.stringify(res.data));
                                 // console.log(localStorage.getItem("pubuser"));
@@ -64,6 +69,7 @@ function Login() {
                                 alert("Invalid Credentials");
                             }
                         }).catch((err) => {
+                            setloading(false);
                             alert("error");
                             console.log(err);
                         }

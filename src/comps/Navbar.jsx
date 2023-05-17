@@ -82,6 +82,11 @@ function Navbar() {
                         </Box>
                     </li>
                     <li className="w-56 mt-3  rounded" >
+                        <Box onClick={toggleDrawer(anchor, false)}>
+                            <Link className="no-underline  mx-2 font-semibold" to="/orders" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/orders' ? '#315ED2' : '#D1D1D1'} ` }}>Orders</Link>
+                        </Box>
+                    </li>
+                    <li className="w-56 mt-3  rounded" >
                         <Link style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/about' ? '#315ED2' : '#D1D1D1'} ` }} className="no-underline  mx-2 font-semibold" to="/accountsetting">Account Settings</Link>
                     </li>
 

@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import app from './Firebase';
+import LoadingBar from "./comps/Loadingbar";
 function Deliveryaddress() {
     const location = useLocation();
     const navigate = useNavigate();
@@ -14,6 +15,7 @@ function Deliveryaddress() {
     const [area, setarea] = useState(user.shipping_address.area);
     const [city, setcity] = useState(user.shipping_address.city);
     const [pincode, setpincode] = useState(user.shipping_address.pincode);
+    const [loading, setloading] = useState(false);
     async function checkuser() {
         const auth = getAuth(app);
         auth.onAuthStateChanged(async (user) => {
@@ -29,7 +31,8 @@ function Deliveryaddress() {
     },[]);
     return (
         <>
-            <div className="w-screen h-screen flex items-center justify-center
+        {loading && <LoadingBar/>}
+            <div className="w-screen mt-5 flex items-center justify-center
             ">
                 <div className="w-4/5 h-max bg-white flex flex-col items-center justify-center rounded-lg
             " style={{ 'border': '1px solid #777777' }}>
@@ -94,7 +97,8 @@ function Deliveryaddress() {
                     <button className=" text-white px-12 py-2 mt-5 mb-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }} onClick={(e) => {
                             // console.log(user.accessToken);
                             e.preventDefault();
-                            axios.post("https://singh-publication.onrender.com/api/order/createorder", {
+                            setloading(true);
+                            axios.post("http://localhost:5000/api/order/createorder", {
 
 
                                 "ProductsArray": user.cart,
@@ -115,12 +119,14 @@ function Deliveryaddress() {
                                 // newuser['accessToken']=user.accessToken;
                                 // localStorage.setItem('pubuser', JSON.stringify(newuser));
                                 // setuser(newuser);
+                                setloading(false);
                                 console.log(res.data);
                                 navigate('/orderplaced');
                                 // navigate('/accountsetting');
                                 // localStorage.setItem('pubuser', JSON.stringify(res.data));
                             }
                             ).catch((err) => {
+                                setloading(false);
                                 alert("error");
                                 console.log(err);
                             }

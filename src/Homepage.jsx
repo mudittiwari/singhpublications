@@ -5,6 +5,7 @@ import author from './assets/author.png';
 import playstore from './assets/playstore.png';
 import homepagebg from './assets/homepagebg.png';
 import homepagebg2 from './assets/homepagebg2.png';
+import homepagebg3 from './assets/homepagebg3.png';
 import app from './Firebase';
 import axios from 'axios';
 import Carousel from 'react-material-ui-carousel'
@@ -13,6 +14,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import { useEffect } from 'react';
+import LoadingBar from './comps/Loadingbar';
 function BookComp(props) {
     const navigate = useNavigate();
     return (
@@ -21,11 +23,11 @@ function BookComp(props) {
                 e.preventDefault();
                 navigate('/product', { state: props.prod })
             }} src={props.prod.image_url} className="w-full mx-auto " alt="" />
-            <h1 className="text-md font-bold mb-0 mx-0 w-max mt-0" style={{ 'color': '#315ED2', 'maxWidth': '100%' }}>{props.prod.title}</h1>
-            <h1 className="text-base font-semibold mb-0 mx-0 w-max mt-0" style={{ 'color': '#777777' }}>{props.prod.category}</h1>
-            <h1 className="text-sm font-medium mb-0 mx-0 w-max mt-0" style={{ 'color': '#777777' }}>{props.prod.subtitle}</h1>
+            <h1 className="text-md font-bold mb-0 mx-0 mt-0" style={{ 'color': '#315ED2', 'maxWidth': '100%' }}>{props.prod.title}</h1>
+            <h1 className="text-base font-semibold mb-0 mx-0 mt-0" style={{ 'color': '#777777' }}>{props.prod.category}</h1>
+            <h1 className="text-sm font-medium mb-0 mx-0  mt-0" style={{ 'color': '#777777' }}>{props.prod.subtitle}</h1>
             <div className='w-full mt-1 mx-0 flex items-center'>
-                <h1 className="text-base font-medium mb-0 mr-2  w-max mt-0" style={{ 'color': '#777777' }}>{props.prod.rating}</h1>
+                <h1 className="text-base font-medium mb-0 mr-2  mt-0" style={{ 'color': '#777777' }}>{props.prod.rating}</h1>
                 <img className='mx-1 w-4' src={star} alt="" />
                 <img className='mx-1 w-4' src={star} alt="" />
                 <img className='mx-1 w-4' src={star} alt="" />
@@ -37,7 +39,7 @@ function BookComp(props) {
                 e.preventDefault();
                 if (user) {
 
-                    axios.post("https://singh-publication.onrender.com/api/user/addtowishlist", {
+                    axios.post("http://localhost:5000/api/user/addtowishlist", {
 
 
                         "product_id": props.prod.id,
@@ -67,7 +69,7 @@ function BookComp(props) {
                 else {
                     alert("Please login to add to wishlist");
                 }
-            }} className='w-8 flex items-center justify-center h-8 py-1 rounded-full absolute bottom-12  right-5' style={{ 'border': '2px solid rgba(217, 217, 217, 1)' }} >
+            }} className='w-8 flex items-center justify-center h-8 py-1 rounded-full absolute bottom-6  right-3' style={{ 'border': '2px solid rgba(217, 217, 217, 1)' }} >
                 <Favorite style={{ 'color': 'rgba(217, 217, 217, 1)' }} />
             </div>
         </div>
@@ -78,12 +80,16 @@ function BookComp(props) {
 function Home() {
     const [products, setProducts] = useState([]);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
     async function getallprods() {
-        axios.get('https://singh-publication.onrender.com/api/product/getproducts').then((res) => {
+        setLoading(true);
+        axios.get('http://localhost:5000/api/product/getproducts').then((res) => {
             // console.log(res);
+            setLoading(false);
             setProducts(res.data);
         }).catch((err) => {
             console.log(err);
+            setLoading(false);
             alert("error");
             return;
         });
@@ -94,7 +100,8 @@ function Home() {
             if (!user) {
                 navigate('/login');
             }
-
+            else
+                alert("Already logged in");
         });
     }
     useEffect(() => {
@@ -114,7 +121,11 @@ function Home() {
         return (
             // <Paper style={{'borderRadius':'0px !important'}}>
             <div onClick={()=>{
-                if(props.prod)
+                if(props.prod=='empty')
+                {
+                    checkuser();
+                }
+                else if(props.prod)
                 navigate('/product',{state:props.prod})
                 else
                 alert("Wait for the prodcts to load")
@@ -135,7 +146,7 @@ function Home() {
                 <div className='w-full lg:w-2/2  py-0 px-8 lg:p-14 '>
                     <h1 className='font-bold text-xl mt-3' style={{ 'color': '#315ED2' }}>Dr. (Prof) Sher Singh Morodiya</h1>
                     <h1 className='font-semibold text-sm mb-3' style={{ 'color': '#315ED2' }}>Director & Author (Singh Publication)</h1>
-                    <p className='text-sm font-medium mb-10'>
+                    <p className='text-sm font-medium mb-10 text-justify'>
                         Dr. (Prof.) Sher Singh Morodiya, received his Master of
                         Nursing Degree from Raj Kumari Amrit Kaur College of Nursing,
                         University of Delhi. He has got Ph.D. Degree in 2013. He started his
@@ -153,6 +164,7 @@ function Home() {
     }
     return (
         <>
+        {loading && <LoadingBar/>}
             <div className="w-full flex flex-col justify-center pb-5">
                 <div id='mainslider'>
 
@@ -160,6 +172,7 @@ function Home() {
 
                         <Item image={homepagebg} prod={products[0]} />
                         <Item image={homepagebg2} prod={products[0]} />
+                        <Item image={homepagebg3} prod='empty' />
 
                     </Carousel>
 
@@ -173,7 +186,7 @@ function Home() {
                         <div className='w-full lg:w-2/2  py-0 px-8 lg:p-14 '>
                             <h1 className='font-bold text-xl mt-3' style={{ 'color': '#315ED2' }}>Dr. (Prof) Sher Singh Morodiya</h1>
                             <h1 className='font-semibold text-sm mb-3' style={{ 'color': '#315ED2' }}>Director & Author (Singh Publication)</h1>
-                            <p className='text-sm font-medium mb-10'>
+                            <p className='text-sm font-medium mb-10 text-justify'>
                                 Dr. (Prof.) Sher Singh Morodiya, received his Master of
                                 Nursing Degree from Raj Kumari Amrit Kaur College of Nursing,
                                 University of Delhi. He has got Ph.D. Degree in 2013. He started his

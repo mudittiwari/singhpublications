@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
+import LoadingBar from './comps/Loadingbar';
 function BookComp(props) {
     const navigate = useNavigate();
     return (
@@ -55,6 +56,7 @@ function Orders() {
     const navigate = useNavigate();
     const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
     const [orders, setorders] = useState([]);
+    const [loading, setloading] = useState(true);
     const [total_price, settotal_price] = useState(0);
     async function checkuser() {
         const auth = getAuth(app);
@@ -66,9 +68,10 @@ function Orders() {
         });
     }
     async function getitems() {
+        setloading(true);
         let ordrs = [];
         let price = 0;
-        await axios.get(`https://singh-publication.onrender.com/api/order/getuserorders`, {
+        await axios.get(`http://localhost:5000/api/order/getuserorders`, {
             headers: {
                 'Authorization': `Bearer ${user.accessToken}`
             }, params: { id: user.id }
@@ -76,7 +79,7 @@ function Orders() {
             for (let i = 0; i < res.data.length; i++) {
                 let arr = [];
                 for (let j = 0; j < res.data[i].ProductsArray.length; j++) {
-                    await axios.get(`https://singh-publication.onrender.com/api/product/products`, { params: { id: res.data[i].ProductsArray[j] } }).then((res) => {
+                    await axios.get(`http://localhost:5000/api/product/products`, { params: { id: res.data[i].ProductsArray[j] } }).then((res) => {
                         arr.push(res.data);
                     }
                     ).catch((err) => {
@@ -94,6 +97,7 @@ function Orders() {
             console.log(err);
         }
         )
+        setloading(false);
         setorders(ordrs);
     }
     useEffect(() => {
@@ -103,11 +107,12 @@ function Orders() {
     }, []);
     return (
         <>
+        {loading && <LoadingBar/>}
             <div className='w-full flex justify-center'>
                 <div className='w-4/5  flex justify-center flex-col items-center flex-wrap' >
                     <h1 className="text-2xl w-max font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>Orders</h1>
                     <div className='w-full flex justify-around flex-wrap'>
-                        {orders.map((item, index) => {
+                       {orders.length==0?<h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>No items in Cart</h1> :orders.map((item, index) => {
                             return (
                                 <BookComp key={index} order={item} />
                             )

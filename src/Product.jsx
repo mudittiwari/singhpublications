@@ -4,9 +4,11 @@ import { useLocation,useNavigate } from "react-router-dom";
 import star from './assets/star.png';
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import app from './Firebase';
+import LoadingBar from "./comps/Loadingbar";
 function Product() {
     const location = useLocation();
     const navigate = useNavigate();
+    const [loading, setloading] = React.useState(false);
     const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
     async function checkuser() {
         const auth = getAuth(app);
@@ -30,6 +32,7 @@ function Product() {
     }, []);
     return (
         <>
+        {loading && <LoadingBar/>}
             <div className="w-full flex md:flex-row flex-col mt-10">
                 <div className="w-full md:w-1/3 flex flex-col p-8" style={{ 'borderRight': '1px solid #777777' }}>
                     <img className="w-80" src={location.state.image_url} alt="" />
@@ -49,7 +52,8 @@ function Product() {
                         <button onClick={(e) => {
                             // console.log(user.accessToken);
                             e.preventDefault();
-                            axios.post("https://singh-publication.onrender.com/api/user/addtocart", {
+                            setloading(true);
+                            axios.post("http://localhost:5000/api/user/addtocart", {
 
 
                                 "product_id": location.state.id,
@@ -64,6 +68,7 @@ function Product() {
                                     'id': user.id
                                 }
                             },).then((res) => {
+                                setloading(false);
                                 let newuser = res.data;
                                 newuser['accessToken'] = user.accessToken;
                                 localStorage.setItem('pubuser', JSON.stringify(newuser));
@@ -72,6 +77,7 @@ function Product() {
                                 // localStorage.setItem('pubuser', JSON.stringify(res.data));
                             }
                             ).catch((err) => {
+                                setloading(false);
                                 console.log(err);
                                 if (err.response.status === 400) {
                                     alert("Product already in cart");
@@ -84,7 +90,8 @@ function Product() {
                         </button>
                         <button onClick={(e) => {
                             e.preventDefault();
-                            axios.post("https://singh-publication.onrender.com/api/user/addtowishlist", {
+                            setloading(true);
+                            axios.post("http://localhost:5000/api/user/addtowishlist", {
 
 
                                 "product_id": location.state.id,
@@ -99,6 +106,7 @@ function Product() {
                                     'id': user.id
                                 }
                             },).then((res) => {
+                                setloading(false);
                                 let newuser = res.data;
                                 newuser['accessToken'] = user.accessToken;
                                 localStorage.setItem('pubuser', JSON.stringify(newuser));
@@ -106,6 +114,7 @@ function Product() {
                                 alert("Added to wishlist");
                             }
                             ).catch((err) => {
+                                setloading(false);
                                 console.log(err);
                                 if (err.response.status === 400) {
                                     alert("Product already in wishlist");
@@ -120,22 +129,22 @@ function Product() {
                 </div>
                 <div className="w-full md:w-2/3 flex flex-col justify-start p-8">
                     <h1 className="text-2xl font-medium mb-3" style={{ 'color': '#315ED2' }}>Book Description</h1>
-                    <h1>{location.state.description}</h1>
+                    <h1 className="text-justify">{location.state.description}</h1>
                     <h1 className="text-2xl font-medium mb-3 mt-5" style={{ 'color': '#315ED2' }}>Book Description</h1>
                     <div className="flex">
                         <div className="w-1/2">
-                            <h1 className="text-base font-medium mb-0 mx-0 w-max mt-0">Author: <span className="font-normal"> {location.state.author}</span></h1>
-                            <h1 className="text-base font-medium mb-0 mx-0 w-max mt-0">Publisher: <span className="font-normal">{location.state.publisher}</span></h1>
-                            <h1 className="text-base font-medium mb-0 mx-0 w-max mt-0">Language: <span className="font-normal">{location.state.language}</span></h1>
-                            <h1 className="text-base font-medium mb-0 mx-0 w-max mt-0">Paperback: <span className="font-normal">{location.state.paperback}</span></h1>
+                            <h1 className="text-base font-medium mb-0 mx-0 mt-0">Author: <span className="font-normal"> {location.state.author}</span></h1>
+                            <h1 className="text-base font-medium mb-0 mx-0 mt-0">Publisher: <span className="font-normal">{location.state.publisher}</span></h1>
+                            <h1 className="text-base font-medium mb-0 mx-0  mt-0">Language: <span className="font-normal">{location.state.language}</span></h1>
+                            <h1 className="text-base font-medium mb-0 mx-0 mt-0">Paperback: <span className="font-normal">{location.state.paperback}</span></h1>
 
                         </div>
                         <div className="w-1/2">
-                            <h1 className="text-base font-medium mb-0 mx-0 w-max mt-0">ISBN-10: <span className="font-normal">{location.state.isbn}</span></h1>
-                            <h1 className="text-base font-medium mb-0 mx-0 w-max mt-0">ISBN-13: <span className="font-normal">{location.state.isbn13}</span></h1>
-                            <h1 className="text-base font-medium mb-0 mx-0 w-max mt-0">Reading Age: <span className="font-normal">{location.state.age}</span></h1>
-                            <h1 className="text-base font-medium mb-0 mx-0 w-max mt-0">Item Weight: <span className="font-normal">{location.state.weight}</span></h1>
-                            <h1 className="text-base font-medium mb-0 mx-0 w-max mt-0">Dimensions: <span className="font-normal">{location.state.dimensions}</span></h1>
+                            <h1 className="text-base font-medium mb-0 mx-0  mt-0">ISBN-10: <span className="font-normal">{location.state.isbn}</span></h1>
+                            <h1 className="text-base font-medium mb-0 mx-0 mt-0">ISBN-13: <span className="font-normal">{location.state.isbn13}</span></h1>
+                            <h1 className="text-base font-medium mb-0 mx-0  mt-0">Reading Age: <span className="font-normal">{location.state.age}</span></h1>
+                            <h1 className="text-base font-medium mb-0 mx-0  mt-0">Item Weight: <span className="font-normal">{location.state.weight}</span></h1>
+                            <h1 className="text-base font-medium mb-0 mx-0 mt-0">Dimensions: <span className="font-normal">{location.state.dimensions}</span></h1>
 
                         </div>
                     </div>

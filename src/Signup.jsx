@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import LoadingBar from "./comps/Loadingbar";
 function Signup() {
     const navigate = useNavigate();
     const [firstName, setFirstName] = React.useState("");
@@ -10,6 +11,7 @@ function Signup() {
     const [birthDate, setBirthDate] = React.useState("");
     const [mobileNumber, setMobileNumber] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [loading, setLoading] = React.useState(false);
     function isAlphanumericPassword(str) {
         return /^(?=.*[a-zA-Z])(?=.*\d).+$/.test(str);
     }
@@ -22,6 +24,7 @@ function Signup() {
 
     return (
         <>
+            {loading && <LoadingBar />}
             <div className="w-full h-max my-5 py-5 flex items-center justify-center
             ">
                 <div className="w-4/5 h-max py-5 bg-white flex flex-col items-center justify-center rounded-lg
@@ -141,7 +144,7 @@ function Signup() {
                             alert('Mobile Number not valid');
                             return;
                         }
-                        if (password.trim().length != 8) {
+                        if (password.trim().length < 8) {
                             alert('Password must be 8 characters long');
                             return;
                         }
@@ -149,7 +152,8 @@ function Signup() {
                             alert('Password must contain atleast one alphabet and one number');
                             return;
                         }
-                        axios.post('https://singh-publication.onrender.com/api/user/register', {
+                        setLoading(true);
+                        axios.post('http://localhost:5000/api/user/register', {
                             firstname: firstName,
                             lastname: lastName,
                             email: email,
@@ -158,12 +162,15 @@ function Signup() {
                             mobile: mobileNumber,
                             password: password,
                         }).then((res) => {
+                            setLoading(false);
                             console.log(res);
+                            
                             if (res.data === 'success') {
                                 navigate('/login');
                             }
                         }
                         ).catch((err) => {
+                            setLoading(false);
                             alert("error");
                             console.log(err);
                         }

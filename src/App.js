@@ -58,3 +58,11 @@ function App() {
 }
 
 export default App;
+
+
+// fix orders page
+// show orders page in navbar or mobile
+// fix bookcomp responsive in every page
+// fix admin website
+// run complete website in localhost to final debug the issues
+// show loading bar on every api call
