@@ -33,7 +33,7 @@ function BookComp(props) {
                             // console.log(user.accessToken);
                             props.setloading(true);
                             e.preventDefault();
-                            axios.post("http://localhost:5000/api/user/removefromcart", {
+                            axios.post("https://singhpublications.onrender.com/api/user/removefromcart", {
 
 
                                 "product_id": props.prod.id,
@@ -96,7 +96,7 @@ function Cart() {
         console.log(cart);
         for (let index = 0; index < cart.length; index++) {
             const element = cart[index];
-            await axios.get(`http://localhost:5000/api/product/products`,{params:{id:element}}).then((res)=>{
+            await axios.get(`https://singhpublications.onrender.com/api/product/products`,{params:{id:element}}).then((res)=>{
                 arr.push(res.data);
                 price+=res.data.price;
             }

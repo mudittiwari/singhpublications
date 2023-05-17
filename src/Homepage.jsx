@@ -39,7 +39,7 @@ function BookComp(props) {
                 e.preventDefault();
                 if (user) {
 
-                    axios.post("http://localhost:5000/api/user/addtowishlist", {
+                    axios.post("https://singhpublications.onrender.com/api/user/addtowishlist", {
 
 
                         "product_id": props.prod.id,
@@ -83,7 +83,7 @@ function Home() {
     const [loading, setLoading] = useState(true);
     async function getallprods() {
         setLoading(true);
-        axios.get('http://localhost:5000/api/product/getproducts').then((res) => {
+        axios.get('https://singhpublications.onrender.com/api/product/getproducts').then((res) => {
             // console.log(res);
             setLoading(false);
             setProducts(res.data);

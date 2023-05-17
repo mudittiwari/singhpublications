@@ -69,7 +69,7 @@ function PurchasedBooks() {
     async function getitems() {
         setloading(true);
         let ordrs = [];
-        await axios.get(`http://localhost:5000/api/order/getuserorders`, {
+        await axios.get(`https://singhpublications.onrender.com/api/order/getuserorders`, {
             headers: {
                 'Authorization': `Bearer ${user.accessToken}`
             }, params: { id: user.id }
@@ -77,7 +77,7 @@ function PurchasedBooks() {
             for (let i = 0; i < res.data.length; i++) {
                 let arr = [];
                 for (let j = 0; j < res.data[i].ProductsArray.length; j++) {
-                    await axios.get(`http://localhost:5000/api/product/products`, { params: { id: res.data[i].ProductsArray[j] } }).then((res) => {
+                    await axios.get(`https://singhpublications.onrender.com/api/product/products`, { params: { id: res.data[i].ProductsArray[j] } }).then((res) => {
                         if(res.data.category=='ebook' || res.data.category=='audiobook')
                             arr.push(res.data);
                     }

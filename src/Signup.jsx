@@ -153,7 +153,7 @@ function Signup() {
                             return;
                         }
                         setLoading(true);
-                        axios.post('http://localhost:5000/api/user/register', {
+                        axios.post('https://singhpublications.onrender.com/api/user/register', {
                             firstname: firstName,
                             lastname: lastName,
                             email: email,

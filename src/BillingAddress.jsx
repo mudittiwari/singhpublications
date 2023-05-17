@@ -97,7 +97,7 @@ function BillingAddress() {
                             
                             e.preventDefault();
                             setloading(true);
-                            axios.post("http://localhost:5000/api/user/updatebillingaddress", {
+                            axios.post("https://singhpublications.onrender.com/api/user/updatebillingaddress", {
 
 
                                 "house": house,

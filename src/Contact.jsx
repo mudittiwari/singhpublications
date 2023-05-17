@@ -41,7 +41,7 @@ const Contact = () => {
                         onClick={(e) => {
                             setloading(true);
                             e.preventDefault();
-                            axios.post('http://localhost:5000/contact', {
+                            axios.post('https://singhpublications.onrender.com/contact', {
                                 name: name,
                                 phone: phone,
                                 subject: subject,

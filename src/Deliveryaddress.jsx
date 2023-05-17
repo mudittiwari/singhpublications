@@ -98,7 +98,7 @@ function Deliveryaddress() {
                             // console.log(user.accessToken);
                             e.preventDefault();
                             setloading(true);
-                            axios.post("http://localhost:5000/api/order/createorder", {
+                            axios.post("https://singhpublications.onrender.com/api/order/createorder", {
 
 
                                 "ProductsArray": user.cart,

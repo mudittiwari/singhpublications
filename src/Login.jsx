@@ -54,7 +54,7 @@ function Login() {
                             return;
                         }
                         setloading(true);
-                        axios.post("http://localhost:5000/api/user/login", {
+                        axios.post("https://singhpublications.onrender.com/api/user/login", {
                             email: email,
                             // mobileNumber: mobileNumber,
                             password: password,
