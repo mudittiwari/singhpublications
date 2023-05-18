@@ -6,6 +6,7 @@ import playstore from './assets/playstore.png';
 import homepagebg from './assets/homepagebg.png';
 import homepagebg2 from './assets/homepagebg2.png';
 import homepagebg3 from './assets/homepagebg3.png';
+import testimonial1 from './assets/testimonial1.JPG';
 import app from './Firebase';
 import axios from 'axios';
 import Carousel from 'react-material-ui-carousel'
@@ -134,27 +135,21 @@ function Home() {
             </div>
             // </Paper>
         )
-    } function Testimonial() {
+    } function Testimonial(props) {
         return (
             // <Paper style={{'borderRadius':'0px !important'}}>
             <div className='w-full flex  justify-center'>
             <div className='flex w-4/5 md:flex-row flex-col rounded-lg' style={{'border':'1px solid #315ED2'}}>
                 <div className='w-full items-center justify-center lg:w-1/3 py-8 px-8 lg:p-14 flex flex-col'>
-                    <img src={author} className="w-40" alt="..." />
+                    <img src={props.image} className="w-40" alt="..." />
 
                 </div>
                 <div className='w-full lg:w-2/2  py-0 px-8 lg:p-14 '>
-                    <h1 className='font-bold text-xl mt-3' style={{ 'color': '#315ED2' }}>Dr. (Prof) Sher Singh Morodiya</h1>
-                    <h1 className='font-semibold text-sm mb-3' style={{ 'color': '#315ED2' }}>Director & Author (Singh Publication)</h1>
+                    <h1 className='font-bold text-xl mt-3' style={{ 'color': '#315ED2' }}>{props.name}</h1>
+                    <h1 className='font-semibold text-sm' style={{ 'color': '#315ED2' }}>{props.desig1}</h1>
+                    <h1 className='font-semibold text-sm mb-3' style={{ 'color': '#315ED2' }}>{props.desig2}</h1>
                     <p className='text-sm font-medium mb-10 text-justify'>
-                        Dr. (Prof.) Sher Singh Morodiya, received his Master of
-                        Nursing Degree from Raj Kumari Amrit Kaur College of Nursing,
-                        University of Delhi. He has got Ph.D. Degree in 2013. He started his
-                        career after General Nursing Diploma as Basic Nurse at Government
-                        dispensary in 1984 and step by step; obtained a chance to work on the
-                        post of the Officer on Special Duty to the Additional Chief Secretary
-                        (Medical & Health) along with the responsibility of Deputy Director
-                        (Nursing) i.e. highest post in Government of Rajasthan for nursing personnel.
+                    {props.review}
                         
                     </p>
                 </div>
@@ -232,9 +227,10 @@ function Home() {
 
                     <Carousel navButtonsAlwaysVisible="true" indicators="false" animation='slide' duration="800">
 
-                        <Testimonial />
-                        <Testimonial />
-                        <Testimonial />
+                        <Testimonial name="Mrs. Gulshan Roy Chowdhury" desig1="Ph.D. Scholar, M.N.(OBG-RAKCON-DU)" desig2="Lecturer, College of Nursing ABVIMS & Dr. R.M.L. Hospital, New Delhi" image={testimonial1} review="VERY SYSTEMATIC AND ORGANISED CONTENTS OF EACH CHAPTER IN A COMPREHENSIVE AND EASY LANGUAGE. EXAMPLES IN THE STATISTICS CHAPTER ARE VERY RELEVANT AND EFFECTIVELY MENTIONED." />
+                        <Testimonial name="Mrs. Gulshan Roy Chowdhury" desig1="Ph.D. Scholar, M.N.(OBG-RAKCON-DU)" desig2="Lecturer, College of Nursing ABVIMS & Dr. R.M.L. Hospital, New Delhi" image={testimonial1} review="VERY SYSTEMATIC AND ORGANISED CONTENTS OF EACH CHAPTER IN A COMPREHENSIVE AND EASY LANGUAGE. EXAMPLES IN THE STATISTICS CHAPTER ARE VERY RELEVANT AND EFFECTIVELY MENTIONED." />
+                        {/* <Testimonial />
+                        <Testimonial /> */}
 
                     </Carousel>
 

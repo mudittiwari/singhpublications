@@ -49,6 +49,11 @@ function Login() {
                             alert("Email is required");
                             return;
                         }
+                        if(email.indexOf('@')===-1 || email.indexOf('.')===-1)
+                            {
+                                alert('Please enter a valid email');
+                                return;
+                            }
                         if(password.trim()===""){
                             alert("Password is required");
                             return;

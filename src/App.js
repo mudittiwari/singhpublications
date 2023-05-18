@@ -21,6 +21,7 @@ import Deliveryaddress from './Deliveryaddress';
 import Orderplaced from './Orderplaced';
 import About from './About';
 import Contact from './Contact';
+import Pdfview from './Pdfview';
 function App() {
   return (
     <>
@@ -40,6 +41,7 @@ function App() {
           <Route path="/books" element={<PurchasedBooks />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/viewbook" element={<Pdfview />} />
           
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />

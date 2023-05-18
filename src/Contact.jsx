@@ -39,6 +39,37 @@ const Contact = () => {
                 <div className='w-full flex justify-center'>
                     <button className=" text-white px-12 py-2 mt-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }}
                         onClick={(e) => {
+                            if(name==='')
+                            {
+                                alert('Please enter your name');
+                                return;
+                            }
+                            if(phone.trim().length!=10)
+                            {
+                                alert('Please enter a valid phone number');
+                                return;
+                            }
+                            if(subject==='')
+                            {
+                                alert('Please enter a subject');
+                                return;
+                            }
+                            if(email==='')
+                            {
+                                alert('Please enter your email');
+                                return;
+                            }
+                            if(email.indexOf('@')===-1 || email.indexOf('.')===-1)
+                            {
+                                alert('Please enter a valid email');
+                                return;
+                            }
+                            if(description==='')
+                            {
+                                alert('Please enter a description');
+                                return;
+                            }
+
                             setloading(true);
                             e.preventDefault();
                             axios.post('https://singhpublications.onrender.com/contact', {

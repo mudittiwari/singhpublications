@@ -136,6 +136,11 @@ function Signup() {
                             alert('Email is required');
                             return;
                         }
+                        if(email.indexOf('@')===-1 || email.indexOf('.')===-1)
+                        {
+                            alert('Please enter a valid email');
+                            return;
+                        }
                         if (birthDate.trim().length === 0) {
                             alert('Birth Date is required');
                             return;
