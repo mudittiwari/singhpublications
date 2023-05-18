@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-
+import file from './assets/file.pdf';
 function Pdfview() {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -25,7 +25,7 @@ function Pdfview() {
         <div className="w-4/5 h-max py-5 bg-white flex flex-col items-center justify-center rounded-lg
             " style={{ 'border': '1px solid #777777' }}>
           <Document
-            file={{ url: "https://arxiv.org/pdf/quant-ph/0410100.pdf" }}
+            file={file}
             onLoadSuccess={onDocumentLoadSuccess}
           >
             <Page pageNumber={pageNumber} />
