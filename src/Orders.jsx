@@ -112,7 +112,7 @@ function Orders() {
                 <div className='w-4/5  flex justify-center flex-col items-center flex-wrap' >
                     <h1 className="text-2xl w-max font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>Orders</h1>
                     <div className='w-full flex justify-around flex-wrap'>
-                       {orders.length==0?<h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>No items in Cart</h1> :orders.map((item, index) => {
+                       {orders.length==0?<h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': 'gray' }}>No Orders Placed Till Now</h1> :orders.map((item, index) => {
                             return (
                                 <BookComp key={index} order={item} />
                             )

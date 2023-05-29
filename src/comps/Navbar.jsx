@@ -16,6 +16,57 @@ import Drawer from "@mui/material/Drawer";
 // import Drawer from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import { Box } from "@mui/material";
+function Modal(props) {
+
+    return (
+        <>
+
+            {props.showModal ? (
+                <>
+                    <div
+                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+                    >
+                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                            {/*content*/}
+                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                {/*header*/}
+
+                                {/*body*/}
+                                <div className="relative pt-6 px-6 flex-auto">
+                                    <p className="my-4 text-slate-500 text-lg leading-relaxed">
+                                        Are you sure you want to logout?
+                                    </p>
+                                </div>
+                                {/*footer*/}
+                                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                    <button
+                                        className="text-black background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        type="button"
+                                        onClick={() => props.setShowModal(false)}
+                                    >
+                                        Close
+                                    </button>
+                                    <button
+                                        className=" text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        type="button"
+                                        onClick={() => {
+                                            props.logout();
+                                            props.setShowModal(false);
+                                        }}
+                                        style={{ 'backgroundColor': "#315ED2" }}
+                                    >
+                                        Yes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                </>
+            ) : null}
+        </>
+    );
+}
 function Navbar() {
     const navigate = useNavigate();
     const auth = getAuth(app);
@@ -60,11 +111,17 @@ function Navbar() {
                     e.preventDefault();
                     navigate('/about');
                 }}><h1 className=" mx-2 font-semibold mt-3" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/about' ? '#315ED2' : '#D1D1D1'} ` }}>About Us</h1> </div>
-
                 <div className="flex justify-start cursor-pointer"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/contact' ? '#315ED2' : '#D1D1D1'} ` }} className="mx-2 font-semibold mt-3" onClick={(e) => {
                     e.preventDefault();
                     navigate('/contact');
                 }}>Contact Us</h1> </div>
+                <div className="flex justify-start cursor-pointer"><h1 style={{ 'color': '#D1D1D1' }} className="mx-2 font-semibold mt-3" >Mobile App</h1> </div>
+                <div className="flex justify-start cursor-pointer"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/careers' ? '#315ED2' : '#D1D1D1'} ` }} className="mx-2 font-semibold mt-3" onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/careers');
+                }}>Careers</h1> </div>
+
+
             </div>
             {
                 localStorage.getItem('pubuser') != null ? <ul className="flex flex-col items-end">
@@ -93,11 +150,12 @@ function Navbar() {
 
                     <li className="w-56 mt-3  rounded" >
                         <Box onClick={toggleDrawer(anchor, false)}>
-                            <h1 style={{ 'color': '#D1D1D1'  }} className="no-underline  mx-2 font-semibold" onClick={(e) => {
-                                e.preventDefault();
-                                localStorage.removeItem("pubuser");
-                                auth.signOut();
-                                navigate('/');
+                            <h1 style={{ 'color': '#D1D1D1' }} className="no-underline  mx-2 font-semibold" onClick={(e) => {
+                                // e.preventDefault();
+                                // localStorage.removeItem("pubuser");
+                                // auth.signOut();
+                                // navigate('/');
+                                setShowModal(true);
                             }}>Logout</h1>
                         </Box>
                     </li>
@@ -122,11 +180,17 @@ function Navbar() {
         </Box >
     );
 
-
+    function logout() {
+        auth.signOut();
+        localStorage.removeItem("pubuser");
+        navigate('/');
+        setVisibility("hidden");
+    }
     const [Visibility, setVisibility] = useState("hidden");
-
+    const [showModal, setShowModal] = React.useState(false);
     return (
         <>
+            <Modal showModal={showModal} setShowModal={setShowModal} logout={logout} />
             <div className="md:hidden block navbar">
                 {['left'].map((anchor) => (
                     <React.Fragment key={anchor}>
@@ -161,26 +225,32 @@ function Navbar() {
                     navigate('/');
                 }} className="flex items-center pl-4 cursor-pointer">
                     <img src={Logo} className="w-24 h-full" alt="" />
-                    
+
                 </div>
                 <div className="w-max pl-4 flex justify-center">
                     <div className="flex justify-center cursor-pointer" onClick={(e) => {
                         e.preventDefault();
                         navigate('/');
-                    }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/' || window.location.href == 'https://singhpublication.in/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
+                    }}><h1 className="font-semibold text-sm mt-1" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/' || window.location.href == 'https://singhpublication.in/' ? '#315ED2' : '#D1D1D1'} ` }}>Home</h1> </div>
                     <div className="flex justify-center mx-5 cursor-pointer" onClick={(e) => {
                         e.preventDefault();
                         navigate('/about');
-                    }}><h1 className="font-semibold text-xs mt-1" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/about' ? '#315ED2' : '#D1D1D1'} ` }}>About Us</h1> </div>
+                    }}><h1 className="font-semibold text-sm mt-1" style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/about' ? '#315ED2' : '#D1D1D1'} ` }}>About Us</h1> </div>
 
-                    <div className="flex justify-center cursor-pointer"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/contact' ? '#315ED2' : '#D1D1D1'} ` }} className="font-semibold text-xs mt-1" onClick={(e) => {
+                    <div className="flex justify-center cursor-pointer"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/contact' ? '#315ED2' : '#D1D1D1'} ` }} className="font-semibold text-sm mt-1" onClick={(e) => {
                         e.preventDefault();
                         navigate('/contact');
                     }}>Contact Us</h1> </div>
-                    {localStorage.getItem('pubuser')!=null?<div className="flex justify-center cursor-pointer ml-5"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/books' ? '#315ED2' : '#D1D1D1'} ` }} className="font-semibold text-xs mt-1" onClick={(e) => {
+                    {localStorage.getItem('pubuser') != null ? <div className="flex justify-center cursor-pointer ml-5"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/books' ? '#315ED2' : '#D1D1D1'} ` }} className="font-semibold text-sm mt-1" onClick={(e) => {
                         e.preventDefault();
                         navigate('/books');
-                    }}>Books</h1> </div>:null}
+                    }}>Books</h1> </div> : null}
+                    <div className="flex justify-start cursor-pointer"><h1 style={{ 'color': '#D1D1D1' }} className="mx-5 font-semibold text-sm mt-1" >Mobile App</h1> </div>
+                    <div className="flex justify-start cursor-pointer"><h1 style={{ 'color': `${window.location.href == 'https://singhpublication.in/#/careers' ? '#315ED2' : '#D1D1D1'} ` }} className=" font-semibold text-sm mt-1" onClick={(e) => {
+                        e.preventDefault();
+                        navigate('/careers');
+                    }}>Careers</h1> </div>
+
                 </div>
                 {localStorage.getItem('pubuser') != null ? <div className="flex items-center relative mr-4" >
                     {/* <div className="rounded-3xl flex items-center p-3 mr-6" style={{ 'border': '1px solid #D1D1D1' }}>
@@ -214,7 +284,7 @@ function Navbar() {
                     <div className={Visibility + " " + `absolute right-0 px-4 py-2 top-16 h-max w-48 rounded flex justify-center flex-col items-center related`}>
                         <div style={{
                             'border': '1px solid #777777',
-                            
+
 
 
 
@@ -248,11 +318,8 @@ function Navbar() {
 
 
                         }} onClick={(e) => {
-                            e.preventDefault();
-                            auth.signOut();
-                            localStorage.removeItem("pubuser");
-                            navigate('/');
-                            setVisibility("hidden");
+
+                            setShowModal(true)
                         }} className="w-44 py-2 px-4 rounded  my-1 flex items-center justify-center cursor-pointer" >
                             <h1 className="text-sm font-medium " style={{ 'color': 'rgba(153, 153, 153, 1)' }}>Logout</h1>
                         </div>

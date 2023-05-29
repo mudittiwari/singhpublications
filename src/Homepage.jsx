@@ -7,6 +7,7 @@ import homepagebg from './assets/homepagebg.png';
 import homepagebg2 from './assets/homepagebg2.png';
 import homepagebg3 from './assets/homepagebg3.png';
 import testimonial1 from './assets/testimonial1.JPG';
+import testimonial2 from './assets/testimonial2.jfif';
 import app from './Firebase';
 import axios from 'axios';
 import Carousel from 'react-material-ui-carousel'
@@ -35,6 +36,7 @@ function BookComp(props) {
                 <img className='mx-1 w-4' src={star} alt="" />
                 <img className='mx-1 w-4' src={star} alt="" />
             </div>
+            
             <div onClick={(e) => {
                 let user = JSON.parse(localStorage.getItem('pubuser'));
                 e.preventDefault();
@@ -72,7 +74,47 @@ function BookComp(props) {
                 }
             }} className='w-8 flex items-center justify-center h-8 py-1 rounded-full absolute bottom-6  right-3' style={{ 'border': '2px solid rgba(217, 217, 217, 1)' }} >
                 <Favorite style={{ 'color': 'rgba(217, 217, 217, 1)' }} />
+                
             </div>
+            {props.user!=null && props.user.wishlist.includes(props.prod.id) && <div onClick={(e) => {
+                let user = JSON.parse(localStorage.getItem('pubuser'));
+                e.preventDefault();
+                if (user) {
+
+                    axios.post("https://singhpublications.onrender.com/api/user/addtowishlist", {
+
+
+                        "product_id": props.prod.id,
+
+                    }, {
+                        headers: {
+                            'Authorization': `Bearer ${user.accessToken}`
+                        },
+                        params: {
+                            'id': user.id
+                        }
+                    },).then((res) => {
+                        let newuser = res.data;
+                        newuser['accessToken'] = user.accessToken;
+                        localStorage.setItem('pubuser', JSON.stringify(newuser));
+                        alert("Added to wishlist");
+                    }
+                    ).catch((err) => {
+                        console.log(err);
+                        if (err.response.status === 400) {
+                            alert("Product already in wishlist");
+                        }
+
+                    }
+                    )
+                }
+                else {
+                    alert("Please login to add to wishlist");
+                }
+            }} className='w-8 flex items-center justify-center h-8 py-1 rounded-full absolute bottom-6  right-3' style={{ 'border': '1px solid red' }} >
+                <Favorite style={{ 'color': 'red' }} />
+                
+            </div>}
         </div>
     );
 }
@@ -81,6 +123,7 @@ function BookComp(props) {
 function Home() {
     const [products, setProducts] = useState([]);
     const navigate = useNavigate();
+    const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
     const [loading, setLoading] = useState(true);
     async function getallprods() {
         setLoading(true);
@@ -140,8 +183,8 @@ function Home() {
             // <Paper style={{'borderRadius':'0px !important'}}>
             <div className='w-full flex  justify-center'>
             <div className='flex w-4/5 md:flex-row flex-col rounded-lg' style={{'border':'1px solid #315ED2'}}>
-                <div className='w-full items-center justify-center lg:w-1/3 py-8 px-8 lg:p-14 flex flex-col'>
-                    <img src={props.image} className="w-40" alt="..." />
+                <div className='w-full items-center justify-center lg:w-1/3 py-8 px-8 lg:p-4 flex flex-col'>
+                    <img src={props.image} className="w-full" alt="..." />
 
                 </div>
                 <div className='w-full lg:w-2/2  py-0 px-8 lg:p-14 '>
@@ -212,7 +255,7 @@ function Home() {
                         <BookComp />
                         <BookComp /> */}
                     {products.map((prod, index) => {
-                        return <BookComp key={index} prod={prod} />
+                        return <BookComp key={index} prod={prod} user={user} />
                     })}
 
                 </div>
@@ -227,7 +270,8 @@ function Home() {
 
                     <Carousel navButtonsAlwaysVisible="true" indicators="false" animation='slide' duration="800">
 
-                        <Testimonial name="Mrs. Gulshan Roy Chowdhury" desig1="Ph.D. Scholar, M.N.(OBG-RAKCON-DU)" desig2="Lecturer, College of Nursing ABVIMS & Dr. R.M.L. Hospital, New Delhi" image={testimonial1} review="VERY SYSTEMATIC AND ORGANISED CONTENTS OF EACH CHAPTER IN A COMPREHENSIVE AND EASY LANGUAGE. EXAMPLES IN THE STATISTICS CHAPTER ARE VERY RELEVANT AND EFFECTIVELY MENTIONED." />
+                        <Testimonial name="Mrs. Deby Chakraborty" desig1="Ph.D. Scholar, M.N.(OBG-RAKCON-DU)" desig2="Assistant Professor, Govt. College of
+Nursing, Agartalla (Tripura)" image={testimonial2} review="This book is written in a very simple language.It is easily understandable and very comprehensive.I hope that students can gain knowledge about research methodology and implement their knowledge.My best wishes to Prof Dr.Sher Singh." />
                         <Testimonial name="Mrs. Gulshan Roy Chowdhury" desig1="Ph.D. Scholar, M.N.(OBG-RAKCON-DU)" desig2="Lecturer, College of Nursing ABVIMS & Dr. R.M.L. Hospital, New Delhi" image={testimonial1} review="VERY SYSTEMATIC AND ORGANISED CONTENTS OF EACH CHAPTER IN A COMPREHENSIVE AND EASY LANGUAGE. EXAMPLES IN THE STATISTICS CHAPTER ARE VERY RELEVANT AND EFFECTIVELY MENTIONED." />
                         {/* <Testimonial />
                         <Testimonial /> */}

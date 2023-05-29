@@ -80,8 +80,15 @@ function Login() {
                         }
                         )
 
-                    }} className=" text-white px-12 py-2 mt-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }}>
+                    }} className=" text-white px-12 py-2 w-52 mt-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }}>
                         Login
+                    </button>
+                    <button onClick={(e) => {
+                        e.preventDefault();
+                        navigate("/signup");
+
+                    }} className=" text-white px-12 w-52 py-2 mt-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }}>
+                        Create Account
                     </button>
                 </div>
             </div>

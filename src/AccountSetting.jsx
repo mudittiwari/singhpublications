@@ -29,7 +29,7 @@ function AccountSetting() {
                     <button onClick={(e) => {
                             e.preventDefault();
                             navigate('/profilesetting');
-                        }} className="  px-12 py-2 mt-3 focus:outline-none rounded-lg" style={{
+                        }} className="  px-12 w-56 py-2 mt-3 focus:outline-none rounded-lg" style={{
                            
                             'backgroundColor': '#fff',
                             'textAlign': 'center',
@@ -41,7 +41,7 @@ function AccountSetting() {
                     <button onClick={(e)=>{
                         e.preventDefault();
                         navigate('/billingaddress');
-                    }} className="  px-12 py-2 mb-1 mt-3 focus:outline-none rounded-lg" style={{
+                    }} className="  px-12 py-2 w-56 mb-1 mt-3 focus:outline-none rounded-lg" style={{
                             
                             'backgroundColor': '#fff',
                             'textAlign': 'center',
@@ -53,7 +53,7 @@ function AccountSetting() {
                     <button onClick={(e)=>{
                         e.preventDefault();
                         navigate('/shippingaddress');
-                    }} className="  px-12 py-2 mt-3 focus:outline-none rounded-lg" style={{
+                    }} className="  px-12 py-2 mt-3 w-56 focus:outline-none rounded-lg" style={{
                             
                             'backgroundColor': '#fff',
                             'textAlign': 'center',

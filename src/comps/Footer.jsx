@@ -45,11 +45,17 @@ function Footer() {
 
                     </div>
                     <div className="md:flex mt-5 mb-5 hidden w-max justify-center">
-                        <div className="flex justify-center"><h1 className="font-bold text-xs mt-1">T&C</h1> </div>
+                        <div onClick={(e)=>{
+                            e.preventDefault();
+                            navigate('/t&c');
+                        }} className="flex justify-center cursor-pointer"><h1 className="font-bold text-xs mt-1">T&C</h1> </div>
                         <div className="w-8 mx-0 my-auto" ></div>
                         <div className="flex justify-center"><h1 className="font-bold text-xs mt-1">Mobile App</h1> </div>
                         <div className="w-8 mx-0 my-auto" ></div>
-                        <div className="flex justify-center"><h1 className="font-bold text-xs mt-1">Privacy Policy</h1> </div>
+                        <div onClick={(e)=>{
+                            e.preventDefault();
+                            navigate('/privacypolicy');
+                        }} className="flex justify-center cursor-pointer"><h1  className="font-bold text-xs mt-1">Privacy Policy</h1> </div>
                         <div className="w-8 mx-0 my-auto" ></div>
                         <div className="flex justify-center cursor-pointer" onClick={(e)=>{
                             e.preventDefault();

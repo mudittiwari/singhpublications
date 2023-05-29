@@ -22,6 +22,9 @@ import Orderplaced from './Orderplaced';
 import About from './About';
 import Contact from './Contact';
 import Pdfview from './Pdfview';
+import Policy from './Policy';
+import Terms from './Terms';
+import Career from './Career';
 function App() {
   return (
     <>
@@ -42,6 +45,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/viewbook" element={<Pdfview />} />
+          <Route path="/careers" element={<Career />} />
           
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
@@ -50,6 +54,9 @@ function App() {
           <Route path="/orderplaced" element={<Orderplaced />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/privacypolicy" element={<Policy />} />
+          <Route path="/t&c" element={<Terms />} />
+          
 
         </Routes>
         <Footer/>

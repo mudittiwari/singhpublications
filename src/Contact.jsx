@@ -79,6 +79,13 @@ const Contact = () => {
                                 email: email,
                                 message: description
                             }).then((res) => {
+                                alert('Message sent successfully');
+                                setName('');
+                                setPhone('');
+                                setSubject('');
+                                setEmail('');
+                                setDescription('');
+                                
                                 setloading(false);
                                 console.log(res);
                             }).catch((err) => {

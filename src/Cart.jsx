@@ -130,7 +130,7 @@ function Cart() {
                                     <BookComp setloading={setloading} key={index} prod={item} user={user} setuser={setuser} getitems={getitems} />
                                 )
                             }
-                            ):<h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>No items in Cart</h1>
+                            ):<h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': 'gray' }}>No item in Cart</h1>
                         }
                     </div>
                     <div className=' my-4 mx-2 md:w-96 w-4/5 h-36 rounded-xl p-2 relative flex items-center' style={{ 'border': '1px solid #315ED2' }} >

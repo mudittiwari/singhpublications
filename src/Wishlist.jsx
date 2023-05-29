@@ -124,7 +124,7 @@ function Wishlist() {
                             return (
                                 <BookComp setloading={setloading} key={index} prod={item} user={user} setuser={setuser} getitems={getitems} />
                             )
-                        }):<h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>No items in wishlist</h1>
+                        }):<h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': 'gray' }}>No item in wishlist</h1>
                         }
                     </div>
                 </div>

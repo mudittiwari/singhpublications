@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
+import { Document, Page,pdfjs } from 'react-pdf/dist/esm/entry.webpack';
 import file from './assets/file.pdf';
 function Pdfview() {
   const [numPages, setNumPages] = useState(null);
