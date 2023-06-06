@@ -2,6 +2,11 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingBar from "./comps/Loadingbar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
+
+
 function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = React.useState("");
@@ -12,84 +17,111 @@ function Login() {
     }, []);
     return (
         <>
-        {loading && <LoadingBar />}
-            <div className="w-screen h-max py-8 flex items-center justify-center
-            ">
-                <div className="w-4/5 py-5 h-max bg-white flex flex-col items-center justify-center rounded-lg
-            " style={{ 'border': '1px solid #777777' }}>
-                    <h1 className="text-2xl font-medium mb-5" style={{ 'color': '#315ED2' }}>Login</h1>
-                    <input value={email} onChange={(e) => {
-                        e.preventDefault();
-                        setEmail(e.target.value);
-                    }} className="p-2 w-72 my-1 rounded-xl focus:outline-none"
-                        type="email"
-                        placeholder="Email Address"
-                        style={{
-                            'border': '1px solid #777777',
-                            'backgroundColor': '#fff',
-                            'textAlign': 'center',
-                        }}
-                    />
-                    
-                    <input value={password} onChange={(e) => {
-                        e.preventDefault();
-                        setPassword(e.target.value);
-                    }} className="p-2 w-72 my-1 rounded-xl focus:outline-none"
-                        type="password"
-                        placeholder="Password"
-                        style={{
-                            'border': '1px solid #777777',
-                            'backgroundColor': '#fff',
-                            'textAlign': 'center',
-                        }}
-                    />
-                    <button onClick={(e) => {
-                        e.preventDefault();
-                        if(email.trim()===""){
-                            alert("Email is required");
-                            return;
-                        }
-                        if(email.indexOf('@')===-1 || email.indexOf('.')===-1)
-                            {
-                                alert('Please enter a valid email');
-                                return;
-                            }
-                        if(password.trim()===""){
-                            alert("Password is required");
-                            return;
-                        }
-                        setloading(true);
-                        axios.post("https://singhpublications.onrender.com/api/user/login", {
-                            email: email,
-                            // mobileNumber: mobileNumber,
-                            password: password,
-                        }).then((res) => {
-                            console.log(res);
-                            setloading(false);
-                            if (res.status===200) {
-                                // localStorage.setItem("pubuser", JSON.stringify(res.data));
-                                // console.log(localStorage.getItem("pubuser"));
-                                navigate("/otp", { state: { phone: res.data.phone_number,user:res.data } });
-                            } else {
-                                alert("Invalid Credentials");
-                            }
-                        }).catch((err) => {
-                            setloading(false);
-                            alert("error");
-                            console.log(err);
-                        }
-                        )
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
+            {loading && <LoadingBar />}
+            <div className="log-in min-h-screen  grid grid-cols-1 lg:grid-cols-2 items-center">
+                <div className="welcome-singh h-full p-[3vw] w-full flex justify-center items-center text-white bg-[#315ED2]">
+                    <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">Welcome To <br /> Singh Publication</h1>
+                </div>
+                <div className="log-in-form flex items-center w-full px-[5vw] bg-white">
+                    <form action="" className="mx-auto w-full grid gap-[3vw] p-[3vw] rounded-md shadow-2xl">
+                        <div className="text">
+                            <h2 className="text-xl mb-5 font-medium">Welcome back !!!</h2>
+                            <h1 className="py-5 text-6xl font-semibold">Sign in</h1>
+                        </div>
+                        <div className="input grid gap-5">
+                            <div className="">
+                                <label for="email" className="block mb-2 text-lg ">Email Address</label>
 
-                    }} className=" text-white px-12 py-2 w-52 mt-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }}>
-                        Login
-                    </button>
-                    <button onClick={(e) => {
-                        e.preventDefault();
-                        navigate("/signup");
+                                <input value={email} onChange={(e) => {
+                                    e.preventDefault();
+                                    setEmail(e.target.value);
+                                }} className="w-full px-3 py-5 bg-amber-100 rounded-md" type="email" id="email" placeholder="Email Address"
+                                    style={{
 
-                    }} className=" text-white px-12 w-52 py-2 mt-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }}>
-                        Create Account
-                    </button>
+                                    }}
+                                />
+                            </div>
+                            <div className="">
+                                <div className="flex justify-between mb-2">
+                                    <label for="password" className="text-lg ">Password</label>
+                                    <Link to="../forgetpass" className="text-lg focus:outline-none">Forgot password?</Link>
+                                </div>
+
+                                <input value={password} onChange={(e) => {
+                                    e.preventDefault();
+                                    setPassword(e.target.value);
+                                }} className="w-full px-3 py-5  bg-amber-100 rounded-md"
+                                    type="password"
+                                    placeholder="Password"
+                                    name="password" id="password"
+
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex justify-center">
+
+                            <button onClick={(e) => {
+                                e.preventDefault();
+                                if (email.trim() === "") {
+                                    toast.warning("Email is required");
+                                    return;
+                                }
+                                if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                                    toast.warning('Please enter a valid email');
+                                    return;
+                                }
+                                if (password.trim() === "") {
+                                    toast.warning("Password is required");
+                                    return;
+                                }
+                                setloading(true);
+                                axios.post("https://singhpublications.onrender.com/api/user/login", {
+                                    email: email,
+                                    // mobileNumber: mobileNumber,
+                                    password: password,
+                                }).then((res) => {
+                                    console.log(res);
+                                    setloading(false);
+                                    if (res.status === 200) {
+                                        // localStorage.setItem("pubuser", JSON.stringify(res.data));
+                                        // console.log(localStorage.getItem("pubuser"));
+                                        navigate("/otp", { state: { phone: res.data.phone_number, user: res.data } });
+                                    } else {
+                                        alert("Invalid Credentials");
+                                    }
+                                }).catch((err) => {
+                                    setloading(false);
+                                    alert("error");
+                                    console.log(err);
+                                }
+                                )
+
+                            }} className="w-fit px-14 py-4 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full">
+                                Sign In
+                            </button>
+                        </div>
+                        <p className="text-lg text-center text-gray-400 flex w-fit mx-auto">Don&#x27;t have an account yet? <button onClick={(e) => {
+                            e.preventDefault();
+                            navigate("/signup");
+
+                        }} className="text-[#315ED2] font-normal ml-2">
+                            Sign up
+                        </button>
+                        </p>
+                    </form>
                 </div>
             </div>
         </>

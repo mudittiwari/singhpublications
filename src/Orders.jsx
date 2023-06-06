@@ -11,38 +11,35 @@ import LoadingBar from './comps/Loadingbar';
 function BookComp(props) {
     const navigate = useNavigate();
     return (
-        <div className=' my-4 mx-2 h-36 rounded-xl p-2 relative flex items-center' style={{ 'border': '1px solid #315ED2', 'width': '370px' }} >
-            <div className='flex flex-col overflow-y-scroll' style={{ 'width': '800px', 'height': '120px' }}>
-            {props.order.items.map((item,index) => {
-                return <div key={index} className='flex my-2'>
-                <img src={book} className="w-20 h-full " alt="" />
-                <div className='ml-2 mr-5'>
-                    <h1 className="text-md font-bold mb-0 mx-0 mt-0" style={{ 'color': '#315ED2' }}>{item.title}</h1>
+        <div className=' my-4 mx-2 rounded-xl p-2 relative flex flex-wrap items-center border'>
+            <div className='flex flex-col w-fit'>
+                {props.order.items.map((item, index) => {
+                    return <div key={index} className='flex my-2'>
+                        <img src={book} className="w-20 h-full " alt="" />
+                        <div className='ml-2 mr-5'>
+                            <h1 className="text-md font-bold" style={{ 'color': '#315ED2' }}>{item.title}</h1>
 
-                    <h1 className="text-sm font-medium mb-0 mx-0 w-max mt-0" style={{ 'color': '#777777' }}>{item.subtitle}</h1>
-                    <div className='w-max mt-1 ml-0 flex items-center'>
-                        <h1 className="text-base font-medium mb-0 mr-1  w-max mt-0" style={{ 'color': '#777777' }}>{item.rating}</h1>
-                        <img className='mx-1 w-4' src={star} alt="" />
-                        <img className='mx-1 w-4' src={star} alt="" />
-                        <img className='mx-1 w-4' src={star} alt="" />
-                        <img className='mx-1 w-4' src={star} alt="" />
-                        <img className='mx-1 w-4' src={star} alt="" />
+                            <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>{item.subtitle}</h1>
+                            <div className='w-max mt-1 ml-0 flex items-center'>
+                                <h1 className="text-base font-medium mr-1" style={{ 'color': '#777777' }}>{item.rating}</h1>
+                                <img className='mx-1 w-4' src={star} alt="" />
+                                <img className='mx-1 w-4' src={star} alt="" />
+                                <img className='mx-1 w-4' src={star} alt="" />
+                                <img className='mx-1 w-4' src={star} alt="" />
+                                <img className='mx-1 w-4' src={star} alt="" />
+                            </div>
+                            <h1 className="text-sm font-medium mb-0 mx-0 w-max mt-0" style={{ 'color': '#777777' }}>11 Jan 2023</h1>
+                        </div>
                     </div>
-                    <h1 className="text-sm font-medium mb-0 mx-0 w-max mt-0" style={{ 'color': '#777777' }}>11 Jan 2023</h1>
-                </div>
+                })}
             </div>
-            })}
 
-                
-                
-            </div>
-            
-            <div className='h-full w-full justify-center flex flex-col items-center'>
-                <h1 className="text-2xl font-bold mb-0 mx-0 w-max mt-0" style={{ 'color': '#315ED2' }}>{props.order.price} Rs.</h1>
-                <button onClick={(e)=>{
+            <div className='h-auto w-full sm:w-fit sm:justify-center flex flex-col items-center'>
+                <h1 className="text-2xl font-bold w-full sm:w-auto " style={{ 'color': '#315ED2' }}>{props.order.price} Rs.</h1>
+                <button onClick={(e) => {
                     e.preventDefault();
-                    navigate('/orderdetails',{state:{order:props.order}})
-                }} className=" text-white px-4 py-1 mt-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }}>
+                    navigate('/orderdetails', { state: { order: props.order } })
+                }} className="btn mt-10 cursor-pointer w-full px-7 py-2 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">
                     Details
                 </button>
             </div>
@@ -88,7 +85,7 @@ function Orders() {
                     )
                 }
 
-                ordrs.push({ 'items': arr, 'price': res.data[i].totalAmount,'status':res.data[i].delivery_status });
+                ordrs.push({ 'items': arr, 'price': res.data[i].totalAmount, 'status': res.data[i].delivery_status });
             }
 
         }
@@ -107,12 +104,12 @@ function Orders() {
     }, []);
     return (
         <>
-        {loading && <LoadingBar/>}
+            {loading && <LoadingBar />}
             <div className='w-full flex justify-center'>
-                <div className='w-4/5  flex justify-center flex-col items-center flex-wrap' >
-                    <h1 className="text-2xl w-max font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>Orders</h1>
-                    <div className='w-full flex justify-around flex-wrap'>
-                       {orders.length==0?<h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': 'gray' }}>No Orders Placed Till Now</h1> :orders.map((item, index) => {
+                <div className='  flex justify-center flex-col items-center flex-wrap' >
+                    <h1 className="text-6xl w-max my-10 font-medium text-[#315ED2]">Orders</h1>
+                    <div className='w-full flex justify-center flex-wrap'>
+                        {orders.length == 0 ? <h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': 'gray' }}>No Orders Placed Till Now</h1> : orders.map((item, index) => {
                             return (
                                 <BookComp key={index} order={item} />
                             )

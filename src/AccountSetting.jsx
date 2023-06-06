@@ -21,51 +21,39 @@ function AccountSetting() {
     }, []);
     return (
         <>
-            <div className="w-screen h-max py-8 flex items-center justify-center
-            ">
-                <div className="w-4/5 h-max py-10 bg-white flex flex-col items-center justify-center rounded-lg
-            " style={{ 'border': '1px solid #777777' }}>
-                    <h1 className="text-2xl font-medium mb-5" style={{ 'color': '#315ED2' }}>Account Setting</h1>
-                    <button onClick={(e) => {
+            <div className="billing min-h-screen  grid grid-cols-1 lg:grid-cols-2 items-center">
+                <div className="welcome-singh h-full p-[3vw] w-full flex justify-center items-center text-white bg-[#315ED2]">
+                    <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">Welcome To <br /> Singh Publication</h1>
+                </div>
+                <div className="billing-form flex items-center w-full px-[5vw] bg-white">
+                    <form action="" className="mx-auto w-full grid gap-[1vw] p-[3vw] rounded-md shadow-2xl">
+                        <div className="text">
+                            <h1 className="py-5 text-6xl font-semibold text-center">Account Setting</h1>
+                        </div>
+                        <button onClick={(e) => {
                             e.preventDefault();
                             navigate('/profilesetting');
-                        }} className="  px-12 w-56 py-2 mt-3 focus:outline-none rounded-lg" style={{
-                           
-                            'backgroundColor': '#fff',
-                            'textAlign': 'center',
-                            'color': 'white',
-                            'backgroundColor': '#315ED2'
-                        }}>
+                        }} className="btn mt-10 cursor-pointer w-full px-14 py-4 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">
                         Profile Settings
                     </button>
                     <button onClick={(e)=>{
                         e.preventDefault();
                         navigate('/billingaddress');
-                    }} className="  px-12 py-2 w-56 mb-1 mt-3 focus:outline-none rounded-lg" style={{
-                            
-                            'backgroundColor': '#fff',
-                            'textAlign': 'center',
-                            'color': 'white',
-                            'backgroundColor': '#315ED2'
-                        }}>
+                    }} className="btn mt-10 cursor-pointer w-full px-14 py-4 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" >
                         Billing Address
                     </button>
                     <button onClick={(e)=>{
                         e.preventDefault();
                         navigate('/shippingaddress');
-                    }} className="  px-12 py-2 mt-3 w-56 focus:outline-none rounded-lg" style={{
-                            
-                            'backgroundColor': '#fff',
-                            'textAlign': 'center',
-                            'color': 'white',
-                            'backgroundColor': '#315ED2'
-                        }}>
+                    }} className="btn mt-10 cursor-pointer w-full px-14 py-4 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" >
                         Shipping Address
                     </button>
-                    
-                   
+                        
+                    </form>
                 </div>
             </div>
+
+
         </>
     );
 }

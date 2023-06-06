@@ -1,79 +1,104 @@
 
 import { Facebook, Twitter, LinkedIn, Instagram, Call } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Logo from '../assets/logofinal.png';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import React, { useEffect } from "react";
+
 function Footer() {
     const navigate = useNavigate();
+    const [email, setEmail] = React.useState("");
     return (
         <>
-            <div className="w-full h-max py-5 mt-10 footer">
-                <div className="w-full flex md:hidden justify-center py-4" style={{ 'borderBottom': '1px solid black', 'borderTop': '1px solid black' }}>
-                    <div className="flex md:hidden w-96 justify-center">
-                        <div className="flex justify-center"><h1 className="font-bold text-xs mt-1">T&C</h1> </div>
-                        <div className="h-7 mx-2" style={{ 'width': '1px', 'backgroundColor': 'black' }}></div>
-                        <div className="flex justify-center"><h1 className="font-bold text-xs mt-1">Mobile App</h1> </div>
-                        <div className="h-7 mx-2" style={{ 'width': '1px', 'backgroundColor': 'black' }}></div>
-                        <div className="flex justify-center"><h1 className="font-bold text-xs mt-1">Privacy Policy</h1> </div>
-                        <div className="h-7 mx-2" style={{ 'width': '1px', 'backgroundColor': 'black' }}></div>
-                        <div className="flex justify-center" onClick={(e)=>{
-                            e.preventDefault();
-                            navigate('/about');
-                        }}><h1 className="font-bold text-xs mt-1">About Us</h1> </div>
-                        <div className="h-7 mx-2" style={{ 'width': '1px', 'backgroundColor': 'black' }}></div>
-                        <div className="flex justify-center"><h1 className="font-bold text-xs mt-1"  onClick={(e)=>{
-                            e.preventDefault();
-                            navigate('/contact');
-                        }}>Contact Us</h1> </div>
-                        
+            <div className="footer list-none px-[3vw] xl:px-[6vw]">
+                <div className="menu grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  my-10">
+                    <div className="company py-10">
+                        <h2 className='text-2xl font-bold'>Company</h2>
+                        <div className="list mt-5 text-lg text-gray-500 grid gap-1">
+                            <div className="py-2 cursor-pointer" onClick={(e) => {
+                                e.preventDefault();
+                                navigate('/about');
+                            }}><h1 className="">About Us</h1> </div>
+                            <div className="py-2 cursor-pointer"><h1 className="" onClick={(e) => {
+                                e.preventDefault();
+                                navigate('/careers');
+                            }}>Careers</h1> </div>
+                            <div className="py-2 cursor-pointer" onClick={(e) => {
+                                e.preventDefault();
+                                navigate('/contact');
+                            }}><h1 className="">Contact Us</h1> </div>
+                        </div>
                     </div>
+                    {/* <div className="explore py-10">
+                        <h2 className='text-2xl font-bold'>Explore</h2>
+                        <div className="list mt-5 text-lg text-gray-500 grid gap-1">
+                            <li><a href="" className='py-2'>Resources</a></li>
+                            <li><a href="" className='py-2'>Blog</a></li>
+                            <li><a href="" className='py-2'>Documents</a></li>
 
+                        </div>
+                    </div> */}
+                    <div className="Terms py-10">
+                        <h2 className='text-2xl font-bold'>Terms Of Use</h2>
+                        <div className="list mt-5 text-lg text-gray-500 grid gap-1">
+                            <div onClick={(e) => {
+                                e.preventDefault();
+                                navigate('/t&c');
+                            }} className="py-2 cursor-pointer"><h1 className="">Terms & Conditions</h1> </div>
+                            <div onClick={(e) => {
+                                e.preventDefault();
+                                navigate('/refund');
+                            }} className="py-2 cursor-pointer"><h1 className="">Cancellation & Refund Policy</h1> </div>
+                            <div onClick={(e) => {
+                                e.preventDefault();
+                                navigate('/privacypolicy');
+                            }} className="py-2 cursor-pointer"><h1 className="">Privacy Policy</h1> </div>
+                            <div onClick={(e) => {
+                                e.preventDefault();
+                                navigate('/disclaimer');
+                            }} className="py-2 cursor-pointer"><h1 className="">Disclaimer</h1> </div>
+                            <div onClick={(e) => {
+                                e.preventDefault();
+                                navigate('/faq');
+                            }} className="py-2 cursor-pointer"><h1 className="">FAQ's</h1> </div>
+
+                        </div>
+                    </div>
+                    <div className="subscribe p-10 text-white bg-blue-400 rounded-3xl">
+                        <h2 className='text-2xl font-bold'>Subscribe</h2>
+                        <div className="email flex text-lg text-gray-500 mt-5 ">
+                            <input type="email" value={setEmail} className='w-3/4 py-3 pl-3 rounded-l-md' placeholder='Email address' />
+                            <button onClick={(e) => {
+                                e.preventDefault();
+                                if (email.trim() === "") {
+                                    toast.warning("Email is required");
+                                    return;
+                                }
+                                if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+                                    toast.warning('Please enter a valid email');
+                                    return;
+                                }
+                            }} className="btn p-4 text-xl text-white rounded-r-md  bg-[#315ED2]"><i className="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <p className='mt-7 '>Hello, we are ABC. trying to make an effort to put the right people for you to get the best results. Just insight</p>
+                    </div>
                 </div>
-                <div className="w-full h-full items-center flex md:flex-row flex-col justify-around">
-                    <div className="w-max md:my-0 my-2">
-                        <a className="mx-2" target="_blank" href="https://www.facebook.com/singhpublication">
-                            <Facebook style={{ 'fontSize': '40px', 'color': '#315ED2' }} />
-                        </a>
-                        <a className="mx-2" target="_blank" href="https://www.instagram.com/singhpublication/">
-                            <Instagram style={{ 'fontSize': '40px', 'color': '#315ED2' }} />
-                        </a>
-                        <a className="mx-2 " target="_blank" href="https://twitter.com/SinghPub_Jaipur">
-                            <Twitter style={{ 'fontSize': '40px', 'color': '#315ED2' }} />
-                        </a>
-                        <a className="mx-2" target="_blank" href="https://www.linkedin.com/company/singh-publication/">
-                            <LinkedIn style={{ 'fontSize': '40px', 'color': '#315ED2' }} />
-                        </a>
-
-
+                <div className="logo py-7  border-t-2 border-blue-400 flex flex-wrap justify-center sm:justify-between items-center gap-10 sm:gap-40">
+                    <div className="logo">
+                        <Link to="/"><img src={Logo} className=" w-32"></img></Link>
                     </div>
-                    <div className="md:flex mt-5 mb-5 hidden w-max justify-center">
-                        <div onClick={(e)=>{
-                            e.preventDefault();
-                            navigate('/t&c');
-                        }} className="flex justify-center cursor-pointer"><h1 className="font-bold text-xs mt-1">T&C</h1> </div>
-                        <div className="w-8 mx-0 my-auto" ></div>
-                        <div className="flex justify-center"><h1 className="font-bold text-xs mt-1">Mobile App</h1> </div>
-                        <div className="w-8 mx-0 my-auto" ></div>
-                        <div onClick={(e)=>{
-                            e.preventDefault();
-                            navigate('/privacypolicy');
-                        }} className="flex justify-center cursor-pointer"><h1  className="font-bold text-xs mt-1">Privacy Policy</h1> </div>
-                        <div className="w-8 mx-0 my-auto" ></div>
-                        <div className="flex justify-center cursor-pointer" onClick={(e)=>{
-                            e.preventDefault();
-                            navigate('/about');
-                        }}><h1 className="font-bold text-xs mt-1">About Us</h1> </div>
-                        <div className="w-8 mx-0 my-auto" ></div>
-                        <div className="flex justify-center cursor-pointer" onClick={(e)=>{
-                            e.preventDefault();
-                            navigate('/contact');
-                        }}><h1 className="font-bold text-xs mt-1">Contact Us</h1> </div>
-                        <div className="w-8 mx-0 my-auto" ></div>
-                        <div className="flex justify-center"><h1 style={{'color':'rgba(0, 0, 0, 0.8)'}} className="font-bold text-xs mt-1">© Singh Publication, Inc. 2023. </h1> </div>
+                    <div className="social-icons flex text-[#315ED2] gap-5">
+                        <li><a target="_blank" href="https://www.facebook.com/singhpublication" className='w-12 h-12 flex justify-center items-center rounded-[50%] border-2 border-blue-400'><i className="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a target="_blank" href="https://www.instagram.com/singhpublication/" className='w-12 h-12 flex justify-center items-center rounded-[50%] border-2 border-blue-400'><i className="fa-brands fa-instagram"></i></a></li>
+                        <li><a target="_blank" href="https://twitter.com/SinghPub_Jaipur" className='w-12 h-12 flex justify-center items-center rounded-[50%] border-2 border-blue-400'><i className="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a target="_blank" href="https://www.linkedin.com/company/singh-publication/" className='w-12 h-12 flex justify-center items-center rounded-[50%] border-2 border-blue-400'><i className="fa-brands fa-twitter"></i></a></li>
                     </div>
-                    
-
                 </div>
-                <h1 style={{'color':'rgba(0, 0, 0, 0.8)'}}  className="font-bold w-max text-center mx-auto md:hidden flex  md:my-5 my-2">© Singh Publication, Inc. 2023.</h1>
             </div>
+            <div className="copyright py-5 text-center text-white bg-[#315ED2] text-lg">Copyright © 2023 Singh Publication.in. All rights reserved.</div>
+
         </>
     );
 

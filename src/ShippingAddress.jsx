@@ -31,69 +31,43 @@ function ShippingAddress() {
     return (
         <>
         {loading && <LoadingBar/>}
-            <div className="w-screen h-max py-8 flex items-center justify-center
-            ">
-                <div className="w-4/5 h-max bg-white flex flex-col items-center justify-center rounded-lg
-            " style={{ 'border': '1px solid #777777' }}>
-                    <h1 className="text-2xl font-medium mt-5 mb-5" style={{ 'color': '#315ED2' }}>Shipping Address</h1>
-                    <input value={house} onChange={(e)=>{
-                        e.preventDefault();
-                        sethouse(e.target.value);
-                    }} className="p-2 w-72 my-1 rounded-xl focus:outline-none"
-                        type="text"
-                        placeholder="House/Plot No."
-                        style={{
-                            'border': '1px solid #777777',
-                            'backgroundColor': '#fff',
-                            'textAlign': 'center',
-                        }}
-                    />
-                    <input value={street} onChange={(e)=>{
-                        e.preventDefault();
-                        setstreet(e.target.value);
-                    }} className="p-2 w-72 my-1 rounded-xl focus:outline-none"
-                        type="text"
-                        placeholder="Street/Landmark"
-                        style={{
-                            'border': '1px solid #777777',
-                            'backgroundColor': '#fff',
-                            'textAlign': 'center',
-                        }}
-                    /><input value={area} onChange={(e)=>{
-                        e.preventDefault();
-                        setarea(e.target.value);
-                    }} className="p-2 w-72 my-1 rounded-xl focus:outline-none"
-                        type="text"
-                        placeholder="Area"
-                        style={{
-                            'border': '1px solid #777777',
-                            'backgroundColor': '#fff',
-                            'textAlign': 'center',
-                        }}
-                    /><input value={city} onChange={(e)=>{
-                        e.preventDefault();
-                        setcity(e.target.value);
-                    }} className="p-2 w-72 my-1 rounded-xl focus:outline-none"
-                        type="text"
-                        placeholder="City"
-                        style={{
-                            'border': '1px solid #777777',
-                            'backgroundColor': '#fff',
-                            'textAlign': 'center',
-                        }}
-                    /><input value={pincode} onChange={(e)=>{
-                        e.preventDefault();
-                        setpincode(e.target.value);
-                    }} className="p-2 w-72 my-1 rounded-xl focus:outline-none"
-                        type="number"
-                        placeholder="Pincode"
-                        style={{
-                            'border': '1px solid #777777',
-                            'backgroundColor': '#fff',
-                            'textAlign': 'center',
-                        }}
-                    />
-                    <button className=" text-white px-12 py-2 mt-5 mb-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }} onClick={(e) => {
+            <div className="billing min-h-screen  grid grid-cols-1 lg:grid-cols-2 items-center">
+                <div className="welcome-singh h-full p-[3vw] w-full flex justify-center items-center text-white bg-[#315ED2]">
+                    <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">Welcome To <br /> Singh Publication</h1>
+                </div>
+                <div className="billing-form flex items-center w-full px-[5vw] bg-white">
+                    <form action="" className="mx-auto w-full grid gap-[1vw] p-[3vw] rounded-md shadow-2xl">
+                        <div className="text">
+                            <h1 className="py-5 text-6xl font-semibold">Shipping Address</h1>
+                        </div>
+                        <div className="input grid gap-5 ">
+                            <div className="">
+                                <label for="house" className="block mb-2 text-lg ">Enter House Or Plot Number</label>
+                                <input value={house} id="house" name="house" onChange={(e) => { e.preventDefault(); sethouse(e.target.value); }} className="p-4 w-full bg-amber-100 rounded-md focus:outline-none " type="text" placeholder="House/Plot No." />
+                            </div>
+                            <div className="">
+                                <label for="street" className="block mb-2 text-lg ">Enter Street or Landmark</label>
+                                <input value={street} id="street" name="street" onChange={(e) => { e.preventDefault(); setstreet(e.target.value); }} className="p-4 w-full bg-amber-100 rounded-md focus:outline-none " type="text" placeholder="Street/Landmark" />
+                            </div>
+                            <div className="">
+                                <label for="area" className="block mb-2 text-lg ">Enter Area</label>
+                                <input value={area} id="area" name="area" onChange={(e) => { e.preventDefault(); setarea(e.target.value); }} className="p-4 w-full bg-amber-100 rounded-md focus:outline-none " type="text" placeholder="Area" />
+                            </div>
+                            <div className="">
+                                <label for="city" className="block mb-2 text-lg ">Enter City</label>
+                                <input value={city} id="city" name="city" onChange={(e) => { e.preventDefault(); setcity(e.target.value); }} className="p-4 w-full bg-amber-100 rounded-md focus:outline-none " type="text" placeholder="City" />
+                            </div>
+                            <div className="">
+                                <label for="pin" className="text-lg mb-2">Pincode</label>
+                                <input type="number" value={pincode} onChange={(e) => {
+                                    e.preventDefault();
+                                    setpincode(e.target.value);
+                                }} min={1} name="pin" id="pin" placeholder="Pincode" className="w-full p-4  bg-amber-100 rounded-md" />
+                            </div>
+                        </div>
+
+                        <div className="flex justify-center">
+                            <button type="button" className="btn mt-10 cursor-pointer w-fit px-14 py-4 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" onClick={(e) => {
                             // console.log(user.accessToken);
                             setloading(true);
                             e.preventDefault();
@@ -130,11 +104,11 @@ function ShippingAddress() {
                             }
                             )
 
-                        }}>
-                        Submit
-                    </button>
+                        }}>Submit</button>
+                        </div>
+                    </form>
                 </div>
-            </div>
+            </div>        
         </>
     );
 }

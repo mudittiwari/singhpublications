@@ -1,4 +1,4 @@
-import React, { useEffect,useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
@@ -65,94 +65,107 @@ function Otp() {
 
     return (
         <>
-        <div id="sign-in-button"></div>
-            <div className="w-screen h-max py-8 flex items-center justify-center
-            ">
-                <div className="w-4/5 py-5 h-max bg-white flex flex-col items-center justify-center rounded-lg
-            " style={{ 'border': '1px solid #777777' }}>
-                    <h1 className="text-2xl font-medium mb-5" style={{ 'color': '#315ED2' }}>OTP is sent to {location.state.phone}</h1>
-                   <div className='mt-10 flex'>
-                        <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center'>
-                            <input ref={ref1} onChange={(e) => {
-                                e.preventDefault();
-                                setcode1(e.target.value);
-                                if(e.target.value.length===1){
-                                    ref2.current.focus();
-                                }
-                            }} type="text" className='outline-none w-full text-center h-full ' />
+            <div id="sign-in-button"></div>
+            <div className="w-screen h-max py-8 flex items-center justify-center">
+            </div>
+            <div className="otp min-h-screen  grid grid-cols-1 lg:grid-cols-2 items-center">
+                <div className="welcome-singh h-full p-[3vw] w-full flex justify-center items-center text-white bg-[#315ED2]">
+                    <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">Welcome To <br /> Singh Publication</h1>
+                </div>
+                <div className="otp-form flex items-center w-full px-[5vw] bg-white">
+                    <form action="" className="mx-auto w-full grid justify-center text-center gap-[1vw] p-[3vw] rounded-md shadow-2xl">
+                        <div className="text">
+                            <h1 className="py-5 text-3xl font-semibold">OTP is sent to {location.state.phone}</h1>
                         </div>
-                        <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center'>
-                            <input onKeyDown={(e)=>{
-                                if(  e.key==='Backspace' ){
-                                    ref1.current.focus();
-                                }
-                            }} ref={ref2} onChange={(e) => {
-                                e.preventDefault();
-                                setcode2(e.target.value);
-                                if(e.target.value.length===1){
-                                    ref3.current.focus();
-                                }
-                            }} type="text" className='outline-none w-full text-center h-full ' />
+                        <div className="input flex gap-5 ">
+                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                                <input ref={ref1} onChange={(e) => {
+                                    e.preventDefault();
+                                    setcode1(e.target.value);
+                                    if (e.target.value.length === 1) {
+                                        ref2.current.focus();
+                                    }
+                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                            </div>
+                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                                <input onKeyDown={(e) => {
+                                    if (e.key === 'Backspace') {
+                                        ref1.current.focus();
+                                    }
+                                }} ref={ref2} onChange={(e) => {
+                                    e.preventDefault();
+                                    setcode2(e.target.value);
+                                    if (e.target.value.length === 1) {
+                                        ref3.current.focus();
+                                    }
+                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                            </div>
+                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                                <input onKeyDown={(e) => {
+                                    if (e.key === 'Backspace') {
+                                        ref2.current.focus();
+                                    }
+                                }} ref={ref3} onChange={(e) => {
+                                    e.preventDefault();
+                                    setcode3(e.target.value);
+                                    if (e.target.value.length === 1) {
+                                        ref4.current.focus();
+                                    }
+                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                            </div>
+                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                                <input onKeyDown={(e) => {
+                                    if (e.key === 'Backspace') {
+                                        ref3.current.focus();
+                                    }
+                                }} ref={ref4} onChange={(e) => {
+                                    e.preventDefault();
+                                    setcode4(e.target.value);
+                                    if (e.target.value.length === 1) {
+                                        ref5.current.focus();
+                                    }
+                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                            </div>
+                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                                <input ref={ref5} onKeyDown={(e) => {
+                                    if (e.key === 'Backspace') {
+                                        ref4.current.focus();
+                                    }
+                                }} onChange={(e) => {
+                                    e.preventDefault();
+                                    setcode5(e.target.value);
+                                    if (e.target.value.length === 1) {
+                                        ref6.current.focus();
+                                    }
+                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                            </div>
+                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                                <input onKeyDown={(e) => {
+                                    if (e.key === 'Backspace') {
+                                        ref5.current.focus();
+                                    }
+                                }} ref={ref6} onChange={(e) => {
+                                    e.preventDefault();
+                                    setcode6(e.target.value);
+                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                            </div>
                         </div>
-                        <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center'>
-                            <input onKeyDown={(e)=>{
-                                if(e.key==='Backspace' ){
-                                    ref2.current.focus();
-                                }
-                            }} ref={ref3} onChange={(e) => {
+                        <div className="flex mt-5 justify-center">
+                            <button onClick={(e) => {
                                 e.preventDefault();
-                                setcode3(e.target.value);
-                                if(e.target.value.length===1){
-                                    ref4.current.focus();
-                                }
-                            }} type="text" className='outline-none w-full text-center h-full ' />
+                                // navigate('/');
+                                matchcode()
+                            }} className=" w-fit mt-10 px-14 py-3 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full" >
+                                Submit
+                            </button>
                         </div>
-                        <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center'>
-                            <input onKeyDown={(e)=>{
-                                if(e.key==='Backspace' ){
-                                    ref3.current.focus();
-                                }
-                            }} ref={ref4} onChange={(e) => {
-                                e.preventDefault();
-                                setcode4(e.target.value);
-                                if(e.target.value.length===1){
-                                    ref5.current.focus();
-                                }
-                            }} type="text" className='outline-none w-full text-center h-full ' />
-                        </div>
-                        <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center'>
-                            <input ref={ref5} onKeyDown={(e)=>{
-                                if(e.key==='Backspace' ){
-                                    ref4.current.focus();
-                                }
-                            }} onChange={(e) => {
-                                e.preventDefault();
-                                setcode5(e.target.value);
-                                if(e.target.value.length===1){
-                                    ref6.current.focus();
-                                }
-                            }} type="text" className='outline-none w-full text-center h-full ' />
-                        </div>
-                        <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center'>
-                            <input onKeyDown={(e)=>{
-                                if(e.key==='Backspace' ){
-                                    ref5.current.focus();
-                                }
-                            }} ref={ref6} onChange={(e) => {
-                                e.preventDefault();
-                                setcode6(e.target.value);
-                            }} type="text" className='outline-none w-full text-center h-full ' />
-                        </div>
-                    </div>
-                    <button onClick={(e)=>{
-                        e.preventDefault();
-                        // navigate('/');
-                        matchcode()
-                    }} className=" text-white mt-10 px-12 py-2 rounded-2xl focus:outline-none" style={{'backgroundColor':"#315ED2"}}>
-      Submit
-    </button>
+                    </form>
                 </div>
             </div>
+
+
+
+
         </>
     );
 }

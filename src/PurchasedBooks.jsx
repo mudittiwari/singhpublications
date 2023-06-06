@@ -11,14 +11,14 @@ import app from './Firebase';
 import LoadingBar from "./comps/Loadingbar";
 function BookComp(props) {
     return (
-        <div className=' my-4 mx-2 h-36 rounded-xl p-2 relative flex items-center' style={{ 'border': '1px solid #315ED2', 'width': '400px' }} >
-            <img src={props.book.image_url} className="w-20 h-full " alt="" />
-            <div className='ml-2 mr-5'>
-                <h1 className="text-md font-bold mb-0 mx-0 w-max mt-0" style={{ 'color': '#315ED2' }}>{props.book.title}</h1>
-                <h1 className="text-base font-semibold mb-0 mx-0 w-max mt-0" style={{ 'color': '#777777' }}>{props.book.category}</h1>
-                <h1 className="text-sm font-medium mb-0 mx-0 w-max mt-0" style={{ 'color': '#777777' }}>{props.book.subtitle}</h1>
-                <div className='w-max mt-1 ml-0 flex items-center'>
-                    <h1 className="text-base font-medium mb-0 mr-1  w-max mt-0" style={{ 'color': '#777777' }}>{props.book.rating}</h1>
+        <div className='  rounded-xl p-5 relative flex justify-center flex-wrap gap-5' style={{ 'border': '1px solid #315ED2', 'width': '400px' }} >
+            <img src={props.book.image_url} className="h-40" alt="" />
+            <div className='text-center'>
+                <h1 className="text-md font-bold" style={{ 'color': '#315ED2' }}>{props.book.title}</h1>
+                <h1 className="text-base font-semibold" style={{ 'color': '#777777' }}>{props.book.category}</h1>
+                <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>{props.book.subtitle}</h1>
+                <div className=' mt-1 flex items-center justify-center'>
+                    <h1 className="text-base font-medium mr-1" style={{ 'color': '#777777' }}>{props.book.rating}</h1>
                     <img className='mx-1 w-4' src={star} alt="" />
                     <img className='mx-1 w-4' src={star} alt="" />
                     <img className='mx-1 w-4' src={star} alt="" />
@@ -26,13 +26,13 @@ function BookComp(props) {
                     <img className='mx-1 w-4' src={star} alt="" />
                 </div>
 
-                <div className="flex justify-evenly mt-1">
+                <div className="flex justify-left mt-3 flex-wrap gap-5">
                     <button onClick={(e) => {
                         e.preventDefault();
                         if (props.book.category == 'ebook')
                             alert("This is an Ebook")
 
-                    }} className=" text-white px-4 py-0 mx-5  rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }}>
+                    }} className=" btn cursor-pointer w-fit px-5 py-2 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">
                         Listen
                     </button>
                     <button onClick={(e) => {
@@ -42,7 +42,7 @@ function BookComp(props) {
                         else
                             window.open(props.book.file);
 
-                    }} className=" text-white px-4 py-0 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }}>
+                    }} className=" btn cursor-pointer w-fit px-5 py-2 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">
                         Read
                     </button>
                 </div>
@@ -112,14 +112,14 @@ function PurchasedBooks() {
     return (
         <>
             {loading && <LoadingBar />}
-            <div className='w-full flex justify-center'>
-                <div className='w-4/5  flex justify-center flex-col items-center flex-wrap' >
-                    <h1 className="text-2xl w-max font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>Purchased Books</h1>
-                    <div className='w-full flex justify-around flex-wrap'>
+            <div className='w-full px-5'>
+                <div className='w-full  flex justify-center flex-col items-center flex-wrap' >
+                    <h1 className="text-5xl text-center font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>Purchased Books</h1>
+                    <div className='w-full flex justify-center flex-wrap gap-5 my-10'>
                         
                         {orders.length == 0 ? <h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': 'gray' }}>No Book Purchased Till Now</h1> : orders.map((item, index) => {
                             return (
-                                <BookComp key={index} book={item} />
+                                <BookComp key={index} book={item} user={user} />
                             )
                         })}
                     </div>

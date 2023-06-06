@@ -25,6 +25,17 @@ import Pdfview from './Pdfview';
 import Policy from './Policy';
 import Terms from './Terms';
 import Career from './Career';
+import Refund from './Refund';
+import Faq from './Faq';
+import Disclaimer from './Disclaimer';
+import Customers from './Customers';
+import retailer from './assets/Singh Retail banner (2).jpg';
+// import Partner from './Partner';
+import ForgetPass from './ForgetPass';
+
+
+
+
 function App() {
   return (
     <>
@@ -46,6 +57,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/viewbook" element={<Pdfview />} />
           <Route path="/careers" element={<Career />} />
+          <Route path="/forgetpass" element={<ForgetPass />} />
           
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
@@ -55,6 +67,15 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/product" element={<Product />} />
           <Route path="/privacypolicy" element={<Policy />} />
+          <Route path="/refund" element={<Refund />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="./assets/Singh Retail banner (2).jpg" element={<retailer />} />
+          {/* <Route path="./assets/navbar 1-04 2.png" element={<navimg />} /> */}
+          {/* <Route path="/partner" element={<Partner />} /> */}
+
+
           <Route path="/t&c" element={<Terms />} />
           
 

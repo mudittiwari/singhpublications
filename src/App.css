@@ -13,6 +13,11 @@
   }
 }
 
+@media (max-width:640px) {
+  #mainslider button{
+    display: none;
+  }
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
