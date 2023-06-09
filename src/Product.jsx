@@ -64,46 +64,47 @@ function Product() {
                                 <img className='mx-1 w-4' src={star} alt="" />
                             </div>
                             {user != null && user.wishlist.includes(location.state.id) ?
-                        <button type="button" onClick={(e) => {
-                            toast.info("Product already in wishlist");
-                        }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[red] text-2xl" style={{ 'border-radius': '100px;' }}><i className="fa-solid fa-heart"></i></button> : <button type="button" onClick={(e) => {
-                            let user = JSON.parse(localStorage.getItem('pubuser'));
-                            e.preventDefault();
-                            if (user) {
-        
-                                axios.post("https://singhpublications.onrender.com/api/user/addtowishlist", {
-        
-        
-                                    "product_id": location.state.id,
-        
-                                }, {
-                                    headers: {
-                                        'Authorization': `Bearer ${user.accessToken}`
-                                    },
-                                    params: {
-                                        'id': user.id
+                                <button type="button" onClick={(e) => {
+                                    toast.info("Product already in wishlist");
+                                }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[red] text-2xl" style={{ 'border-radius': '100px;' }}><i className="fa-solid fa-heart"></i></button> : <button type="button" onClick={(e) => {
+                                    let user = JSON.parse(localStorage.getItem('pubuser'));
+                                    e.preventDefault();
+                                    if (user) {
+
+                                        axios.post("https://singhpublications.onrender.com/api/user/addtowishlist", {
+
+
+                                            "product_id": location.state.id,
+
+                                        }, {
+                                            headers: {
+                                                'Authorization': `Bearer ${user.accessToken}`
+                                            },
+                                            params: {
+                                                'id': user.id
+                                            }
+                                        },).then((res) => {
+                                            let newuser = res.data;
+                                            newuser['accessToken'] = user.accessToken;
+                                            localStorage.setItem('pubuser', JSON.stringify(newuser));
+                                            window.location.reload(false)
+                                            toast.info("Added to wishlist");
+                                        }
+                                        ).catch((err) => {
+                                            console.log(err);
+                                            if (err.response.status === 400) {
+                                                toast.info("Product already in wishlist");
+                                            }
+
+                                        }
+                                        )
+                                        navigate('/wishlist')
                                     }
-                                },).then((res) => {
-                                    let newuser = res.data;
-                                    newuser['accessToken'] = user.accessToken;
-                                    localStorage.setItem('pubuser', JSON.stringify(newuser));
-                                    toast.info("Added to wishlist");
-                                }
-                                ).catch((err) => {
-                                    console.log(err);
-                                    if (err.response.status === 400) {
-                                        toast.info("Product already in wishlist");
+                                    else {
+                                        navigate('/login');
                                     }
-        
-                                }
-                                )
-                                navigate('/wishlist')
+                                }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[#777777] text-2xl" style={{ 'border-radius': '100px' }}><i className="fa-regular fa-heart"></i></button>
                             }
-                            else {
-                                navigate('/login');
-                            }
-                        }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[#777777] text-2xl" style={{ 'border-radius': '100px' }}><i class="fa-regular fa-heart"></i></button>
-                    }
                         </div>
 
                     </div>
@@ -137,6 +138,7 @@ function Product() {
                                 newuser['accessToken'] = user.accessToken;
                                 localStorage.setItem('pubuser', JSON.stringify(newuser));
                                 setuser(newuser);
+                                window.location.reload(false)
                                 toast.info("Added to cart");
                                 // localStorage.setItem('pubuser', JSON.stringify(res.data));
                             }
@@ -197,13 +199,44 @@ function Product() {
                             </button>
                         }
                         <button onClick={(e) => {
-
-                            e.preventDefault();
                             if (user === null) {
                                 navigate('/login');
                                 return;
                             }
-                            navigate('/cart');
+                            // console.log(user.accessToken);
+                            e.preventDefault();
+                            setloading(true);
+                            axios.post("https://singhpublications.onrender.com/api/user/addtocart", {
+
+
+                                "product_id": location.state.id,
+
+                                //how to pass query params and headers in axios
+
+                            }, {
+                                headers: {
+                                    'Authorization': `Bearer ${user.accessToken}`
+                                },
+                                params: {
+                                    'id': user.id
+                                }
+                            },).then((res) => {
+                                setloading(false);
+                                let newuser = res.data;
+                                newuser['accessToken'] = user.accessToken;
+                                localStorage.setItem('pubuser', JSON.stringify(newuser));
+                                setuser(newuser);
+                                navigate('/cart');
+                                // localStorage.setItem('pubuser', JSON.stringify(res.data));
+                            }
+                            ).catch((err) => {
+                                setloading(false);
+                                console.log(err);
+                                if (err.response.status === 400) {
+                                    navigate('/cart');
+                                }
+                            }
+                            )
 
                         }} className="w-fit px-10 py-2 border-2 border-[#315ED2] text-[#315ED2] hover:text-white hover:bg-[#315ED2] rounded-full">
                             Buy Now

@@ -29,12 +29,12 @@ function ProfileSetting() {
         <>
             {loading && <LoadingBar />}
 
-            <div className="profile min-h-screen  grid grid-cols-1 lg:grid-cols-2 items-center">
+            <div className="profile min-h-5/6  grid grid-cols-1 lg:grid-cols-2 items-center">
                 <div className="welcome-singh h-full p-[3vw] w-full flex justify-center items-center text-white bg-[#315ED2]">
                     <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">Welcome To <br /> Singh Publication</h1>
                 </div>
 
-                <div className="profile-form flex items-center w-full px-[5vw] bg-white">
+                <div className="profile-form flex items-center w-full px-[5vw] py-[2vw] bg-white">
                     <form className="mx-auto w-full grid gap-[.5vw] p-[3vw] rounded-md shadow-2xl">
                         <div className="text">
                             <h1 className="py-5 text-6xl font-semibold">Profile Setting</h1>
@@ -42,7 +42,7 @@ function ProfileSetting() {
                         <div className="name-number-photo flex flex-col md:flex-row   justify-between gap-5">
 
                             <div className="w-full">
-                                <label for="first" className="block mb-2 text-lg">First Name</label>
+                                <label htmlFor="first" className="block mb-2 text-lg">First Name</label>
                                 <input type="text" name="first" id="first" value={fname} onChange={(e) => {
                                     e.preventDefault();
                                     setfname(e.target.value);
@@ -50,7 +50,7 @@ function ProfileSetting() {
                             </div>
 
                             <div className="w-full">
-                                <label for="last" className="block mb-2 text-lg">Last Name</label>
+                                <label htmlFor="last" className="block mb-2 text-lg">Last Name</label>
                                 <input type="text" name="last" value={lname} onChange={(e) => {
                                     e.preventDefault();
                                     setlname(e.target.value);
@@ -59,7 +59,7 @@ function ProfileSetting() {
                         </div>
 
                         <div>
-                            <label for="email" className="block mb-2 text-lg">Email address</label>
+                            <label htmlFor="email" className="block mb-2 text-lg">Email address</label>
                             <input type="email" value={email} onChange={(e) => {
                                 e.preventDefault();
                                 setemail(e.target.value);

@@ -6,7 +6,7 @@ function Disclaimer() {
         <>
             <div className="policy grid gap-5 px-[5vw] md:px-[15vw] mx-auto">
                 {/* <img src={career} className="w-screen" alt="" /> */}
-                <h1 className="text-5xl w-fit mx-auto font-medium text-center my-5 md:my-10" style={{ 'color': '#315ED2' }}>Disclaimer from Authors & Publishers</h1>
+                <h1 className="text-2xl md:text-5xl w-fit mx-auto font-medium text-center my-5 md:my-10" style={{ 'color': '#315ED2' }}>Disclaimer from Authors & Publishers</h1>
                 <p>Knowledge and practice in any field are changing regularly. The new research
                     and experience expand our understanding and changes in research methods. The
                     researchers must always depend on their own experience and knowledge in evaluating and using any information and methods. In using new information, they

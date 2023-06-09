@@ -31,7 +31,6 @@ import Disclaimer from './Disclaimer';
 import Customers from './Customers';
 import retailer from './assets/Singh Retail banner (2).jpg';
 // import Partner from './Partner';
-import ForgetPass from './ForgetPass';
 
 
 
@@ -57,8 +56,6 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/viewbook" element={<Pdfview />} />
           <Route path="/careers" element={<Career />} />
-          <Route path="/forgetpass" element={<ForgetPass />} />
-          
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/purchasedbooks" element={<PurchasedBooks />} />

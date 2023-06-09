@@ -32,9 +32,9 @@ const Contact = () => {
                 pauseOnHover
                 theme="dark"
             />
-            <div className="contact-us w-full min-h-screen grid grid-cols-1 lg:grid-cols-2">
+            <div className="contact-us w-full min-h-5/6 grid grid-cols-1 lg:grid-cols-2">
                 <div className="contact-form bg-white md:pl-[5vw] py-[4vw]  flex justify-end items-center">
-                    <div className="mx-auto w-full text-white px-5 md:p-[0.8vw] md:rounded-l-3xl bg-[#315ED2]">
+                    <div className="mx-auto w-full text-white p-5 md:p-[0.8vw] md:rounded-l-3xl bg-[#315ED2]">
                         <form action="" className="w-full grid gap-[1vw]">
                             <h1 className="text-5xl font-semibold text-center">Contact us</h1>
                             <div className="w-full grid gap-[1.1vw]">
@@ -132,12 +132,12 @@ const Contact = () => {
                         </div>
                         <div className="input grid gap-5">
                             <div className="">
-                                <label for="email" className="block mb-2 text-lg ">Email Address</label>
+                                <label htmlFor="email" className="block mb-2 text-lg ">Email Address</label>
                                 <input type="email" name="email" id="email" placeholder="test1@gmail.com" className="w-full px-3 py-5 bg-amber-100 rounded-md" />
                             </div>
                             <div className="">
                                 <div className="flex justify-between mb-2">
-                                    <label for="password" className="text-lg ">Password</label>
+                                    <label htmlFor="password" className="text-lg ">Password</label>
                                     <a href="" className="text-lg focus:outline-none">Forgot password?</a>
                                 </div>
                                 <input type="password" name="password" id="password" placeholder="Your Password" className="w-full px-3 py-5  bg-amber-100 rounded-md" />
@@ -151,24 +151,24 @@ const Contact = () => {
                     </form> */}
                 </div>
                 <div className="address bg-[#315ED2] md:pr-[5vw] py-[4vw]  flex justify-end items-center">
-                    <div className="content w-full grid gap-[2vw]  p-[5.3vw] md:rounded-r-3xl bg-white text-gray-500 font-medium">
-                        
-                        <iframe className='w-full rounded-md' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.6169804468354!2d75.76172679999999!3d26.883907599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5558aea2575%3A0xd53fbb24d469e795!2sSingh%20Publication!5e0!3m2!1sen!2sin!4v1683869607111!5m2!1sen!2sin" frameborder="0" style={{ border: 0 }} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    <div className="content w-full grid gap-[2vw]  p-[1.9vw] md:rounded-r-3xl bg-white text-gray-500 font-medium">
+
+                        <iframe className='w-full rounded-md h-80' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.6169804468354!2d75.76172679999999!3d26.883907599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5558aea2575%3A0xd53fbb24d469e795!2sSingh%20Publication!5e0!3m2!1sen!2sin!4v1683869607111!5m2!1sen!2sin" frameBorder="0" style={{ border: 0 }} allowFullScreen="" aria-hidden="false" tabIndex="0"></iframe>
                         <div className="address flex sm:flex-nowrap gap-6 text-lg">
                             <div className="icon text-2xl"><i className="fa-solid fa-location-dot text-black"></i></div>
-                            <a href='https://www.google.com/maps/place/Singh+Publication,+401,+New+Sanganer+Rd,+Katewa+Nagar,+Devi+Nagar,+Shyam+Nagar,+Jaipur,+Rajasthan+302019/@26.883908,75.761727,15z/data=!4m6!3m5!1s0x396db5558aea2575:0xd53fbb24d469e795!8m2!3d26.8839076!4d75.7617268!16s%2Fg%2F11tghjkpdy?hl=en&gl=IN'>401, katewa nagar, New sanganer road, Sodala, Jaipur, Jaipur, Rajasthan, 302019</a>
+                            <a href='https://www.google.com/maps/place/Singh+Publication,+401,+New+Sanganer+Rd,+Katewa+Nagar,+Devi+Nagar,+Shyam+Nagar,+Jaipur,+Rajasthan+302019/@26.883908,75.761727,15z/data=!4m6!3m5!1s0x396db5558aea2575:0xd53fbb24d469e795!8m2!3d26.8839076!4d75.7617268!16s%2Fg%2F11tghjkpdy?hl=en&gl=IN' className='text-sm sm:text-2xls'>401, katewa nagar, New sanganer road, Sodala, Jaipur, Jaipur, Rajasthan, 302019</a>
                         </div>
                         <div className="address flex flex-wrap sm:flex-nowrap gap-6 text-lg">
                             <div className="icon text-2xl"><i className="fa-solid fa-clock text-black"></i></div>
-                            <h2 className=''> 9:00 am - 6:00 pm | Mon-Fri</h2>
+                            <h3 className='text-sm sm:text-2xl'> 9:00 am - 6:00 pm | Mon-Fri</h3>
                         </div>
                         <div className="number flex flex-wrap sm:flex-nowrap gap-6 text-lg ">
                             <div className="icon text-2xl"><i className="fa-solid fa-phone-volume text-black"></i></div>
-                            <h2 className='tel:9414784402'>9414784402</h2>
+                            <a href='tel:9414784402' className='text-sm sm:text-2xl'>9414784402</a>
                         </div>
                         <div className="email flex flex-wrap sm:flex-nowrap gap-6 text-lg">
                             <div className="icon text-2xl"><i className="fa-solid fa-envelope text-black"></i></div>
-                            <a href="mailto: singhpublicationjaipur@gmail.com">singhpublicationjaipur@gmail.com</a>
+                            <a href="mailto: singhpublicationjaipur@gmail.com" className='text-sm sm:text-2xl'>singhpublicationjaipur@gmail.com</a>
                         </div>
                     </div>
                 </div>

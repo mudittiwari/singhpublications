@@ -6,6 +6,9 @@ import { useState } from "react";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import app from './Firebase';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Transform } from "@mui/icons-material";
 function Otp() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -42,8 +45,7 @@ function Otp() {
                 console.log(confirmationResult);
                 setresult(confirmationResult);
             }).catch((error) => {
-                alert("error");
-                console.log(error);
+                toast.warning(error);
                 // Error; SMS not sent
                 // ...
             });
@@ -65,17 +67,29 @@ function Otp() {
 
     return (
         <>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
             <div id="sign-in-button"></div>
             <div className="w-screen h-max py-8 flex items-center justify-center">
             </div>
-            <div className="otp min-h-screen  grid grid-cols-1 lg:grid-cols-2 items-center">
+            <div className="otp min-h-5/6  grid grid-cols-1 lg:grid-cols-2 items-center">
                 <div className="welcome-singh h-full p-[3vw] w-full flex justify-center items-center text-white bg-[#315ED2]">
-                    <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">Welcome To <br /> Singh Publication</h1>
+                    <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">Verify your <br /> OTP</h1>
                 </div>
-                <div className="otp-form flex items-center w-full px-[5vw] bg-white">
-                    <form action="" className="mx-auto w-full grid justify-center text-center gap-[1vw] p-[3vw] rounded-md shadow-2xl">
+                <div className="otp-form flex items-center w-full px-[5vw] py-[5vw] bg-white">
+                    <form action="" className="mx-auto w-full grid justify-center text-center gap-[1vw] p-[1vw] rounded-md shadow-2xl">
                         <div className="text">
-                            <h1 className="py-5 text-3xl font-semibold">OTP is sent to {location.state.phone}</h1>
+                            <h1 className="py-5 text-3xl font-semibold ">OTP is sent to {location.state.phone}</h1>
                         </div>
                         <div className="input flex gap-5 ">
                             <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
@@ -156,12 +170,12 @@ function Otp() {
                                 // navigate('/');
                                 matchcode()
                             }} className=" w-fit mt-10 px-14 py-3 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full" >
-                                Submit
+                                Verify
                             </button>
                         </div>
                     </form>
-                </div>
-            </div>
+                </div >
+            </div >
 
 
 

@@ -9,7 +9,7 @@ function About() {
     }, []);
     return (
         <>
-            <div className="from-publication  px-[5vw] lg:px-[10vw] my-10">
+            <div className="from-publication  px-[5vw] lg:px-[10vw] my-5 sm:my-10">
                 <h1 className="text-5xl w-fit mx-auto font-medium text-center my-5 md:my-10" style={{ 'color': '#315ED2' }}>From the Publication</h1>
                 <div className='w-full h-max px-[5vw] lg:px-[10vw] justify-center  flex flex-col md:flex-row sm:flex-col items-center gap-10 my-5 md:my-10'>
                     <div className='max-w-xs'>
@@ -27,16 +27,16 @@ function About() {
                 </div>
             </div>
 
-            <div className="about-author  px-[5vw] lg:px-[10vw] my-10" id='about-author'>
-                <h1 className="text-5xl w-fit mx-auto font-medium text-center my-5 md:my-10" style={{ 'color': '#315ED2' }}>About the Author</h1>
+            <div className="about-author  px-[5vw] lg:px-[10vw] sm:my-10" id='about-author'>
+                <h1 className="text-5xl w-fit mx-auto font-medium text-center my-5 md:my-10" style={{ 'color': '#315ED2' }}>About the Director</h1>
                 <div className='w-full h-max px-[5vw] lg:px-[10vw] justify-center  flex flex-col md:flex-row sm:flex-col items-center gap-10 my-5 md:my-10'>
                     <div className='max-w-xs'>
                         <img src={author} className="w-full" alt="..." />
 
                     </div>
                     <div className='w-full text-center lg:text-left'>
-                        <h1 className='font-bold text-3xl ' style={{ 'color': '#315ED2' }}>Prof. (Dr.) Sher Singh Morodiya</h1>
-                        <h1 className='font-semibold text-lg mb-3' style={{ 'color': '#315ED2' }}>Director & Author (Singh Publication)</h1>
+                        <h2 className='font-bold text-3xl ' style={{ 'color': '#315ED2' }}>Prof. (Dr.) Sher Singh Morodiya</h2>
+                        <h2 className='font-semibold text-lg mb-3' style={{ 'color': '#315ED2' }}>Director & Author (Singh Publication)</h2>
                         <p className='text-sm font-medium text-justify'>
                             completed Diploma in General Nursing in 1983 from Government School of Nursing, S.K. Hospital, Sikar (Rajasthan). He got his B.Sc. Nursing Degree in 2004 from
                             IGNOU, New Delhi. He received his Master of Nursing Degree
@@ -44,7 +44,7 @@ function About() {
                             Research University, Udaipur, Rajasthan.
                         </p>
                         <h2 className="text-xl font-medium mt-3">Experience:</h2>
-                        <p>He started his career after General Nursing Diploma as Nurse Grade II
+                        <p className='text-justify'>He started his career after General Nursing Diploma as Nurse Grade II
                             (Basic Nurse) at Government dispensary in 1984. He worked at various health care settings i.e. Primary Health Centre, Community Health Centre, District Hospital and Medical
                             College Hospital in various capacities as Basic nurse, Nurse Manager/ Ward In-charge,
                             Nursing Superintendent. He experienced as Lecturer and Founder Principal, Government
@@ -52,11 +52,11 @@ function About() {
                             got chance to work on the post of the Officer on Special Duty to the Additional Chief
                             Secretary (Medical & Health) along with the responsibility of Deputy Director (Nursing)
                             i.e. highest post in Government of Rajasthan for nursing personnel. </p>
-                        <p>He is having <span className="font-bold">39 Years of experience in the field of Nursing.</span> He has lot of confidence
+                        <p className='text-justify'>He is having <span className="font-bold">39 Years of experience in the field of Nursing.</span> He has lot of confidence
                             in area of teaching, guiding, examining/evaluating, care of clients, research and management/administration at various levels of health care settings. Now he is working as
                             Professor, Principal & Dean, Faculty of Nursing, Apex university, Jaipur. Here, he is also
                             registered as research supervisor/guide for Doctoral Programmes. </p>
-                        <p>He is authour of one book named; "Performance Appraisal of Nursing Personnel
+                        <p className='text-justify'>He is authour of one book named; "Performance Appraisal of Nursing Personnel
                             (Issues and Challenges)." He has been translated six nursing books from English to Hindi.
                             He is Editor-in-Chief of International Journal of Medical Surgical Nursing and member of
                             editorial board in seven peer reviewed/refereed journals from India and two foreign

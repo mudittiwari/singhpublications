@@ -41,15 +41,15 @@ function Signup() {
                 pauseOnHover
                 theme="dark"
             />
-            <div className="sign-up min-h-screen  grid grid-cols-1 lg:grid-cols-2 items-center">
+            <div className="sign-up min-h-5/6  grid grid-cols-1 lg:grid-cols-2 items-center">
                 <div className="welcome-singh h-full p-[3vw] w-full flex justify-center items-center text-white bg-[#315ED2]">
                     <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">
                         Welcome To <br /> Singh Publication
                     </h1>
                 </div>
 
-                <div className="sign-up-form flex items-center w-full px-[5vw] bg-white">
-                    <form className="mx-auto w-full grid gap-[.5vw] p-[3vw] rounded-md shadow-2xl">
+                <div className="sign-up-form flex items-center w-full px-[5vw] py-[2vw] bg-white">
+                    <form className="mx-auto w-full grid gap-[.5vw] p-[1vw] rounded-md shadow-2xl">
                         <div className="text">
                             <h1 className="py-5 text-6xl font-semibold">Sign up</h1>
                         </div>
@@ -104,7 +104,7 @@ function Signup() {
                                 }}
                                 name="phone"
                                 id="phone"
-                                placeholder="XXX-XX-XXXX-XXX"
+                                placeholder="Phone Number"
                                 className="block w-full px-5 py-3 mt-2 bg-amber-100 rounded-md"
                             />
                         </div>
@@ -116,9 +116,10 @@ function Signup() {
                                     <label className="block mb-2 text-lg">Gender</label>
                                     <div className="relative mt-2 flex justify-end items-center">
                                         <select
-                                            value={setGender}
+                                            value={gender}
                                             className="block appearance-none w-full bg-amber-100 text-grey-darker py-4 px-5 pr-8  leading-tight focus:outline-none rounded-md"
                                             id="reason"
+                                            onChange={handleChange}
                                         >
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
@@ -141,7 +142,7 @@ function Signup() {
                                     Date Of Birth
                                 </label>
                                 <input
-                                    type="datetime-local"
+                                    type="date"
                                     value={birthDate}
                                     onChange={(e) => {
                                         e.preventDefault();
@@ -207,6 +208,9 @@ function Signup() {
                                 className="block w-full px-5 py-3 mt-2 bg-amber-100 rounded-md"
                             />
                         </div>
+                        <p className="text-lg text-red-700 w-fit">
+                            Password must be alphanumeric.
+                        </p>
                         <div className=" flex justify-center my-5">
                             <button
                                 onClick={(e) => {
@@ -250,24 +254,20 @@ function Signup() {
                                         return;
                                     }
                                     setLoading(true);
-                                    axios
-                                        .post(
-                                            "https://singhpublications.onrender.com/api/user/register",
-                                            {
-                                                firstname: firstName,
-                                                lastname: lastName,
-                                                email: email,
-                                                gender: gender,
-                                                dob: birthDate,
-                                                mobile: mobileNumber,
-                                                password: password,
-                                                password2: password2,
-                                            }
-                                        )
+                                    axios.post("https://singhpublications.onrender.com/api/user/register",
+                                        {
+                                            firstname: firstName,
+                                            lastname: lastName,
+                                            email: email,
+                                            gender: gender,
+                                            dob: birthDate,
+                                            mobile: mobileNumber,
+                                            password: password,
+                                            password2: password2,
+                                        }
+                                    )
                                         .then((res) => {
                                             setLoading(false);
-                                            console.log(res);
-
                                             if (res.data === "success") {
                                                 navigate("/login");
                                             }
@@ -275,22 +275,20 @@ function Signup() {
                                         .catch((err) => {
                                             setLoading(false);
                                             alert("error");
-                                            console.log(err);
                                         });
                                 }}
                                 className="w-fit px-14 py-4 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full uppercase"
-                            >
-                                Signup
+                            > Register
                             </button>
                         </div>
                         <p className="text-lg text-center text-gray-400 flex items-center w-fit mx-auto">
-                            I have an account?{" "}
+                            Already have an account?{" "}
                             <button
                                 onClick={(e) => {
                                     e.preventDefault();
                                     navigate("/login");
                                 }}
-                                className=" text-[#315ED2] font-normal ml-2"
+                                className=" text-[#315ED2] text-xl font-normal ml-2"
                             >
                                 Login
                             </button>

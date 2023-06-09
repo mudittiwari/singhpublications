@@ -7,10 +7,10 @@ function Faq() {
             <div className="policy grid gap-5 px-[5vw] md:px-[15vw]">
                 {/* <img src={career} className="w-screen" alt="" /> */}
 
-                <h1 className="text-5xl w-fit mx-auto font-medium text-center my-5 md:my-10" style={{ 'color': '#315ED2' }}>FAQ</h1>
+                <h1 className="text-5xl w-fit mx-auto font-medium text-center mt-3 md:my-10" style={{ 'color': '#315ED2' }}>FAQ</h1>
                 <div className=" px-5 w-full bg-white">
-                    <div className="w-full grid divide-y divide-neutral-200 mt-8">
-                        <div className="py-5">
+                    <div className="w-full grid divide-y divide-neutral-200 sm:mt-8">
+                        <div className="py-3 sm:py-5">
                             <details className="group bg-blue-400 p-5 text-white rounded-md">
                                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                                     <span> What is a SAAS platform?</span>
@@ -25,7 +25,7 @@ function Faq() {
                                 </p>
                             </details>
                         </div>
-                        <div className="py-5">
+                        <div className="py-3 sm:py-5">
                             <details className="group bg-blue-400 p-5 text-white rounded-md">
                                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                                     <span> How does  billing work?</span>
@@ -41,7 +41,7 @@ function Faq() {
                                 </p>
                             </details>
                         </div>
-                        <div className="py-5">
+                        <div className="py-3 sm:py-5">
                             <details className="group bg-blue-400 p-5 text-white rounded-md">
                                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                                     <span> Can I get a refund for my subscription?</span>
@@ -58,7 +58,7 @@ function Faq() {
                                 </p>
                             </details>
                         </div>
-                        <div className="py-5">
+                        <div className="py-3 sm:py-5">
                             <details className="group bg-blue-400 p-5 text-white rounded-md">
                                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                                     <span> How do I cancel my subscription?</span>
@@ -74,7 +74,7 @@ function Faq() {
                                 </p>
                             </details>
                         </div>
-                        <div className="py-5">
+                        <div className="py-3 sm:py-5">
                             <details className="group bg-blue-400 p-5 text-white rounded-md">
                                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                                     <span> Can I try this platform for free?</span>
@@ -89,7 +89,7 @@ function Faq() {
                                 </p>
                             </details>
                         </div>
-                        <div className="py-5">
+                        <div className="py-3 sm:py-5">
                             <details className="group bg-blue-400 p-5 text-white rounded-md">
                                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                                     <span> How do I access   documentation?</span>
@@ -105,7 +105,7 @@ function Faq() {
                                 </p>
                             </details>
                         </div>
-                        <div className="py-5">
+                        <div className="py-3 sm:py-5">
                             <details className="group bg-blue-400 p-5 text-white rounded-md">
                                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                                     <span> How do I contact support?</span>
@@ -121,7 +121,7 @@ function Faq() {
                                 </p>
                             </details>
                         </div>
-                        <div className="py-5">
+                        <div className="py-3 sm:py-5">
                             <details className="group bg-blue-400 p-5 text-white rounded-md">
                                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                                     <span> Do you offer any discounts or promotions?</span>
@@ -136,7 +136,7 @@ function Faq() {
                                 </p>
                             </details>
                         </div>
-                        <div className="py-5">
+                        <div className="py-3 sm:py-5">
                             <details className="group bg-blue-400 p-5 text-white rounded-md">
                                 <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                                     <span> How do we compare to other similar services?</span>

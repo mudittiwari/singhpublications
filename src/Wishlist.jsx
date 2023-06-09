@@ -10,11 +10,18 @@ import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth
 import app from './Firebase';
 import LoadingBar from './comps/Loadingbar';
 function BookComp(props) {
+    const navigate = useNavigate();
     return (
         <div className=' my-4 mx-2 rounded-xl p-5 flex flex-wrap gap-5' style={{ 'border': '1px solid #315ED2', }} >
-            <img src={props.prod.image_url} className="h-40 mx-auto" alt="" />
-            <div className="content flex flex-wrap gap-5">
-                <div className='' style={{}}>
+            <img src={props.prod.image_url} className="h-40 mx-auto" alt="" onClick={(e) => {
+                e.preventDefault();
+                navigate('/product', { state: props.prod })
+            }} />
+            <div className="content flex flex-wrap gap-5" >
+                <div className='' style={{}} onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/product', { state: props.prod })
+                }}>
                     <h1 className="text-md font-bold mb-0 mx-0 mt-0" style={{ 'color': '#315ED2' }}>{props.prod.title}</h1>
                     <h1 className="text-base font-semibold mb-0 mx-0  mt-0" style={{ 'color': '#777777' }}>{props.prod.category}</h1>
                     <h1 className="text-sm font-medium mb-0 mx-0  mt-0" style={{ 'color': '#777777' }}>{props.prod.subtitle}</h1>
@@ -28,7 +35,7 @@ function BookComp(props) {
                     </div>
                     <h1 className="text-sm font-medium mb-0 mx-0  mt-0" style={{ 'color': '#777777' }}>11 Jan 2023</h1>
                 </div>
-                
+
                 <div className=' justify-center flex flex-col items-center'>
                     <h1 className="md:text-2xl text-lg font-bold" style={{ 'color': '#315ED2' }}>{props.prod.price} Rs.</h1>
                     <button className=" btn mt-2 cursor-pointer w-fit px-7 py-4 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" onClick={(e) => {

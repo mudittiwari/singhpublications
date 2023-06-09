@@ -3,9 +3,9 @@ import policy from './assets/policy.pdf';
 function Policy() {
     return (
         <div className="w-full">
-            <div className="policy grid gap-5 py-[2vw] px-[10vw] mx-auto">
-                <h1 className="text-5xl font-medium text-center text-[#315ED2] mb-10">PRIVACY POLICY</h1>
-                <h1 className="text-2xl font-medium ">Last updated May 27, 2023</h1>
+            <div className="policy grid gap-3 sm:gap-5 py-[2vw] px-[10vw] mx-auto">
+                <h1 className="text-2xl md:text-5xl font-medium text-center text-[#315ED2] mb-3 sm:mb-10">PRIVACY POLICY</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">Last updated May 27, 2023</h2>
                 <p>This privacy notice for Singh Publication ("<span className="text-xl font-medium">Company</span>," "<span className="text-xl font-medium">we</span>," "<span className="text-xl font-medium">us</span>," or "<span className="text-xl font-medium">our</span>"),
                     describes how and why we might collect, store, use, and/or share ("<span className="text-xl font-medium">process</span>") your
                     information when you use our services ("<span className="text-xl font-medium">Services</span>"), such as when you:</p>
@@ -26,7 +26,7 @@ function Policy() {
                     privacy rights and choices. If you do not agree with our policies and practices, please
                     do not use our Services. If you still have any questions or concerns, please contact
                     us at singhpublicationjaipur@gmail.com</p>
-                <h1 className="text-2xl font-medium ">SUMMARY OF KEY POINTS</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">SUMMARY OF KEY POINTS</h2>
                 <p><span className="text-lg font-bold">This summary provides key points from our privacy notice, but you can find
                     out more details about any of these topics by clicking the link following each
                     key point or by using our table of contents below to find the section you are
@@ -66,7 +66,7 @@ function Policy() {
                     accordance with applicable data protection laws.</p>
                 <p>Want to learn more about what Singh Publication does with any information we
                     collect? <span className="text-[#315ED2]">Review the privacy notice in full.</span></p>
-                <h1 className="text-2xl font-medium ">TABLE OF CONTENTS</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">TABLE OF CONTENTS</h2>
                 <div className="table-content text-[#315ED2]">
                     <p>1. WHAT INFORMATION DO WE COLLECT?</p>
                     <p>2. HOW DO WE PROCESS YOUR INFORMATION?</p>
@@ -84,8 +84,8 @@ function Policy() {
                     <p>13. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT
                         FROM YOU?</p>
                 </div>
-                <h1 className="text-2xl font-medium ">1. WHAT INFORMATION DO WE COLLECT?</h1>
-                <h1 className="text-2xl font-medium ">Personal information you disclose to us</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">1. WHAT INFORMATION DO WE COLLECT?</h2>
+                <h2 className="text-lg md:text-2xl font-medium ">Personal information you disclose to us</h2>
                 <p><span className="text-lg font-bold">In Short:</span> We collect personal information that you provide to us.
                 </p>
                 <p>We collect personal information that you voluntarily provide to us when you register
@@ -117,7 +117,7 @@ function Policy() {
                     LOGINS?</span>" below.</p>
                 <p>All personal information that you provide to us must be true, complete, and
                     accurate,and you must notify us of any changes to such personal information.</p>
-                <h1 className="text-2xl font-medium ">2. HOW DO WE PROCESS YOUR INFORMATION?</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">2. HOW DO WE PROCESS YOUR INFORMATION?</h2>
                 <p><span className="text-lg font-bold">In Short:</span> We process your information to provide, improve, and administer. Our
                     Services, communicate with you, for security and fraud prevention, and to comply
                     with law. We may also process your information for other purposes with your consent.
@@ -135,8 +135,8 @@ function Policy() {
                             such as to prevent harm.</li>
                     </ul>
                 </div>
-                <h1 className="text-2xl font-medium ">3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS
-                    YOUR INFORMATION?</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS
+                    YOUR INFORMATION?</h2>
                 <p><span className="text-lg font-bold">In Short:</span> We only process your personal information when we believe it is necessary
                     and we have a valid legal reason (i.e., legal basis) to do so under applicable law, like
                     with your consent, to comply with laws, to provide you with services to enter into or
@@ -198,8 +198,8 @@ function Policy() {
                         <li>If the information is publicly available and is specified by the regulations</li>
                     </ul>
                 </div>
-                <h1 className="text-2xl font-medium ">4. WHEN AND WITH WHOM DO WE SHARE YOUR
-                    PERSONAL INFORMATION?</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">4. WHEN AND WITH WHOM DO WE SHARE YOUR
+                    PERSONAL INFORMATION?</h2>
                 <p><span className="text-lg font-bold">In Short:</span> We may share information in specific situations described in this section
                     and/or with the following third parties.</p>
                 <p>We may need to share your personal information in the following situations:
@@ -222,7 +222,7 @@ function Policy() {
                         </li>
                     </ul>
                 </div>
-                <h1 className="text-2xl font-medium ">5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?</h2>
                 <p><span className="text-lg font-bold">In Short:</span> If you choose to register or log in to our Services using a social media
                     account, we may have access to certain information about you.</p>
                 <p>Our Services offer you the ability to register and log in using your third-party social
@@ -241,7 +241,7 @@ function Policy() {
                     personal information, and how you can set your privacy preferences on their sites
                     and apps.
                 </p>
-                <h1 className="text-2xl font-medium ">6. HOW LONG DO WE KEEP YOUR INFORMATION?</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">6. HOW LONG DO WE KEEP YOUR INFORMATION?</h2>
                 <p><span className="text-lg font-bold">In Short:</span> We keep your information for as long as necessary to fulfill the purposes
                     outlined in this privacy notice unless otherwise required by law.</p>
                 <p>We will only keep your personal information for as long as it is necessary for the
@@ -255,7 +255,7 @@ function Policy() {
                     archives), then we will securely store your personal information and isolate it from
                     any further processing until deletion is possible.
                 </p>
-                <h1 className="text-2xl font-medium ">7. HOW DO WE KEEP YOUR INFORMATION SAFE?</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">7. HOW DO WE KEEP YOUR INFORMATION SAFE?</h2>
                 <p><span className="text-lg font-bold">In Short:</span> We aim to protect your personal information through a system of
                     organizational and technical security measures.
                 </p>
@@ -270,7 +270,7 @@ function Policy() {
                     information to and from our Services is at your own risk. You should only access the
                     Services within a secure environment.
                 </p>
-                <h1 className="text-2xl font-medium ">8. WHAT ARE YOUR PRIVACY RIGHTS?</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">8. WHAT ARE YOUR PRIVACY RIGHTS?</h2>
                 <p><span className="text-lg font-bold">In Short:</span> In some regions, such as the European Economic Area (EEA), United
                     Kingdom (UK), and Canada, you have rights that allow you greater access to and
                     control over your personal information. You may review, change, or terminate your
@@ -314,7 +314,7 @@ function Policy() {
                     we may still communicate with you — for example, to send you service-related
                     messages that are necessary for the administration and use of your account, to
                     respond to service requests, or for other non-marketing purposes.</p>
-                <h1 className="text-2xl font-medium ">Account Information</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">Account Information</h2>
                 <p>If you would at any time like to review or change the information in your account or
                     terminate your account, you can:</p>
                 <div className="points">
@@ -329,7 +329,7 @@ function Policy() {
                     requirements.</p>
                 <p>If you have questions or comments about your privacy rights, you may email us at
                     singhpublicationjaipur@gmail.com.</p>
-                <h1 className="text-2xl font-medium ">9. CONTROLS FOR DO-NOT-TRACK FEATURES</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">9. CONTROLS FOR DO-NOT-TRACK FEATURES</h2>
                 <p>Most web browsers and some mobile operating systems and mobile applications
                     include a Do-Not-Track ("DNT") feature or setting you can activate to signal your
                     privacy preference not to have data about your online browsing activities monitored
@@ -339,8 +339,8 @@ function Policy() {
                     your choice not to be tracked online. If a standard for online tracking is adopted that
                     we must follow in the future, we will inform you about that practice in a revised
                     version of this privacy notice.</p>
-                <h1 className="text-2xl font-medium ">10. DO CALIFORNIA RESIDENTS HAVE SPECIFIC
-                    PRIVACY RIGHTS?</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">10. DO CALIFORNIA RESIDENTS HAVE SPECIFIC
+                    PRIVACY RIGHTS?</h2>
                 <p><span className="text-lg font-bold">In Short:</span> Yes, if you are a resident of California, you are granted specific rights
                     regarding access to your personal information.</p>
                 <p>California Civil Code Section 1798.83, also known as the "Shine the Light" law,
@@ -359,7 +359,7 @@ function Policy() {
                     make sure the data is not publicly displayed on the Services, but please be aware
                     that the data may not be completely or comprehensively removed from all our
                     systems (e.g., backups, etc.).</p>
-                <h1 className="text-2xl font-medium ">11. DO WE MAKE UPDATES TO THIS NOTICE?</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">11. DO WE MAKE UPDATES TO THIS NOTICE?</h2>
                 <p><span className="text-lg font-bold">In Short:</span> Yes, we will update this notice as necessary to stay compliant with relevant
                     laws.</p>
                 <p>We may update this privacy notice from time to time. The updated version will be
@@ -370,7 +370,7 @@ function Policy() {
                     Singh Publication
                     sending you a notification. We encourage you to review this privacy notice frequently
                     to be informed of how we are protecting your information.</p>
-                <h1 className="text-2xl font-medium ">12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h2>
                 <p>If you have questions or comments about this notice, you may email us at
                     _______ or contact us by post at:</p>
                 <p>Singh Publication
@@ -378,8 +378,8 @@ function Policy() {
                     Jaipur, Rajasthan 302019
                     India
                 </p>
-                <h1 className="text-2xl font-medium ">13. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE
-                    DATA WE COLLECT FROM YOU?</h1>
+                <h2 className="text-lg md:text-2xl font-medium ">13. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE
+                    DATA WE COLLECT FROM YOU?</h2>
                 <p>Based on the applicable laws of your country, you may have the right to request
                     access to the personal information we collect from you, change that information, or
                     delete it. To request to review, update, or delete your personal information, please

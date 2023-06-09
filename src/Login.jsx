@@ -30,19 +30,18 @@ function Login() {
                 theme="dark"
             />
             {loading && <LoadingBar />}
-            <div className="log-in min-h-screen  grid grid-cols-1 lg:grid-cols-2 items-center">
+            <div className="log-in min-h-5/6  grid grid-cols-1 lg:grid-cols-2 items-center">
                 <div className="welcome-singh h-full p-[3vw] w-full flex justify-center items-center text-white bg-[#315ED2]">
-                    <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">Welcome To <br /> Singh Publication</h1>
+                    <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">Welcome Back</h1>
                 </div>
-                <div className="log-in-form flex items-center w-full px-[5vw] bg-white">
-                    <form action="" className="mx-auto w-full grid gap-[3vw] p-[3vw] rounded-md shadow-2xl">
+                <div className="log-in-form flex items-center w-full px-[5vw] py-[2vw] bg-white">
+                    <form action="" className="mx-auto w-full grid gap-[3vw] p-[1vw] rounded-md shadow-2xl">
                         <div className="text">
-                            <h2 className="text-xl mb-5 font-medium">Welcome back !!!</h2>
-                            <h1 className="py-5 text-6xl font-semibold">Sign in</h1>
+                            <h1 className="py-5 text-6xl font-semibold">Log In</h1>
                         </div>
                         <div className="input grid gap-5">
                             <div className="">
-                                <label for="email" className="block mb-2 text-lg ">Email Address</label>
+                                <label htmlFor="email" className="block mb-2 text-lg ">Email Address</label>
 
                                 <input value={email} onChange={(e) => {
                                     e.preventDefault();
@@ -55,8 +54,8 @@ function Login() {
                             </div>
                             <div className="">
                                 <div className="flex justify-between mb-2">
-                                    <label for="password" className="text-lg ">Password</label>
-                                    <Link to="../forgetpass" className="text-lg focus:outline-none">Forgot password?</Link>
+                                    <label htmlFor="password" className="text-lg ">Password</label>
+                                    <Link to="" className="text-lg focus:outline-none">Forgot password?</Link>
                                 </div>
 
                                 <input value={password} onChange={(e) => {
@@ -104,20 +103,20 @@ function Login() {
                                     }
                                 }).catch((err) => {
                                     setloading(false);
-                                    alert("error");
+                                    alert("Something is wrong! Kindly check your EMAIL or PASSWORD.");
                                     console.log(err);
                                 }
                                 )
 
                             }} className="w-fit px-14 py-4 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full">
-                                Sign In
+                                Log In
                             </button>
                         </div>
                         <p className="text-lg text-center text-gray-400 flex w-fit mx-auto">Don&#x27;t have an account yet? <button onClick={(e) => {
                             e.preventDefault();
                             navigate("/signup");
 
-                        }} className="text-[#315ED2] font-normal ml-2">
+                        }} className="text-[#315ED2] font-normal text-xl ml-2">
                             Sign up
                         </button>
                         </p>

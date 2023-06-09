@@ -36,9 +36,9 @@ function BookComp(props) {
                 navigate('/product', { state: props.prod })
             }}>
                 <img src={props.prod.image_url} className="w-1/2 py-5 mx-auto rounded-xl" alt="" />
-                <h1 className="text-lg font-bold" style={{ 'color': '#315ED2', 'maxWidth': '100%' }}>{props.prod.title}</h1>
-                <h1 className="text-base font-semibold" style={{ 'color': '#777777' }}>{props.prod.category}</h1>
-                <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>{props.prod.subtitle}</h1>
+                <h2 className="text-lg text-[#315ED2]  font-bold" >{props.prod.title}</h2>
+                <h2 className="text-base text-[#777777] font-semibold" >{props.prod.category}</h2>
+                <h2 className="text-sm text-[#777777]  font-medium">{props.prod.subtitle}</h2>
                 <div className='w-full mt-1 flex items-center'>
                     <h1 className="text-base font-medium mr-2" style={{ 'color': '#777777' }}>{props.prod.rating}</h1>
                     <img className='mx-1 w-4' src={star} alt="" />
@@ -78,7 +78,7 @@ function BookComp(props) {
                         let newuser = res.data;
                         newuser['accessToken'] = user.accessToken;
                         localStorage.setItem('pubuser', JSON.stringify(newuser));
-                        toast.info("Added to cart");
+                        window.location.reload(false)
                         // localStorage.setItem('pubuser', JSON.stringify(res.data));
                     }
                     ).catch((err) => {
@@ -96,47 +96,48 @@ function BookComp(props) {
                     }
                 </button>
                 {user != null && user.wishlist.includes(props.prod.id) ?
-                        <button type="button" onClick={(e) => {
-                            toast.info("Product already in wishlist");
-                        }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[red]  rounded-r-xl text-2xl"><i className="fa-solid fa-heart"></i></button> : <button type="button" onClick={(e) => {
-                            let user = JSON.parse(localStorage.getItem('pubuser'));
-                            e.preventDefault();
-                            if (user) {
-        
-                                axios.post("https://singhpublications.onrender.com/api/user/addtowishlist", {
-        
-        
-                                    "product_id": props.prod.id,
-        
-                                }, {
-                                    headers: {
-                                        'Authorization': `Bearer ${user.accessToken}`
-                                    },
-                                    params: {
-                                        'id': user.id
-                                    }
-                                },).then((res) => {
-                                    let newuser = res.data;
-                                    newuser['accessToken'] = user.accessToken;
-                                    localStorage.setItem('pubuser', JSON.stringify(newuser));
-                                    toast.info("Added to wishlist");
+                    <button type="button" onClick={(e) => {
+                        toast.info("Product already in wishlist");
+                    }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[red]  rounded-r-xl text-2xl"><i className="fa-solid fa-heart"></i></button> : <button type="button" onClick={(e) => {
+                        let user = JSON.parse(localStorage.getItem('pubuser'));
+                        e.preventDefault();
+                        if (user) {
+
+                            axios.post("https://singhpublications.onrender.com/api/user/addtowishlist", {
+
+
+                                "product_id": props.prod.id,
+
+                            }, {
+                                headers: {
+                                    'Authorization': `Bearer ${user.accessToken}`
+                                },
+                                params: {
+                                    'id': user.id
                                 }
-                                ).catch((err) => {
-                                    console.log(err);
-                                    if (err.response.status === 400) {
-                                        toast.info("Product already in wishlist");
-                                    }
-        
+                            },).then((res) => {
+                                let newuser = res.data;
+                                newuser['accessToken'] = user.accessToken;
+                                localStorage.setItem('pubuser', JSON.stringify(newuser));
+                                window.location.reload(false)
+
+                            }
+                            ).catch((err) => {
+                                console.log(err);
+                                if (err.response.status === 400) {
+                                    toast.info("Product already in wishlist");
                                 }
-                                )
-                                navigate('/wishlist')
+
                             }
-                            else {
-                                navigate('/login');
-                            }
-                        }} className="w-16 h-full flex justify-center items-center px-5 py-5 bg-white border border-[#777777] text-[#777777] rounded-r-xl  text-2xl"><i class="fa-regular fa-heart"></i></button>
-                    }
-                
+                            )
+                            // navigate('/wishlist')
+                        }
+                        else {
+                            navigate('/login');
+                        }
+                    }} className="w-16 h-full flex justify-center items-center px-5 py-5 bg-white border border-[#777777] text-[#777777] rounded-r-xl  text-2xl"><i className="fa-regular fa-heart"></i></button>
+                }
+
             </div>
 
 
@@ -243,14 +244,14 @@ function Home() {
         return (
             // <Paper style={{'borderRadius':'0px !important'}}>
             <div className='w-full flex  justify-center'>
-                <div className='p-5 md:p-10 w-[70%] flex flex-wrap md:flex-nowrap md:gap-10 rounded-3xl '>
+                <div className='p-5 md:p-10 md:w-[70%] flex flex-wrap md:flex-nowrap md:gap-10 rounded-3xl '>
                     <div className='max-w-3xl mx-auto'>
                         <img src={props.image} className="w-full rounded-lg" alt="..." />
                     </div>
                     <div className='w-full text-center md:text-left'>
-                        <h1 className='font-bold text-3xl' style={{ 'color': '#315ED2' }}>{props.name}</h1>
-                        <h1 className='font-semibold text-lg' style={{ 'color': 'black' }}>{props.desig1}</h1>
-                        <h1 className='font-semibold text-lg mb-3' style={{ 'color': 'black' }}>{props.desig2}</h1>
+                        <h1 className=' font-semibold  md:font-bold text-[#315ED2] md:text-3xl' >{props.name}</h1>
+                        <h3 className='font-normal  md:font-semibold text- black text-xs md:text-lg' >{props.desig1}</h3>
+                        <h3 className='font-normal  md:font-semibold text- black text-xs md:text-lg mb-3' >{props.desig2}</h3>
                         <div className="box py-10 relative mt-10">
                             <p className='text-sm md:text-lg font-medium text-justify md:px-10'>
                                 {props.review}
@@ -292,15 +293,15 @@ function Home() {
 
                 </div>
                 <div className="w-full ">
-                    <h1 className="text-5xl font-medium text-center my-5 md:my-10" style={{ 'color': '#315ED2' }}>About the author</h1>
+                    <h1 className="text-5xl font-medium text-center my-5 md:my-10" style={{ 'color': '#315ED2' }}>About The Director</h1>
                     <div className='w-full h-max px-5 md:px-10 justify-center  flex flex-col lg:flex-row sm:flex-col md:flex-col items-center gap-10 my-5 md:my-10'>
                         <div className='max-w-xs'>
                             <img src={author} className="w-full" alt="..." />
 
                         </div>
                         <div className='sm:w-4/6 text-center lg:text-left'>
-                            <h1 className='font-bold text-3xl ' style={{ 'color': '#315ED2' }}>Dr. (Prof) Sher Singh Morodiya</h1>
-                            <h1 className='font-semibold text-lg mb-3' style={{ 'color': '#315ED2' }}>Director & Author (Singh Publication)</h1>
+                            <h2 className='font-bold text-3xl ' style={{ 'color': '#315ED2' }}>Dr. (Prof) Sher Singh Morodiya</h2>
+                            <h2 className='font-semibold text-lg mb-3' style={{ 'color': '#315ED2' }}>Director & Author (Singh Publication)</h2>
                             <p className='text-sm md:text-lg font-medium text-justify'>
                                 Dr. (Prof.) Sher Singh Morodiya, received his Master of
                                 Nursing Degree from Raj Kumari Amrit Kaur College of Nursing,
@@ -319,7 +320,7 @@ function Home() {
                                 conferences. He has received BEST PAPER AWARD in an International Conference
                                 held in 2019. He is life time member in ten professional bodies.
                             </p>
-                            <div className="btn mt-10 cursor-pointer w-fit px-14 py-4 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" onClick={(e) => {
+                            <div className="btn mt-5 sm:mt-10 cursor-pointer mx-auto sm:mx-0 w-fit px-14 py-4 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" onClick={(e) => {
                                 e.preventDefault();
                                 navigate('/about');
                             }}>Know More</div>
@@ -328,7 +329,7 @@ function Home() {
 
                 </div>
                 <h1 className="text-5xl font-medium text-center my-5 md:my-10" style={{ 'color': '#315ED2' }}>Best Sellers</h1>
-                <div className='w-full flex md:px-0 px-3 mx-auto flex-wrap gap-10 justify-center mb-10'>
+                <div className='w-full flex md:px-0 px-3 mx-auto flex-wrap gap-10 justify-center sm:mb-10'>
                     {/* <BookComp />
                         <BookComp />
                         <BookComp />
@@ -346,7 +347,7 @@ function Home() {
                     <h1 className="text-sm font-semibold" style={{ 'color': 'white' }}>Download Now!</h1> */}
                     <Link target='_blank' to="https://play.google.com/store/games?pcampaignid=MKT-EDR-apac-in-1003227-med-hasem-py-Evergreen-Oct0121-Text_Search_BKWS-BKWS%7CONSEM_kwid_43700065205026415_creativeid_535350509927_device_c"><img src={playstore} className="w-full" alt="..."></img></Link>
                 </div>
-                <h1 className="text-5xl font-medium mx-auto w-max my-10" style={{ 'color': '#315ED2' }}>Testimonials</h1>
+                <h1 className="text-5xl font-medium mx-auto w-max my-5 sm:my-10" style={{ 'color': '#315ED2' }}>Testimonials</h1>
                 <div id='mainslider' className='mb-5'>
 
                     <Carousel navButtonsAlwaysVisible="true" indicators="false" animation='slide' duration="800">
@@ -360,7 +361,7 @@ function Home() {
                     </Carousel>
 
                 </div>
-                <div className='retailer w-full my-10'>
+                <div className='retailer w-full sm:my-10'>
                     <button onClick={(e) => {
                         e.preventDefault();
                         navigate('/contact');

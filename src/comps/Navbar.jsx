@@ -97,7 +97,7 @@ function Navbar() {
         setState({ ...state, [anchor]: open });
     };
     const list = (anchor) => (
-        <Box className="p-3 h-full overflow-hidden " style={{ 'backgroundColor': 'white' }}
+        <Box className="p-3 h-full lg:hidden overflow-hidden " style={{ 'backgroundColor': 'white' }}
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 280 }}
             role="presentation"
         >
@@ -111,21 +111,21 @@ function Navbar() {
                     <div className="flex justify-start cursor-pointer text-white bg-[#315ED2]" onClick={(e) => {
                         e.preventDefault();
                         navigate('/');
-                    }}><h1 className=" mx-2 font-semibold py-2" ><i className="fa-solid fa-house mr-2"></i>Home</h1> </div>
+                    }}><h3 className=" mx-2 font-semibold py-2" ><i className="fa-solid fa-house mr-2"></i>Home</h3> </div>
                 </Box>
 
                 <Box onClick={toggleDrawer(anchor, false)}>
                     <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
                         e.preventDefault();
                         navigate('/about');
-                    }}><h1 className=" mx-2 font-semibold py-2" ><i className="fa-solid fa-address-card mr-2"></i>About Us</h1> </div>
+                    }}><h3 className=" mx-2 font-semibold py-2" ><i className="fa-solid fa-address-card mr-2"></i>About Us</h3> </div>
                 </Box>
 
                 <Box onClick={toggleDrawer(anchor, false)}>
                     <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
                         e.preventDefault();
                         navigate('/contact');
-                    }}><h1 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-phone mr-2"></i>Contact Us</h1> </div>
+                    }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-phone mr-2"></i>Contact Us</h3> </div>
                 </Box>
 
                 <Box onClick={toggleDrawer(anchor, false)}>
@@ -136,7 +136,7 @@ function Navbar() {
                     <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
                         e.preventDefault();
                         navigate('/careers');
-                    }}><h1 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-arrow-up-right-dots mr-2"></i>Careers</h1> </div>
+                    }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-arrow-up-right-dots mr-2"></i>Careers</h3> </div>
                 </Box>
 
             </div>
@@ -146,27 +146,27 @@ function Navbar() {
                         <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
                             e.preventDefault();
                             navigate('/cart');
-                        }}><h1 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-cart-shopping mr-2"></i>Cart</h1> </div>
+                        }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-cart-shopping mr-2"></i>Cart</h3> </div>
                     </Box>
 
                     <Box onClick={toggleDrawer(anchor, false)}>
                         <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
                             e.preventDefault();
                             navigate('/Wishlist');
-                        }}><h1 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-heart mr-2"></i>Wishlist</h1> </div>
+                        }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-heart mr-2"></i>Wishlist</h3> </div>
                     </Box>
                     <Box onClick={toggleDrawer(anchor, false)}>
                         <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
                             e.preventDefault();
                             navigate('/orders');
-                        }}><h1 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-cube mr-2"></i>Orders</h1> </div>
+                        }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-cube mr-2"></i>Orders</h3> </div>
                     </Box>
 
                     <Box onClick={toggleDrawer(anchor, false)}>
                         <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
                             e.preventDefault();
                             navigate('/accountsetting');
-                        }}><h1 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-gear mr-2"></i>Account Settings</h1> </div>
+                        }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-gear mr-2"></i>Account Settings</h3> </div>
                     </Box>
 
                     <Box onClick={toggleDrawer(anchor, false)}>
@@ -176,10 +176,10 @@ function Navbar() {
                             // auth.signOut();
                             // navigate('/');
                             setShowModal(true);
-                        }}><h1 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-arrow-right-from-bracket mr-2"></i>Logout</h1> </div>
+                        }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-arrow-right-from-bracket mr-2"></i>Logout</h3> </div>
                     </Box>
 
-                    
+
 
                 </ul> : <div className="flex justify-around mt-5">
                     <button className=" text-white md:text-base text-xs  px-4 py-1 rounded-xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }} onClick={(e) => {
@@ -194,7 +194,7 @@ function Navbar() {
                         e.preventDefault();
                         navigate('/signup');
                     }}>
-                        Signup
+                        Sign Up
                     </button>
                 </div>
             }
@@ -212,18 +212,18 @@ function Navbar() {
     return (
         <>
             <div className="navbar sticky top-0 z-50 bg-white list-none">
-                <div className="upper w-full  px-5  py-2 bg-[#315ED2] flex flex-wrap gap-5 sm:gap-0  justify-center items-center text-white">
+                <div className="upper w-full py-1 sm:py-2 bg-[#315ED2] flex flex-wrap gap-1 sm:gap-5  justify-center items-center text-white">
                     <div className="content flex flex-wrap text-xs sm:text-base justify-center items-center gap-1 ">
-                        <li className='px-5 md:px-8 h-full py-1 sm:py-2 border-white'><i className="fa-solid fa-clock mr-2"></i> 9:00 am - 6:00 pm | Mon-Fri</li>
-
+                        <li className=' md:px-8 h-full py-1 sm:py-2 border-white'><i className="fa-solid fa-clock mr-1"></i> 9:00 am - 6:00 pm | Mon-Fri</li>
                     </div>
                     <div className="social-icons flex items-center text-xs sm:text-base">
-                        <li><a href="tel:9414784402" className='px-3 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-x-2 border-white'> <i className="fa-solid fa-phone"></i></a></li>
-                        <li><a target="_blank" href="mailto: singhpublicationjaipur@gmail.com" className='px-3 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-r-2 border-white'><i className="fa-solid fa-envelope"></i></a></li>
-                        <li><a target="_blank" href="https://www.facebook.com/singhpublication" className='px-3 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-r-2 border-white'> <i className="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a target="_blank" href="https://www.instagram.com/singhpublication/" className='px-3 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-r-2 border-white'> <i className="fa-brands fa-instagram"></i></a></li>
-                        <li><a target="_blank" href="https://twitter.com/SinghPub_Jaipur" className='px-3 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-r-2 border-white'> <i className="fa-brands fa-linkedin-in"></i></a></li>
-                        <li><a target="_blank" href="https://www.linkedin.com/company/singh-publication/" className='px-3 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-r-2 border-white'> <i className="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="https://www.google.com/maps/place/Singh+Publication,+401,+New+Sanganer+Rd,+Katewa+Nagar,+Devi+Nagar,+Shyam+Nagar,+Jaipur,+Rajasthan+302019/@26.883908,75.761727,15z/data=!4m6!3m5!1s0x396db5558aea2575:0xd53fbb24d469e795!8m2!3d26.8839076!4d75.7617268!16s%2Fg%2F11tghjkpdy?hl=en&gl=IN" className='px-1 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-l-2 border-white'> <i className="fa-solid fa-location-dot"></i></a></li>
+                        <li><a href="tel:9414784402" className='px-1 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-x-2 border-white'> <i className="fa-solid fa-phone"></i></a></li>
+                        <li><a target="_blank" href="mailto: singhpublicationjaipur@gmail.com" className='px-1 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-r-2 border-white'><i className="fa-solid fa-envelope"></i></a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/singhpublication" className='px-1 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-r-2 border-white'> <i className="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a target="_blank" href="https://www.instagram.com/singhpublication/" className='px-1 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-r-2 border-white'> <i className="fa-brands fa-instagram"></i></a></li>
+                        <li><a target="_blank" href="https://twitter.com/SinghPub_Jaipur" className='px-1 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-r-2 border-white'> <i className="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a target="_blank" href="https://www.linkedin.com/company/singh-publication/" className='px-1 sm:px-5 md:px-8 h-full py-1 sm:py-2 border-white'> <i className="fa-brands fa-twitter"></i></a></li>
                     </div>
                 </div>
 
@@ -238,8 +238,8 @@ function Navbar() {
                     {['left'].map((anchor) => (
                         <React.Fragment key={anchor}>
                             {/* <Button className='text-white mx-5 text-left w-20' onClick={toggleDrawer(anchor, true)}>Filters</Button> */}
-                            <div className='lg:hidden xl:hidden w-full flex items-center justify-between 2xl:hidden' >
-                                <div className="flex items-center">
+                            <div className='lg:hidden xl:hidden relative w-full flex items-center justify-between 2xl:hidden' >
+                                <div className="flex items-center absolute">
                                     <Menu className='text-black mx-5 mt-0' onClick={toggleDrawer(anchor, true)} />
 
                                 </div>
@@ -248,7 +248,7 @@ function Navbar() {
                                 <img className="w-6 cursor-pointer" src={search} alt="" />
                             </div> */}
 
-                                <div className="flex items-center">
+                                <div className="flex items-center w-full justify-center">
                                     <Link to="/"><img src={Logo} className="w-20 p-3 mt-0"></img></Link>
                                 </div>
                             </div>
@@ -368,14 +368,14 @@ function Navbar() {
                             e.preventDefault();
                             navigate('/login');
                         }}>
-                            Login
+                            Log In
                         </button>
                         <button className=" w-fit px-8 py-2 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full" onClick={(e) => {
                             // console.log(user.accessToken);
                             e.preventDefault();
                             navigate('/signup');
                         }}>
-                            Signup
+                            Sign Up
                         </button>
                     </div>
                     }

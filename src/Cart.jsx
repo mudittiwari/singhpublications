@@ -9,22 +9,32 @@ import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth
 import app from './Firebase';
 import LoadingBar from './comps/Loadingbar';
 function BookComp(props) {
+    const navigate = useNavigate();
     return (
         <div className=' my-10 mx-2 rounded-xl p-5 flex flex-wrap justify-center gap-5' style={{ 'border': '1px solid #315ED2', }} >
-            <img src={props.prod.image_url} className="w-40 mx-auto" alt="" />
-            <div className=''>
-                <h1 className="text-md font-bold" style={{ 'color': '#315ED2' }}>{props.prod.title}</h1>
-                <h1 className="text-base font-semibold" style={{ 'color': '#777777' }}>{props.prod.category}</h1>
-                <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>{props.prod.subtitle}</h1>
-                <div className='w-fit mt-1 flex items-center'>
-                    <h1 className="text-base font-medium mr-1" style={{ 'color': '#777777' }}>{props.prod.rating}</h1>
-                    <img className='mx-1 w-4' src={star} alt="" />
-                    <img className='mx-1 w-4' src={star} alt="" />
-                    <img className='mx-1 w-4' src={star} alt="" />
-                    <img className='mx-1 w-4' src={star} alt="" />
-                    <img className='mx-1 w-4' src={star} alt="" />
+            <img src={props.prod.image_url} className="w-40 mx-auto" alt="" onClick={(e) => {
+                e.preventDefault();
+                navigate('/product', { state: props.prod })
+            }} />
+            <div className='' >
+                <div onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/product', { state: props.prod })
+                }}>
+
+                    <h1 className="text-md font-bold" style={{ 'color': '#315ED2' }}>{props.prod.title}</h1>
+                    <h1 className="text-base font-semibold" style={{ 'color': '#777777' }}>{props.prod.category}</h1>
+                    <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>{props.prod.subtitle}</h1>
+                    <div className='w-fit mt-1 flex items-center'>
+                        <h1 className="text-base font-medium mr-1" style={{ 'color': '#777777' }}>{props.prod.rating}</h1>
+                        <img className='mx-1 w-4' src={star} alt="" />
+                        <img className='mx-1 w-4' src={star} alt="" />
+                        <img className='mx-1 w-4' src={star} alt="" />
+                        <img className='mx-1 w-4' src={star} alt="" />
+                        <img className='mx-1 w-4' src={star} alt="" />
+                    </div>
+                    <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>11 Jan 2023</h1>
                 </div>
-                <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>11 Jan 2023</h1>
                 <div className='mt-2 justify-center flex flex-col'>
                     <h1 className="md:text-2xl text-lg font-bold" style={{ 'color': '#315ED2' }}>{props.prod.price} Rs.</h1>
                     <button className=" btn mt-3 cursor-pointer w-fit px-7 py-3 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" onClick={(e) => {
