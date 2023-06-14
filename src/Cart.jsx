@@ -177,12 +177,12 @@ function Cart() {
                     </div>
                 </div>
                 <div className="w-full relative py-[2vw] bg-white z-10">
-                    <div className="items-quantity mb-5 text-white sm:text-black sticky sm:relative top-20 sm:top-0 bg-[#315ED2] sm:bg-white py-2 sm:py-5 flex items-center justify-center gap-5">
-                        <div className=' flex items-center gap-3 border-r-2 px-5'>
+                    <div className="items-quantity px-5 mb-5 text-white sm:text-black sticky sm:relative top-20 sm:top-0 bg-[#315ED2] sm:bg-white py-2 sm:py-5 flex items-center justify-center gap-5">
+                        <div className=' flex items-center gap-3 border-r-2 pr-5'>
                             <h1 className="text-3xl font-bold" >{items.length}</h1>
                             <h1 className="text-lg font-semibold" >Items</h1>
                         </div>
-                        <div className='w-fit flex flex-wrap items-center gap-5'>
+                        <div className='w-fit flex flex-wrap items-center sm:gap-5'>
                             <h2 className="text-lg sm:text-3xl font-bold">Total Rs. {total_price} </h2>
                             <button onClick={(e) => {
                                 e.preventDefault();
@@ -191,7 +191,7 @@ function Cart() {
                                     return;
                                 }
                                 navigate('/deliveryaddress', { state: { "totalAmount": total_price } });
-                            }} className="btn cursor-pointer w-fit px-2 sm:px-5 py-3 bg-white border-2 border-[#315ED2] hover:bg-transparent hover:border-white text-[#315ED2] hover:text-white  font-bold rounded-full">
+                            }} className="btn cursor-pointer w-fit px-2 sm:px-5 py-3 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:border-white text-[#315ED2] hover:text-white  font-bold rounded-full">
                                 Proceed to Buy
                             </button>
                         </div>
