@@ -29,6 +29,8 @@ import Refund from './Refund';
 import Faq from './Faq';
 import Disclaimer from './Disclaimer';
 import Customers from './Customers';
+import SignupSuccess from './signupSuccess';
+import Dashboard from './dashboard';
 import retailer from './assets/Singh Retail banner (2).jpg';
 // import Partner from './Partner';
 
@@ -68,6 +70,9 @@ function App() {
           <Route path="/faq" element={<Faq />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/customers" element={<Customers />} />
+          <Route path="/signupSuccess" element={<SignupSuccess />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          
           <Route path="./assets/Singh Retail banner (2).jpg" element={<retailer />} />
           {/* <Route path="./assets/navbar 1-04 2.png" element={<navimg />} /> */}
           {/* <Route path="/partner" element={<Partner />} /> */}

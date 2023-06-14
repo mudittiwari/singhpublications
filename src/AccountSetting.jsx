@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import playstore from './assets/undraw_settings_tab_mgiw.svg';
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import app from './Firebase';
 function AccountSetting() {
@@ -22,8 +23,9 @@ function AccountSetting() {
     return (
         <>
             <div className="billing min-h-5/6  grid grid-cols-1 lg:grid-cols-2 items-center">
-                <div className="welcome-singh h-full p-[3vw] w-full flex justify-center items-center text-white bg-[#315ED2]">
-                    <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">Welcome To <br /> Singh Publication</h1>
+                <div className="welcome-singh h-full p-[3vw] w-full flex flex-col justify-center items-center text-white bg-[#315ED2]">
+                    <div className="svg"><img src={playstore} className="w-1/2 mx-auto" alt="..."></img></div>
+                    <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">Here you can change your<br />Account Preferance</h1>
                 </div>
                 <div className="billing-form flex items-center w-full px-[5vw] py-[2vw] bg-white">
                     <form action="" className="mx-auto w-full grid p-[3vw] rounded-md shadow-2xl">

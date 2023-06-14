@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import playstore from './assets/undraw_mobile_payments_re_7udl.svg';
 import LoadingBar from "./comps/Loadingbar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -42,7 +43,8 @@ function Signup() {
                 theme="dark"
             />
             <div className="sign-up min-h-5/6  grid grid-cols-1 lg:grid-cols-2 items-center">
-                <div className="welcome-singh h-full p-[3vw] w-full flex justify-center items-center text-white bg-[#315ED2]">
+                <div className="welcome-singh h-full p-[3vw] w-full flex flex-col justify-center items-center text-white bg-[#315ED2]">
+                    <div className="svg"><img src={playstore} className="w-1/2 mx-auto" alt="..."></img></div>
                     <h1 className="text-5xl pb-2  w-fit border-b-4 mx-auto border-white font-medium text-center my-5 md:my-10 leading-[4rem]">
                         Welcome To <br /> Singh Publication
                     </h1>
@@ -269,7 +271,8 @@ function Signup() {
                                         .then((res) => {
                                             setLoading(false);
                                             if (res.data === "success") {
-                                                navigate("/login");
+                                                // navigate("/login");
+                                                navigate("/signupSuccess");
                                             }
                                         })
                                         .catch((err) => {

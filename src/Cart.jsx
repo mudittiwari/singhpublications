@@ -4,6 +4,7 @@ import book from './assets/book.png';
 import star from './assets/star.png';
 import { useState } from 'react';
 import axios from 'axios';
+import playstore from './assets/undraw_empty_cart_co35.svg';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import app from './Firebase';
@@ -11,7 +12,7 @@ import LoadingBar from './comps/Loadingbar';
 function BookComp(props) {
     const navigate = useNavigate();
     return (
-        <div className=' my-10 mx-2 rounded-xl p-5 flex flex-wrap justify-center gap-5' style={{ 'border': '1px solid #315ED2', }} >
+        <div className=' mx-2 rounded-xl p-5 flex flex-wrap justify-center gap-5' style={{ 'border': '1px solid #315ED2', }} >
             <img src={props.prod.image_url} className="w-40 mx-auto" alt="" onClick={(e) => {
                 e.preventDefault();
                 navigate('/product', { state: props.prod })
@@ -35,7 +36,7 @@ function BookComp(props) {
                     </div>
                     <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>11 Jan 2023</h1>
                 </div>
-                <div className='mt-2 justify-center flex flex-col'>
+                <div className='mt-5 flex flex-wrap items-center justify-around gap-2 pt-1 border-t-2'>
                     <h1 className="md:text-2xl text-lg font-bold" style={{ 'color': '#315ED2' }}>{props.prod.price} Rs.</h1>
                     <button className=" btn mt-3 cursor-pointer w-fit px-7 py-3 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" onClick={(e) => {
                         // console.log(user.accessToken);
@@ -128,10 +129,31 @@ function Cart() {
     return (
         <>
             {loading && <LoadingBar />}
-            <div className='w-full my-10 flex justify-center'>
-                <div className=' w-full flex justify-center flex-col items-center flex-wrap' >
-                    <h1 className="text-5xl w-max font-medium my-" style={{ 'color': '#315ED2' }}>Cart</h1>
-                    <div className='w-full flex justify-center flex-wrap'>
+            {/* <div className='w-full px-5'>
+                <div className=' w-full min-h-[100vh] py-10 relative grid grid-cols-1 md:grid-cols-2 items-center' >
+                    <div className='w-full h-fit sticky top-28 rounded-xl p-5 text-white text-center flex flex-col items-center bg-[#315ED2]'>
+                        <h1 className="text-5xl font-medium text-center">Cart</h1>
+                        <div className='mt-10'>
+                            <h1 className="text-3xl font-bold" >{items.length}</h1>
+                            <h1 className="text-lg font-semibold" >Items</h1>
+                        </div>
+                        <div className='w-fit'>
+                            <h2 className="text-lg sm:text-3xl font-bold">Total Rs. {total_price} </h2>
+                            <button onClick={(e) => {
+                                e.preventDefault();
+                                if (items.length == 0) {
+                                    alert("No items in cart");
+                                    return;
+                                }
+                                navigate('/deliveryaddress', { state: { "totalAmount": total_price } });
+                            }} className=" btn mt-5 cursor-pointer w-fit px-2 sm:px-5 py-4 bg-white border-2 border-[#315ED2] hover:bg-transparent hover:border-white text-[#315ED2] hover:text-white  font-bold rounded-full">
+                                Proceed to Buy
+                            </button>
+
+                        </div>
+
+                    </div>
+                    <div className='w-full flex justify-center flex-wrap  gap-10'>
                         {
                             items.length != 0 ?
                                 items.map((item, index) => {
@@ -142,10 +164,26 @@ function Cart() {
                                 ) : <h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': 'gray' }}>No item in Cart</h1>
                         }
                     </div>
-                    <div className='my-4 mx-2 max-w-xs w-full rounded-xl p-3 relative flex items-center justify-around' style={{ 'border': '1px solid #315ED2' }} >
 
-                        <div className='w-auto flex flex-col items-center'>
-                            <h1 className="text-3xl font-bold" style={{ 'color': '#315ED2' }}>{total_price} <span className="text-3xl font-medium" style={{ 'color': '#315ED2' }}>Rs. Total</span> </h1>
+                </div>
+            </div> */}
+
+
+            <div className="log-in min-h-5/6  grid grid-cols-1 lg:grid-cols-2 items-center">
+                <div className="welcome-singh h-full p-[3vw] w-full flex justify-center items-center text-[#315ED2] sm:text-white sm:bg-[#315ED2]">
+                    <div className="text text-center">
+                        <div className="svg hidden sm:block"><img src={playstore} className="w-1/2 mx-auto" alt="..."></img></div>
+                        <h1 className="text-5xl font-medium text-center mt-5">Cart</h1>
+                    </div>
+                </div>
+                <div className="w-full relative py-[2vw] bg-white z-10">
+                    <div className="items-quantity mb-5 text-white sm:text-black sticky sm:relative top-20 sm:top-0 bg-[#315ED2] sm:bg-white py-2 sm:py-5 flex items-center justify-center gap-5">
+                        <div className=' flex items-center gap-3 border-r-2 px-5'>
+                            <h1 className="text-3xl font-bold" >{items.length}</h1>
+                            <h1 className="text-lg font-semibold" >Items</h1>
+                        </div>
+                        <div className='w-fit flex flex-wrap items-center gap-5'>
+                            <h2 className="text-lg sm:text-3xl font-bold">Total Rs. {total_price} </h2>
                             <button onClick={(e) => {
                                 e.preventDefault();
                                 if (items.length == 0) {
@@ -153,20 +191,26 @@ function Cart() {
                                     return;
                                 }
                                 navigate('/deliveryaddress', { state: { "totalAmount": total_price } });
-                            }} className=" btn mt-10 cursor-pointer w-fit px-5 py-4 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">
+                            }} className="btn cursor-pointer w-fit px-2 sm:px-5 py-3 bg-white border-2 border-[#315ED2] hover:bg-transparent hover:border-white text-[#315ED2] hover:text-white  font-bold rounded-full">
                                 Proceed to Buy
                             </button>
-
                         </div>
-                        <div style={{ 'width': "1px", 'height': '80%', 'backgroundColor': '#315ED2' }}></div>
-                        <div className='h-full w-auto justify-center flex flex-col items-center'>
-                            <h1 className="text-3xl font-bold" style={{ 'color': '#315ED2' }}>{items.length}</h1>
-                            <h1 className="text-lg font-semibold" style={{ 'color': '#315ED2' }}>Items</h1>
-
-                        </div>
+                    </div>
+                    <div className='w-full flex justify-center flex-wrap  gap-10'>
+                        {
+                            items.length != 0 ?
+                                items.map((item, index) => {
+                                    return (
+                                        <BookComp setloading={setloading} key={index} prod={item} user={user} setuser={setuser} getitems={getitems} />
+                                    )
+                                }
+                                ) : <h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': 'gray' }}>No item in Cart</h1>
+                        }
                     </div>
                 </div>
             </div>
+
+
         </>
     );
 }
