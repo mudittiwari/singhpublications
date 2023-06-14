@@ -292,34 +292,34 @@ function Home() {
                     </Carousel>
 
                 </div>
-                <div className="services px-[5vw] mt-5">
-                    <div className="card py-10 px-5  text-center rounded-3xl shadow-2xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-around gap-5">
+                <div className="services  mt-5">
+                    <div className="card py-10 px-5  text-center   bg-[#315ED2] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-around gap-5">
                         <div className="box">
-                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[#315ED2]"><i class="fa-solid fa-book-open"></i></div>
+                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[white]"><i class="fa-solid fa-book-open"></i></div>
                             <div className="content">
-                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl">Read books online</h2>
-                                <p>OVER MILLIONS OF BOOKS</p>
+                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl text-[white]">Read Books Online</h2>
+                                <p class="text-[white]">Fresh Book Collection</p>
                             </div>
                         </div>
                         <div className="box">
-                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[#315ED2]"><i class="fa-solid fa-book-open-reader"></i></div>
+                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[white]"><i class="fa-solid fa-book-open-reader"></i></div>
                             <div className="content">
-                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl">Latest Books</h2>
-                                <p>ALL Competitive Exams</p>
+                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl text-[white]">Latest Books</h2>
+                                <p class="text-[white]">All Catagories</p>
                             </div>
                         </div>
                         <div className="box">
-                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[#315ED2]"><i class="fa-solid fa-truck"></i></div>
+                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[white]"><i class="fa-solid fa-truck"></i></div>
                             <div className="content">
-                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl">Fastest Delivery</h2>
-                                <p>DELIVERY WITHIN 3-4 WORKING DAYS</p>
+                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl text-[white]">Fastest Delivery</h2>
+                                <p class="text-[white]">DELIVERY WITHIN 5-7 WORKING DAYS</p>
                             </div>
                         </div>
                         <div className="box">
-                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[#315ED2]"><i class="fa-sharp fa-solid fa-shield-halved"></i></div>
+                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[white]"><i class="fa-sharp fa-solid fa-shield-halved"></i></div>
                             <div className="content">
-                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl">SECURED PAYMENT</h2>
-                                <p>SECURED TRANSACTION</p>
+                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl text-[white]">SECURED PAYMENT</h2>
+                                <p class="text-[white]">SECURED TRANSACTION</p>
                             </div>
                         </div>
                     </div>

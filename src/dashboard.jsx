@@ -43,7 +43,7 @@ function Dashboard() {
                             navigate('/');
                         }}>
                             <div className="icon w-fit mx-auto p-3 sm:p-9 text-4xl sm:text-8xl text-[#315ED2]"><i class="fa-solid fa-user"></i></div>
-                            <h2 className="text-2xl">---------------</h2>
+                            <h2 className="text-2xl">Account Settings</h2>
                         </div>
                     </div>
                 </div>
