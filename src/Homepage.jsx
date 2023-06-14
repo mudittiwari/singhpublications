@@ -292,6 +292,38 @@ function Home() {
                     </Carousel>
 
                 </div>
+                <div className="services px-[5vw] mt-5">
+                    <div className="card py-10 px-5  text-center rounded-3xl shadow-2xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-around gap-5">
+                        <div className="box">
+                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[#315ED2]"><i class="fa-solid fa-book-open"></i></div>
+                            <div className="content">
+                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl">Read books online</h2>
+                                <p>OVER MILLIONS OF BOOKS</p>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[#315ED2]"><i class="fa-solid fa-book-open-reader"></i></div>
+                            <div className="content">
+                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl">Latest Books</h2>
+                                <p>ALL Competitive Exams</p>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[#315ED2]"><i class="fa-solid fa-truck"></i></div>
+                            <div className="content">
+                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl">Fastest Delivery</h2>
+                                <p>DELIVERY WITHIN 3-4 WORKING DAYS</p>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="icon w-fit mx-auto p-3 sm:p-2 text-4xl sm:text-8xl text-[#315ED2]"><i class="fa-sharp fa-solid fa-shield-halved"></i></div>
+                            <div className="content">
+                                <h2 className="text-xl font-semibold mb-1 lg:text-2xl">SECURED PAYMENT</h2>
+                                <p>SECURED TRANSACTION</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="w-full ">
                     <h1 className="text-5xl font-medium text-center my-5 md:my-10" style={{ 'color': '#315ED2' }}>About The Director</h1>
                     <div className='w-full h-max px-5 md:px-10 justify-center  flex flex-col lg:flex-row sm:flex-col md:flex-col items-center gap-10 my-5 md:my-10'>
@@ -368,6 +400,7 @@ function Home() {
                     }} className='w-full'><img src={retailer} alt="" className='w-full' /></button>
                 </div>
             </div>
+
         </>
     );
 }

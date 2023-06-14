@@ -13,19 +13,19 @@ function Footer() {
     return (
         <>
             <div className="footer list-none px-[3vw] xl:px-[6vw]">
-                <div className="menu grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  my-10">
-                    <div className="company py-3 sm:py-10">
+                <div className="menu grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-10">
+                    <div className="company py-3 sm:py-5">
                         <h2 className='text-2xl font-bold'>Company</h2>
-                        <div className="list mt-5 text-lg text-gray-500 grid gap-1">
-                            <div className="py-2 cursor-pointer" onClick={(e) => {
+                        <div className="list mt-3 text-lg text-gray-500 grid gap-1">
+                            <div className=" cursor-pointer" onClick={(e) => {
                                 e.preventDefault();
                                 navigate('/about');
                             }}><h2 className="">About Us</h2> </div>
-                            <div className="py-2 cursor-pointer"><h2 className="" onClick={(e) => {
+                            <div className=" cursor-pointer"><h2 className="" onClick={(e) => {
                                 e.preventDefault();
                                 navigate('/careers');
                             }}>Careers</h2> </div>
-                            <div className="py-2 cursor-pointer" onClick={(e) => {
+                            <div className=" cursor-pointer" onClick={(e) => {
                                 e.preventDefault();
                                 navigate('/contact');
                             }}><h2 className="">Contact Us</h2> </div>
@@ -40,35 +40,35 @@ function Footer() {
 
                         </div>
                     </div> */}
-                    <div className="Terms py-3 sm:py-10">
+                    <div className="Terms py-3 sm:py-5">
                         <h2 className='text-2xl font-bold'>Terms Of Use</h2>
-                        <div className="list mt-5 text-lg text-gray-500 grid gap-1">
+                        <div className="list mt-3 text-lg text-gray-500 grid gap-1">
                             <div onClick={(e) => {
                                 e.preventDefault();
                                 navigate('/t&c');
-                            }} className="py-2 cursor-pointer"><h2 className="">Terms & Conditions</h2> </div>
+                            }} className=" cursor-pointer"><h2 className="">Terms & Conditions</h2> </div>
                             <div onClick={(e) => {
                                 e.preventDefault();
                                 navigate('/refund');
-                            }} className="py-2 cursor-pointer"><h2 className="">Return & Refund Policy</h2> </div>
+                            }} className=" cursor-pointer"><h2 className="">Return & Refund Policy</h2> </div>
                             <div onClick={(e) => {
                                 e.preventDefault();
                                 navigate('/privacypolicy');
-                            }} className="py-2 cursor-pointer"><h2 className="">Privacy Policy</h2> </div>
+                            }} className=" cursor-pointer"><h2 className="">Privacy Policy</h2> </div>
                             <div onClick={(e) => {
                                 e.preventDefault();
                                 navigate('/disclaimer');
-                            }} className="py-2 cursor-pointer"><h2 className="">Disclaimer</h2> </div>
+                            }} className=" cursor-pointer"><h2 className="">Disclaimer</h2> </div>
                             <div onClick={(e) => {
                                 e.preventDefault();
                                 navigate('/faq');
-                            }} className="py-2 cursor-pointer"><h2 className="">FAQ's</h2> </div>
+                            }} className=" cursor-pointer"><h2 className="">FAQ's</h2> </div>
 
                         </div>
                     </div>
-                    <div className="subscribe p-10 text-white bg-blue-400 rounded-3xl">
+                    <div className="subscribe p-5 text-white bg-blue-400 rounded-3xl">
                         <h3 className='text-2xl font-bold'>Subscribe</h3>
-                        <div className="email flex text-lg text-gray-500 mt-5 ">
+                        <div className="email flex text-lg text-gray-500 mt-3 ">
                             <input type="email" value={email} onChange={(e) => { e.preventDefault(); setEmail(e.target.value) }} className='w-3/4 py-3 pl-3 rounded-l-md' placeholder='Email address' />
                             <button onClick={(e) => {
                                 e.preventDefault();

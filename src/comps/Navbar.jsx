@@ -97,13 +97,13 @@ function Navbar() {
         setState({ ...state, [anchor]: open });
     };
     const list = (anchor) => (
-        <Box className="p-3 h-full lg:hidden overflow-hidden " style={{ 'backgroundColor': 'white' }}
+        <Box className=" h-full lg:hidden overflow-hidden " style={{ 'backgroundColor': 'white' }}
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 280 }}
             role="presentation"
         >
 
 
-            <div className="flex flex-col">
+            <div className="flex flex-col relative text-2xl">
                 {/* <img src={navimg} alt="" className="w-full" /> */}
                 <img src={require("../assets/navbar 1-04 2.png")} alt="" srcset="" />
 
@@ -170,7 +170,7 @@ function Navbar() {
                     </Box>
 
                     <Box onClick={toggleDrawer(anchor, false)}>
-                        <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
+                        <div className="flex justify-start w-full cursor-pointer absolute bottom-0 pt-2 border-t-2 hover:text-white hover:bg-slate-400" onClick={(e) => {
                             // e.preventDefault();
                             // localStorage.removeItem("pubuser");
                             // auth.signOut();
@@ -229,10 +229,6 @@ function Navbar() {
 
 
 
-
-
-
-
                 <Modal showModal={showModal} setShowModal={setShowModal} logout={logout} />
                 <div className="lg:hidden block navbar">
                     {['left'].map((anchor) => (
@@ -273,7 +269,7 @@ function Navbar() {
                     <div className="logo w-fit">
                         <Link to="/"><img src={Logo} className=" w-32"></img></Link>
                     </div>
-                    <div className="list  text-lg font-bold flex flex-wrap gap-4 justify-center items-center">
+                    <div className="list text-base xl:text-lg font-bold flex flex-wrap gap-4 justify-center items-center">
 
                         <div className="cursor-pointer" onClick={(e) => {
                             e.preventDefault();
@@ -286,7 +282,7 @@ function Navbar() {
                         {localStorage.getItem('pubuser') != null ? <div className="cursor-pointer" onClick={(e) => {
                             e.preventDefault();
                             navigate('/books');
-                        }}> <li className='active:border-[#315ed2] px-2 py-2 border-b-4 border-transparent hover:border-slate-400 duration-300'>Books</li> </div> : null}
+                        }}> <li className='active:border-[#315ed2] px-2 py-2 border-b-4 border-transparent hover:border-slate-400 duration-300'>My E-Books</li> </div> : null}
                         <div className="cursor-pointer" ><a href="https://play.google.com/store/games?pcampaignid=MKT-EDR-apac-in-1003227-med-hasem-py-Evergreen-Oct0121-Text_Search_BKWS-BKWS%7CONSEM_kwid_43700065205026415_creativeid_535350509927_device_c"><li className='active:border-[#315ed2] px-2 py-2 border-b-4 border-transparent hover:border-slate-400 duration-300'>Mobile App</li></a>  </div>
                         <div className="cursor-pointer" onClick={(e) => {
                             e.preventDefault();

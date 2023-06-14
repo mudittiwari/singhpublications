@@ -47,7 +47,7 @@ function Product() {
                 pauseOnHover
                 theme="dark"
             />
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 mt-10">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mt-10">
                 <div className="w-full flex flex-col items-center p-8" style={{ 'borderRight': '1px solid #777777' }}>
                     <div>
                         <img className="w-80" src={location.state.image_url} alt="" />
@@ -66,7 +66,7 @@ function Product() {
                             {user != null && user.wishlist.includes(location.state.id) ?
                                 <button type="button" onClick={(e) => {
                                     toast.info("Product already in wishlist");
-                                }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[red] text-2xl" style={{ 'border-radius': '100px;' }}><i className="fa-solid fa-heart"></i></button> : <button type="button" onClick={(e) => {
+                                }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[red] text-2xl rounded-[50%]" ><i className="fa-solid fa-heart"></i></button> : <button type="button" onClick={(e) => {
                                     let user = JSON.parse(localStorage.getItem('pubuser'));
                                     e.preventDefault();
                                     if (user) {
@@ -103,7 +103,7 @@ function Product() {
                                     else {
                                         navigate('/login');
                                     }
-                                }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[#777777] text-2xl" style={{ 'border-radius': '100px' }}><i className="fa-regular fa-heart"></i></button>
+                                }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[#777777] text-2xl"><i className="fa-regular fa-heart"></i></button>
                             }
                         </div>
 
@@ -243,11 +243,11 @@ function Product() {
                         </button>
                     </div>
                 </div>
-                <div className="w-full flex flex-col justify-start p-8">
+                <div className="w-full flex flex-col xl:col-span-3 justify-start p-8">
                     <h1 className="text-2xl font-medium mb-3" style={{ 'color': '#315ED2' }}>Book Description</h1>
                     <h1 className="text-justify">{location.state.description}</h1>
                     <h1 className="text-2xl font-medium mb-3 mt-5" style={{ 'color': '#315ED2' }}>Book Description</h1>
-                    <div className="flex flex-wrap gap-5">
+                    <div className="flex flex-wrap w-1/2 justify-between gap-5">
                         <div className="">
                             <h1 className="text-base font-medium mb-0 mx-0 mt-0">Author: <span className="font-normal"> {location.state.author}</span></h1>
                             <h1 className="text-base font-medium mb-0 mx-0 mt-0">Publisher: <span className="font-normal">{location.state.publisher}</span></h1>
