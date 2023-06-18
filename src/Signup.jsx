@@ -256,29 +256,20 @@ function Signup() {
                                         return;
                                     }
                                     setLoading(true);
-                                    axios.post("https://singhpublications.onrender.com/api/user/register",
-                                        {
-                                            firstname: firstName,
-                                            lastname: lastName,
-                                            email: email,
-                                            gender: gender,
-                                            dob: birthDate,
-                                            mobile: mobileNumber,
-                                            password: password,
-                                            password2: password2,
-                                        }
-                                    )
-                                        .then((res) => {
-                                            setLoading(false);
-                                            if (res.data === "success") {
-                                                // navigate("/login");
-                                                navigate("/signupSuccess");
-                                            }
-                                        })
-                                        .catch((err) => {
-                                            setLoading(false);
-                                            alert("error");
-                                        });
+                                    axios.post("https://singhpublications.onrender.com/api/user/signupverification",{
+                                        email: email,
+                                    }).then((res) => {
+                                        setLoading(false);
+                                       if(res.status==200)
+                                       {
+                                        navigate("/signupverification", { state: { otp: res.data,email:email,firstName,lastName,gender,birthDate,mobileNumber,password,password2 } });
+                                       }
+
+                                    }).catch((err) => {
+                                        setLoading(false);
+                                        console.log(err);
+                                    });
+                                    
                                 }}
                                 className="w-fit px-14 py-4 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full uppercase"
                             > Register

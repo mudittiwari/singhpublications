@@ -3,16 +3,22 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import playstore from './assets/undraw_login_re_4vu2.svg';
 import LoadingBar from "./comps/Loadingbar";
+import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
 
-function Login() {
+function Resetpassword() {
     const navigate = useNavigate();
-    const [email, setEmail] = React.useState("");
+    function isAlphanumericPassword(str) {
+        return /^(?=.*[a-zA-Z])(?=.*\d).+$/.test(str);
+    }
+    const location=useLocation();
     const [password, setPassword] = React.useState("");
+    const [password2, setPassword2] = React.useState("");
     const [loading, setloading] = React.useState(false);
+    const [email, setEmail] = React.useState("");
     useEffect(() => {
         document.title = 'Singh Publication | Login';
     }, []);
@@ -39,51 +45,14 @@ function Login() {
                 <div className="log-in-form flex items-center w-full px-[5vw] py-[2vw] bg-white">
                     <form action="" className="mx-auto w-full grid gap-[3vw] p-[1vw] rounded-md shadow-2xl">
                         <div className="text">
-                            <h1 className="py-5 text-6xl font-semibold">Log In</h1>
+                            <h1 className="py-5 text-6xl font-semibold">Reset Your Password</h1>
                         </div>
                         <div className="input grid gap-5">
-                            <div className="">
-                                <label htmlFor="email" className="block mb-2 text-lg ">Email Address</label>
-
-                                <input value={email} onChange={(e) => {
-                                    e.preventDefault();
-                                    setEmail(e.target.value);
-                                }} className="w-full px-3 py-5 bg-amber-100 rounded-md" type="email" id="email" placeholder="Email Address"
-                                    style={{
-
-                                    }}
-                                />
-                            </div>
+                            
                             <div className="">
                                 <div className="flex justify-between mb-2">
                                     <label htmlFor="password" className="text-lg ">Password</label>
-                                    <h1 className="text-lg focus:outline-none" onClick={() => {
-                                        if (email.trim() === "") {
-                                            toast.warning("Please enter your email first");
-                                            return;
-                                        }
-                                        setloading(true);
-                                        axios.post("https://singhpublications.onrender.com/api/user/forgetpassword",
-                                            {
-
-                                                email: email,
-
-                                            }
-                                        )
-                                            .then((res) => {
-                                                setloading(false);
-                                                console.log(res);
-                                                if (res.status == 200) {
-                                                    navigate("/forgetpassword", { state: { email: email,otp:res.data } });
-                                                }
-                                            })
-                                            .catch((err) => {
-                                                setloading(false);
-                                                alert("error");
-                                            });
-
-
-                                    }}>Forgot password?</h1>
+                                    
                                 </div>
 
                                 <input value={password} onChange={(e) => {
@@ -96,38 +65,54 @@ function Login() {
 
                                 />
                             </div>
+                            <div className="">
+                                <div className="flex justify-between mb-2">
+                                    <label htmlFor="password2" className="text-lg ">Confirm Password</label>
+                                    
+                                </div>
+
+                                <input value={password2} onChange={(e) => {
+                                    e.preventDefault();
+                                    setPassword2(e.target.value);
+                                }} className="w-full px-3 py-5  bg-amber-100 rounded-md"
+                                    type="password"
+                                    placeholder="Confirm Password"
+                                    name="password2" id="password2"
+
+                                />
+                            </div>
                         </div>
 
                         <div className="flex justify-center">
 
                             <button onClick={(e) => {
                                 e.preventDefault();
-                                if (email.trim() === "") {
-                                    toast.warning("Email is required");
+                                if(location.state.email===undefined){
+                                    toast.warning("Something is wrong! Kindly check your EMAIL or PASSWORD.");
+                                    return;
+                                } 
+                                if(password!==password2){
+                                    toast.warning("Passwords do not match!");
                                     return;
                                 }
-                                if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
-                                    toast.warning('Please enter a valid email');
-                                    return;
-                                }
-                                if (password.trim() === "") {
-                                    toast.warning("Password is required");
+                                if(!isAlphanumericPassword(password)){
+                                    toast.warning("Password must contain at least one letter and one number!");
                                     return;
                                 }
                                 setloading(true);
-                                axios.post("https://singhpublications.onrender.com/api/user/login", {
-                                    email: email,
+                                axios.post("https://singhpublications.onrender.com/api/user/resetpassword", {
+                                    email: location.state.email,
                                     // mobileNumber: mobileNumber,
-                                    password: password,
+                                    newpassword: password,
                                 }).then((res) => {
                                     console.log(res);
                                     setloading(false);
                                     if (res.status === 200) {
                                         // localStorage.setItem("pubuser", JSON.stringify(res.data));
                                         // console.log(localStorage.getItem("pubuser"));
-                                        navigate("/otp", { state: { phone: res.data.phone_number, user: res.data } });
+                                        navigate("/login",);
                                     } else {
-                                        alert("Invalid Credentials");
+                                        toast.warning("Something is wrong! Kindly check your EMAIL or PASSWORD.");
                                     }
                                 }).catch((err) => {
                                     setloading(false);
@@ -137,7 +122,7 @@ function Login() {
                                 )
 
                             }} className="w-fit px-14 py-4 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full">
-                                Log In
+                                Submit
                             </button>
                         </div>
                         <p className="text-lg text-center text-gray-400 flex w-fit mx-auto">Don&#x27;t have an account yet? <button onClick={(e) => {
@@ -154,4 +139,4 @@ function Login() {
         </>
     );
 }
-export default Login;
+export default Resetpassword;
