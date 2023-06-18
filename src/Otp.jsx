@@ -55,7 +55,7 @@ function Otp() {
         let code = one + two + three + four + five + six;
         result.confirm(code).then((result) => {
             localStorage.setItem('pubuser', JSON.stringify(location.state.user));
-            navigate('/')
+            navigate('/dashboard')
         }).catch((error) => {
             console.log(error);
         });

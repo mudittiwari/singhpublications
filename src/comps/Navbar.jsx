@@ -71,6 +71,9 @@ function Modal(props) {
 function Navbar() {
     const navigate = useNavigate();
     const auth = getAuth(app);
+    const url=window.location.href;
+    const ind=url.lastIndexOf('/');
+    const page=url.slice(ind+1);
     const [state, setState] = useState({
         // top: false,
         left: false,
@@ -88,7 +91,6 @@ function Navbar() {
         });
 
     }
-    console.log(window.location.href);
     const toggleDrawer = (anchor, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
@@ -108,21 +110,21 @@ function Navbar() {
                 <img src={require("../assets/navbar 1-04 2.png")} alt="" srcset="" />
 
                 <Box onClick={toggleDrawer(anchor, false)}>
-                    <div className="flex justify-start cursor-pointer text-white bg-[#315ED2]" onClick={(e) => {
+                    <div className="flex justify-start cursor-pointer" style={{'backgroundColor':page==''?'#315ed2':'white','color':page==''?'white':'black'}} onClick={(e) => {
                         e.preventDefault();
                         navigate('/');
                     }}><h3 className=" mx-2 font-semibold py-2" ><i className="fa-solid fa-house mr-2"></i>Home</h3> </div>
                 </Box>
 
                 <Box onClick={toggleDrawer(anchor, false)}>
-                    <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
+                    <div className="flex justify-start cursor-pointer" style={{'backgroundColor':page=='about'?'#315ed2':'white','color':page=='about'?'white':'black'}} onClick={(e) => {
                         e.preventDefault();
                         navigate('/about');
                     }}><h3 className=" mx-2 font-semibold py-2" ><i className="fa-solid fa-address-card mr-2"></i>About Us</h3> </div>
                 </Box>
 
                 <Box onClick={toggleDrawer(anchor, false)}>
-                    <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
+                    <div className="flex justify-start cursor-pointer" style={{'backgroundColor':page=='contact'?'#315ed2':'white','color':page=='contact'?'white':'black'}} onClick={(e) => {
                         e.preventDefault();
                         navigate('/contact');
                     }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-phone mr-2"></i>Contact Us</h3> </div>
@@ -133,7 +135,7 @@ function Navbar() {
                 </Box>
 
                 <Box onClick={toggleDrawer(anchor, false)}>
-                    <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
+                    <div className="flex justify-start cursor-pointer" style={{'backgroundColor':page=='careers'?'#315ed2':'white','color':page=='careers'?'white':'black'}} onClick={(e) => {
                         e.preventDefault();
                         navigate('/careers');
                     }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-arrow-up-right-dots mr-2"></i>Careers</h3> </div>
@@ -143,40 +145,46 @@ function Navbar() {
             {
                 localStorage.getItem('pubuser') != null ? <ul className="flex flex-col">
                     <Box onClick={toggleDrawer(anchor, false)}>
-                        <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
+                        <div className="flex justify-start cursor-pointer" style={{'backgroundColor':page=='dashboard'?'#315ed2':'white','color':page=='dashboard'?'white':'black'}} onClick={(e) => {
+                            e.preventDefault();
+                            navigate('/dashboard');
+                        }}><h3 className="mx-2 font-semibold text-2xl py-2" ><i className="fa-solid fa-cart-shopping mr-2"></i>Dashboard</h3> </div>
+                    </Box>
+                    <Box onClick={toggleDrawer(anchor, false)}>
+                        <div className="flex justify-start cursor-pointer" style={{'backgroundColor':page=='cart'?'#315ed2':'white','color':page=='cart'?'white':'black'}} onClick={(e) => {
                             e.preventDefault();
                             navigate('/cart');
-                        }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-cart-shopping mr-2"></i>Cart</h3> </div>
+                        }}><h3 className="mx-2 font-semibold text-2xl py-2" ><i className="fa-solid fa-cart-shopping mr-2"></i>Cart</h3> </div>
                     </Box>
 
                     <Box onClick={toggleDrawer(anchor, false)}>
-                        <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
+                        <div className="flex justify-start cursor-pointer" style={{'backgroundColor':page=='Wishlist'?'#315ed2':'white','color':page=='Wishlist'?'white':'black'}} onClick={(e) => {
                             e.preventDefault();
                             navigate('/Wishlist');
-                        }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-heart mr-2"></i>Wishlist</h3> </div>
+                        }}><h3 className="mx-2 font-semibold text-2xl  py-2" ><i className="fa-solid fa-heart mr-2"></i>Wishlist</h3> </div>
                     </Box>
                     <Box onClick={toggleDrawer(anchor, false)}>
-                        <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
+                        <div className="flex justify-start cursor-pointer " style={{'backgroundColor':page=='orders'?'#315ed2':'white','color':page=='orders'?'white':'black'}} onClick={(e) => {
                             e.preventDefault();
                             navigate('/orders');
-                        }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-cube mr-2"></i>Orders</h3> </div>
+                        }}><h3 className="mx-2 font-semibold text-2xl  py-2" ><i className="fa-solid fa-cube mr-2"></i>Orders</h3> </div>
                     </Box>
 
                     <Box onClick={toggleDrawer(anchor, false)}>
-                        <div className="flex justify-start cursor-pointer hover:text-white hover:bg-slate-400" onClick={(e) => {
+                        <div className="flex justify-start cursor-pointer " style={{'backgroundColor':page=='accountsetting'?'#315ed2':'white','color':page=='accountsetting'?'white':'black'}} onClick={(e) => {
                             e.preventDefault();
                             navigate('/accountsetting');
-                        }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-gear mr-2"></i>Account Settings</h3> </div>
+                        }}><h3 className="mx-2 font-semibold py-2 text-2xl " ><i className="fa-solid fa-gear mr-2"></i>Account Settings</h3> </div>
                     </Box>
 
                     <Box onClick={toggleDrawer(anchor, false)}>
-                        <div className="flex justify-start w-full cursor-pointer absolute bottom-0 pt-2 border-t-2 hover:text-white hover:bg-slate-400" onClick={(e) => {
+                        <div className="flex justify-start w-full cursor-pointer absolute bottom-0 pt-2 border-t-2" onClick={(e) => {
                             // e.preventDefault();
                             // localStorage.removeItem("pubuser");
                             // auth.signOut();
                             // navigate('/');
                             setShowModal(true);
-                        }}><h3 className="mx-2 font-semibold py-2" ><i className="fa-solid fa-arrow-right-from-bracket mr-2"></i>Logout</h3> </div>
+                        }}><h3 className="mx-2 font-semibold py-2 text-2xl " ><i className="fa-solid fa-arrow-right-from-bracket mr-2"></i>Logout</h3> </div>
                     </Box>
 
 
@@ -202,6 +210,7 @@ function Navbar() {
     );
 
     function logout() {
+        console.log("loggin out");
         auth.signOut();
         localStorage.removeItem("pubuser");
         navigate('/');
@@ -270,29 +279,32 @@ function Navbar() {
                         <Link to="/"><img src={Logo} className=" w-32"></img></Link>
                     </div>
                     <div className="list text-base xl:text-lg font-bold flex flex-wrap gap-4 justify-center items-center">
-
+                    {/* #315ed2 */}
                         <div className="cursor-pointer" onClick={(e) => {
                             e.preventDefault();
                             navigate('/');
-                        }}><li className='active:border-[#315ed2] px-2 py-2 border-b-4 text-[#315ed2] border-[#315ed2]'>Home</li> </div>
+                        }}><li className=' px-2 py-2' style={{'color':page==''?'#315ed2':'black','borderBottom':page==''?'2px solid #315ed2':'none'}}>Home</li> </div>
                         <div className="cursor-pointer" onClick={(e) => {
                             e.preventDefault();
                             navigate('/about');
-                        }}><li className='active:border-[#315ed2] px-2 py-2 border-b-4 border-transparent hover:border-slate-400 duration-300'>About Us</li> </div>
+                        }}><li className=' px-2 py-2  ' style={{'color':page=='about'?'#315ed2':'black','borderBottom':page=='about'?'2px solid #315ed2':'none'}}>About Us</li> </div>
                         {localStorage.getItem('pubuser') != null ? <div className="cursor-pointer" onClick={(e) => {
                             e.preventDefault();
                             navigate('/books');
-                        }}> <li className='active:border-[#315ed2] px-2 py-2 border-b-4 border-transparent hover:border-slate-400 duration-300'>My E-Books</li> </div> : null}
-                        <div className="cursor-pointer" ><a href="https://play.google.com/store/games?pcampaignid=MKT-EDR-apac-in-1003227-med-hasem-py-Evergreen-Oct0121-Text_Search_BKWS-BKWS%7CONSEM_kwid_43700065205026415_creativeid_535350509927_device_c"><li className='active:border-[#315ed2] px-2 py-2 border-b-4 border-transparent hover:border-slate-400 duration-300'>Mobile App</li></a>  </div>
+                        }}> <li className='px-2 py-2 '  style={{'color':page=='books'?'#315ed2':'black','borderBottom':page=='books'?'2px solid #315ed2':'none'}} >My E-Books</li> </div> : null}
+                        <div className="cursor-pointer" ><a href="https://play.google.com/store/games?pcampaignid=MKT-EDR-apac-in-1003227-med-hasem-py-Evergreen-Oct0121-Text_Search_BKWS-BKWS%7CONSEM_kwid_43700065205026415_creativeid_535350509927_device_c"><li className='px-2 py-2 '>Mobile App</li></a>  </div>
                         <div className="cursor-pointer" onClick={(e) => {
                             e.preventDefault();
                             navigate('/careers');
-                        }}><li className='active:border-[#315ed2] px-2 py-2 border-b-4 border-transparent hover:border-slate-400 duration-300'>Career</li> </div>
+                        }}><li className='px-2 py-2 ' style={{'color':page=='careers'?'#315ed2':'black','borderBottom':page=='careers'?'2px solid #315ed2':'none'}}>Career</li> </div>
                         <div className="cursor-pointer" onClick={(e) => {
                             e.preventDefault();
                             navigate('/contact');
-                        }}><li className='active:border-[#315ed2] px-2 py-2 border-b-4 border-transparent hover:border-slate-400 duration-300'>Contact Us</li> </div>
-
+                        }}><li className='px-2 py-2' style={{'color':page=='contact'?'#315ed2':'black','borderBottom':page=='contact'?'2px solid #315ed2':'none'}}>Contact Us</li> </div>
+                        {localStorage.getItem('pubuser')!=null?<div className="cursor-pointer" onClick={(e) => {
+                            e.preventDefault();
+                            navigate('/dashboard');
+                        }}><li className='px-2 py-2' style={{'color':page=='dashboard'?'#315ed2':'black','borderBottom':page=='dashboard'?'2px solid #315ed2':'none'}}>Dashboard</li> </div>:null}
                     </div>
                     {localStorage.getItem('pubuser') != null ? <div className="flex items-center relative mr-4" >
                         {/* <div className="rounded-3xl flex items-center p-3 mr-6" style={{ 'border': '1px solid #D1D1D1' }}>

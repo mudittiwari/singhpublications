@@ -1,33 +1,283 @@
-import { useNavigate } from "react-router-dom";
-// import refund from './assets/career.png';
-function Customers() {
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
+import playstore from './assets/undraw_empty_cart_co35.svg';
+import { useNavigate } from 'react-router-dom';
+import { getAuth } from "firebase/auth";
+import app from './Firebase';
+import LoadingBar from './comps/Loadingbar';
+function BookComp(props) {
     const navigate = useNavigate();
     return (
-        <>
-            <div className="w-full relative flex items-center h-[100vh] bg-gray-400 px-[5vw]">
-                {/* <img src={career} className="w-screen" alt="" /> */}
-                <div className="content absolute">
-                <h1 className="text-5xl font-medium" style={{ 'color': '#315ED2' }}>Customers Page</h1>
-                {/* <h1 className="text-4xl font-normal my-5" style={{ 'color': '#777777' }}>Refund.</h1> */}
-                {/* <button onClick={(e) => {
+        <div className='w-full mx-2 shadow-2xl my-3 p-5 flex flex-col sm:flex-row justify-center items-center gap-5 '>
+            <img src={props.prod.image_url} className="h-60" alt="" onClick={(e) => {
+                e.preventDefault();
+                navigate('/product', { state: props.prod })
+            }} />
+            <div className='w-full text-center' >
+                <div onClick={(e) => {
                     e.preventDefault();
-                    navigate('/contact');
+                    navigate('/product', { state: props.prod })
+                }}>
+                    <div className="name">
+                        <h1 className="text-md font-bold" style={{ 'color': '#315ED2' }}>{props.prod.title}</h1>
+                    </div>
 
+                    <h1 className="text-base font-semibold my-2" style={{ 'color': '#777777' }}>{props.prod.category}</h1>
+                    <h1 className="md:text-2xl text-lg font-bold" style={{ 'color': '#315ED2' }}>{props.prod.price} Rs.</h1>
 
+                    {/* <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>{props.prod.subtitle}</h1>
+                    <div className='w-fit mt-1 flex items-center mx-auto'>
+                        <h1 className="text-base font-medium mr-1" style={{ 'color': '#777777' }}>{props.prod.rating}</h1>
+                        <img className='mx-1 w-4' src={star} alt="" />
+                        <img className='mx-1 w-4' src={star} alt="" />
+                        <img className='mx-1 w-4' src={star} alt="" />
+                        <img className='mx-1 w-4' src={star} alt="" />
+                        <img className='mx-1 w-4' src={star} alt="" />
+                    </div>
+                    <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>11 Jan 2023</h1> */}
 
-                }} className=" text-white px-10 py-2 mt-3 rounded-lg focus:outline-none" style={{ 'backgroundColor': "#315ED2" }}>
-                    Join Today
-                </button> */}
                 </div>
-                
+                <div className='mt-5 flex flex-wrap items-center justify-around gap-2 pt-1 border-t-2'>
+                    {/* <h1 className="md:text-2xl text-lg font-bold" style={{ 'color': '#315ED2' }}>{props.prod.price} Rs.</h1> */}
+                    <button className=" btn mt-3 cursor-pointer w-fit px-7 py-3 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" onClick={(e) => {
+                        // console.log(user.accessToken);
+                        props.setloading(true);
+                        e.preventDefault();
+                        axios.post("https://singhpublications.onrender.com/api/user/removefromcart", {
+
+
+                            "product_id": props.prod.id,
+
+                            //how to pass query params and headers in axios
+
+                        }, {
+                            headers: {
+                                'Authorization': `Bearer ${props.user.accessToken}`
+                            },
+                            params: {
+                                'id': props.user.id
+                            }
+                        },).then((res) => {
+                            props.setloading(false);
+                            let newuser = res.data;
+                            newuser['accessToken'] = props.user.accessToken;
+                            localStorage.setItem('pubuser', JSON.stringify(newuser));
+                            props.setuser(newuser);
+                            props.getitems();
+                            // localStorage.setItem('pubuser', JSON.stringify(res.data));
+                        }
+                        ).catch((err) => {
+                            props.setloading(false);
+                            alert("error");
+                            console.log(err);
+                        }
+                        )
+
+                    }}>
+                        Remove
+                    </button>
+                </div>
             </div>
-            <div className="career h-[600px]">
-            <h1 className="text-sm font-medium mx-auto w-3/4 text-center pt-20 md:w-2/3">r</h1>
+            {/* <div style={{ 'width': "1px", 'height': '150px', 'backgroundColor': '#315ED2' }}></div> */}
+        </div>
+    );
+}
+
+function Customers() {
+    const navigate = useNavigate();
+    const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
+    const [loading, setloading] = useState(true);
+    const [items, setitems] = useState([]);
+    const [total_price, settotal_price] = useState(0);
+    async function checkuser() {
+        const auth = getAuth(app);
+        auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+                navigate('/login');
+            }
+
+        });
+    }
+    async function getitems() {
+        let arr = [];
+        let price = 0;
+        setloading(true);
+        console.log(localStorage.getItem('pubuser'));
+        let cart = JSON.parse(localStorage.getItem('pubuser')).cart;
+        console.log(cart);
+        for (let index = 0; index < cart.length; index++) {
+            const element = cart[index];
+            await axios.get(`https://singhpublications.onrender.com/api/product/products`, { params: { id: element } }).then((res) => {
+                arr.push(res.data);
+                price += res.data.price;
+            }
+            ).catch((err) => {
+                console.log(err);
+                alert("error");
+            }
+            )
+        }
+        setloading(false);
+        setitems(arr);
+        settotal_price(price);
+    }
+    useEffect(() => {
+        checkuser();
+        getitems();
+        document.title = 'Singh Publication | Cart';
+    }, []);
+
+    return (
+        <>
+            {loading && <LoadingBar />}
+
+
+
+            <div className="customer min-h-5/6 ">
+
+                <div className="customers h-full p-[3vw] w-full flex justify-center  items-center text-[#315ED2] sm:text-white ">
+                    <div class="px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
+                        <div class="flex flex-col xl:flex-row jusitfy-center items-stretch w-full xl:space-x-8 space-y-4 md:space-y-6 xl:space-y-0">
+                            <div class="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
+                                <div class="items-order flex flex-col justify-start items-start  px-4 py-4 md:py-6 md:p-6 xl:p-8 shadow-2xl w-full">
+                                    <p class="text-lg md:text-xl  font-semibold leading-6 xl:leading-5 text-gray-800">Items to be order</p>
+                                    <div class="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
+                                        <div class="pb-4 md:pb-8 w-full md:w-40">
+                                            <img src={playstore} className="w-1/3 md:w-1/2 mx-auto" alt="..."></img>
+                                        </div>
+                                        <div class="border-b border-gray-200 md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
+                                            <div class="w-full flex flex-col justify-start items-start space-y-8">
+
+                                                <div class="flex justify-start items-start text-gray-800 flex-col space-y-2">
+                                                    <h1 className="text-md font-bold" >NURSING RESEARCH & STATISTICS</h1>
+                                                    <h1 className="text-md font-bold" >Paperback</h1>
+                                                </div>
+                                            </div>
+                                            <div class="flex justify-between space-x-8 items-start w-full">
+                                                <p class="text-base  xl:text-lg leading-6">$36.00 <span class="text-red-300 line-through"> $45.00</span></p>
+                                                <p class="text-base  xl:text-lg leading-6 text-gray-800">01</p>
+                                                <p class="text-base  xl:text-lg font-semibold leading-6 text-gray-800">$36.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-6 md:mt-0 flex justify-start flex-col md:flex-row items-start md:items-center space-y-4 md:space-x-6 xl:space-x-8 w-full">
+                                        <div class="w-full md:w-40">
+                                            <img src={playstore} className="w-1/3 md:w-1/2 mx-auto" alt="..."></img>
+                                        </div>
+                                        <div class="flex justify-between items-start w-full flex-col md:flex-row space-y-4 md:space-y-0">
+                                            <div class="w-full flex flex-col justify-start items-start space-y-8">
+
+                                                <div class="flex justify-start items-start text-gray-800 flex-col space-y-2">
+                                                    <h1 className="text-md font-bold" >NURSING RESEARCH & STATISTICS</h1>
+                                                    <h1 className="text-md font-bold" >Paperback</h1>
+                                                </div>
+                                            </div>
+                                            <div class="flex justify-between space-x-8 items-start w-full">
+                                                <p class="text-base  xl:text-lg leading-6">$20.00 <span class="text-red-300 line-through"> $30.00</span></p>
+                                                <p class="text-base  xl:text-lg leading-6 text-gray-800">01</p>
+                                                <p class="text-base  xl:text-lg font-semibold leading-6 text-gray-800">$20.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center flex-col xl:flex-row  items-stretch w-full space-y-4 md:space-y-0  xl:space-x-8 gap-6">
+                                    <div class="summary flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full shadow-2xl space-y-6">
+                                        <h3 class="text-xl  font-semibold leading-5 text-gray-800">Summary</h3>
+                                        <div class="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
+                                            <div class="flex justify-between w-full">
+                                                <p class="text-base  leading-4 text-gray-800">Subtotal</p>
+                                                <p class="text-base  leading-4 text-gray-600">$56.00</p>
+                                            </div>
+                                            <div class="flex justify-between items-center w-full">
+                                                <p class="text-base  leading-4 text-gray-800">Discount <span class="bg-gray-200 p-1 text-xs font-medium text-gray-800 leading-3 ">STUDENT</span></p>
+                                                <p class="text-base leading-4 text-gray-600">-$28.00 (50%)</p>
+                                            </div>
+                                            <div class="flex justify-between items-center w-full">
+                                                <p class="text-base  leading-4 text-gray-800">Shipping</p>
+                                                <p class="text-base leading-4 text-gray-600">$8.00</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between items-center w-full">
+                                            <p class="text-base font-semibold leading-4 text-gray-800">Total</p>
+                                            <p class="text-base font-semibold leading-4 text-gray-600">$36.00</p>
+                                        </div>
+                                    </div>
+                                    <div class="customer-details space-y-6 xl:hidden bg-[#315ED2] shadow-2xl w-full xl:w-96 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
+                                        <h3 class="text-xl text-white font-semibold leading-5">Customer Details</h3>
+                                        <div class="flex flex-col justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
+                                            <div class="flex flex-col justify-start items-start flex-shrink-0">
+                                                <div class=" text-center text-white space-x-4 py-4 border-y border-gray-200 w-full">
+                                                    <p class="text-base text-center text-white font-semibold leading-4">User name</p>
+                                                </div>
+                                            </div>
+                                            <div class="billing-shipping mt-5 w-full flex justify-center flex-wrap gap-5">
+                                                <div class="flex justify-center flex-col xl:mt-8">
+                                                    <p class="text-base text-white font-semibold leading-4">Shipping Address</p>
+                                                    <p class=" lg:w-full text-gray-300 xl:w-48 text-sm leading-5">401, katewa nagar, New sanganer road, Sodala, Jaipur, Jaipur, Rajasthan, 302019</p>
+                                                </div>
+                                                <div class="flex justify-center flex-col">
+                                                    <p class="text-base text-white font-semibold leading-4">Billing Address</p>
+                                                    <p class=" lg:w-full text-gray-300 xl:w-48 text-sm leading-5">401, katewa nagar, New sanganer road, Sodala, Jaipur, Jaipur, Rajasthan, 302019</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="shipping flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full shadow-2xl space-y-6">
+                                        <h3 class="text-xl  font-semibold leading-5 text-gray-800">Shipping</h3>
+                                        <div class="flex justify-between items-start w-full">
+                                            <div class="flex justify-center items-center space-x-4">
+                                                <div class="w-8 h-8">
+                                                    <img src={playstore} className="w-1/2 mx-auto" alt="..."></img>
+                                                </div>
+                                                <div class="flex flex-col justify-start items-center">
+                                                    <p class="text-lg leading-6  font-semibold text-gray-800">DPD Delivery<br /><span class="font-normal">Delivery with 24 Hours</span></p>
+                                                </div>
+                                            </div>
+                                            <p class="text-lg font-semibold leading-6  text-gray-800">$8.00</p>
+                                        </div>
+                                        <div class="w-full flex justify-center items-center">
+                                            <button className="w-full px-2 text-sm sm:text-lg sm:px-8 py-3 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">Place order</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="customer-details bg-[#315ED2] shadow-2xl w-full xl:w-96 hidden xl:flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
+                                <h3 class="text-xl text-white font-semibold leading-5">Customer Details</h3>
+                                <div class="flex flex-col justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
+                                    <div class="flex flex-col justify-start items-start flex-shrink-0">
+                                        <div class="flex justify-center w-full md:justify-start items-center space-x-4 py-8 border-b border-gray-200">
+                                            <img src={playstore} className="w-1/2 mx-auto" alt="..."></img>
+
+                                        </div>
+
+                                        <div class=" text-center text-white space-x-4 py-4 border-b border-gray-200 w-full">
+                                            <p class="text-base text-center text-white font-semibold leading-4">singh Publication</p>
+                                        </div>
+                                    </div>
+                                    <div class="billing-shipping mt-5 w-full flex justify-center flex-wrap gap-5">
+                                        <div class="flex justify-center flex-col xl:mt-8">
+                                            <p class="text-base text-white font-semibold leading-4">Shipping Address</p>
+                                            <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">401, katewa nagar, New sanganer road, Sodala, Jaipur, Jaipur, Rajasthan, 302019</p>
+                                        </div>
+                                        <div class="flex justify-center flex-col">
+                                            <p class="text-base text-white font-semibold leading-4">Billing Address</p>
+                                            <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">401, katewa nagar, New sanganer road, Sodala, Jaipur, Jaipur, Rajasthan, 302019</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-            
-                
+
+
         </>
     );
-
 }
 export default Customers;

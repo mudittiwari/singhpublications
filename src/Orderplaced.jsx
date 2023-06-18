@@ -1,5 +1,6 @@
 import React from "react";
-import orderplaced from './assets/—Pngtree—check mark icon design template_4085369.png';
+// import orderplaced from './assets/—Pngtree—check mark icon design template_4085369.png';
+import orderplaced from './assets/orderplaced.png';
 import playstore from './assets/undraw_reading_time_re_phf7.svg';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
