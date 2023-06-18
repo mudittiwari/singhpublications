@@ -57,7 +57,7 @@ function Login() {
                             <div className="">
                                 <div className="flex justify-between mb-2">
                                     <label htmlFor="password" className="text-lg ">Password</label>
-                                    <h1 className="text-lg focus:outline-none" onClick={() => {
+                                    <h1 className="text-lg focus:outline-none cursor-pointer" onClick={() => {
                                         if (email.trim() === "") {
                                             toast.warning("Please enter your email first");
                                             return;
