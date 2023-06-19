@@ -74,41 +74,10 @@ function Deliveryaddress() {
                             <button className="btn mt-10 cursor-pointer w-fit px-14 py-4 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" onClick={(e) => {
                                 // console.log(user.accessToken);
                                 // e.preventDefault();
-                                // setloading(true);
-                                // axios.post("https://singhpublications.onrender.com/api/order/createorder", {
-
-
-                                //     "ProductsArray": user.cart,
-                                //     "totalAmount": location.state.totalAmount,
-                                //     "ordered_by": user.email,
-                                //     "delivery_status": "pending",
-                                //     "invoice_file": ""
-
-                                // }, {
-                                //     headers: {
-                                //         'Authorization': `Bearer ${user.accessToken}`
-                                //     },
-                                //     params: {
-                                //         'id': user.id
-                                //     }
-                                // },).then((res) => {
-                                //     // let newuser=res.data;
-                                //     // newuser['accessToken']=user.accessToken;
-                                //     // localStorage.setItem('pubuser', JSON.stringify(newuser));
-                                //     // setuser(newuser);
-                                //     setloading(false);
-                                //     console.log(res.data);
-                                //     navigate('/orderplaced');
-                                //     // navigate('/accountsetting');
-                                //     // localStorage.setItem('pubuser', JSON.stringify(res.data));
-                                // }
-                                // ).catch((err) => {
-                                //     setloading(false);
-                                //     alert("error");
-                                //     console.log(err);
-                                // }
-                                // )
-                                navigate('/customers',{ state: { "totalAmount": location.state.totalAmount } })
+                                if(location.state.type=='regular')
+                                    navigate('/customers',{ state: { "totalAmount": location.state.totalAmount,'type':'regular',house,area,street,city,pincode } })
+                                else if(location.state.type=='shortcut')
+                                    navigate('/customers',{ state: { "totalAmount": location.state.totalAmount,product_id:location.state.product_id,'type':'regular',house,area,street,city,pincode } })
                             }}>
                                 Confirm Address
                             </button>

@@ -190,7 +190,7 @@ function Cart() {
                                     alert("No items in cart");
                                     return;
                                 }
-                                navigate('/deliveryaddress', { state: { "totalAmount": total_price } });
+                                navigate('/deliveryaddress', { state: { "totalAmount": total_price,'type':'regular' } });
                             }} className="btn cursor-pointer w-fit px-2 sm:px-5 py-3 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:border-white text-[#315ED2] hover:text-white  font-bold rounded-full">
                                 Proceed to Buy
                             </button>

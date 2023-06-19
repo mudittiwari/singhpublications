@@ -205,38 +205,39 @@ function Product() {
                             }
                             // console.log(user.accessToken);
                             e.preventDefault();
-                            setloading(true);
-                            axios.post("https://singhpublications.onrender.com/api/user/addtocart", {
+                            navigate('/deliveryaddress',{state:{product_id:location.state.id,type:"shortcut","totalAmount":location.state.price}})
+                            // setloading(true);
+                            // axios.post("https://singhpublications.onrender.com/api/user/addtocart", {
 
 
-                                "product_id": location.state.id,
+                            //     "product_id": location.state.id,
 
-                                //how to pass query params and headers in axios
+                            //     //how to pass query params and headers in axios
 
-                            }, {
-                                headers: {
-                                    'Authorization': `Bearer ${user.accessToken}`
-                                },
-                                params: {
-                                    'id': user.id
-                                }
-                            },).then((res) => {
-                                setloading(false);
-                                let newuser = res.data;
-                                newuser['accessToken'] = user.accessToken;
-                                localStorage.setItem('pubuser', JSON.stringify(newuser));
-                                setuser(newuser);
-                                navigate('/cart');
-                                // localStorage.setItem('pubuser', JSON.stringify(res.data));
-                            }
-                            ).catch((err) => {
-                                setloading(false);
-                                console.log(err);
-                                if (err.response.status === 400) {
-                                    navigate('/cart');
-                                }
-                            }
-                            )
+                            // }, {
+                            //     headers: {
+                            //         'Authorization': `Bearer ${user.accessToken}`
+                            //     },
+                            //     params: {
+                            //         'id': user.id
+                            //     }
+                            // },).then((res) => {
+                            //     setloading(false);
+                            //     let newuser = res.data;
+                            //     newuser['accessToken'] = user.accessToken;
+                            //     localStorage.setItem('pubuser', JSON.stringify(newuser));
+                            //     setuser(newuser);
+                            //     navigate('/cart');
+                            //     // localStorage.setItem('pubuser', JSON.stringify(res.data));
+                            // }
+                            // ).catch((err) => {
+                            //     setloading(false);
+                            //     console.log(err);
+                            //     if (err.response.status === 400) {
+                            //         navigate('/cart');
+                            //     }
+                            // }
+                            // )
 
                         }} className="w-fit px-10 py-2 border-2 border-[#315ED2] text-[#315ED2] hover:text-white hover:bg-[#315ED2] rounded-full">
                             Buy Now

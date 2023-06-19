@@ -72,9 +72,31 @@ function Customers() {
         setitems(arr);
         settotal_price(price);
     }
+
+    async function getitem()
+    {
+        setloading(true);
+        let arr = [];
+        let price = 0;
+        await axios.get(`https://singhpublications.onrender.com/api/product/products`, { params: { id: location.state.product_id } }).then((res) => {
+                arr.push(res.data);
+                price += res.data.price;
+            }
+            ).catch((err) => {
+                console.log(err);
+                alert("error");
+            }
+            )
+        setitems(arr);
+        settotal_price(price);
+    }
+
     useEffect(() => {
         checkuser();
-        getitems();
+        if(location.state.type=='regular')
+            getitems();
+        if(location.state.type=='shortcut')
+            getitem();
         document.title = 'Singh Publication | Cart';
     }, []);
 
@@ -131,11 +153,16 @@ function Customers() {
                                             <div class="billing-shipping mt-5 w-full flex justify-center flex-wrap gap-5">
                                                 <div class="flex justify-center flex-col xl:mt-8">
                                                     <p class="text-base text-white font-semibold leading-4">Shipping Address</p>
-                                                    <p class=" lg:w-full text-gray-300 xl:w-48 text-sm leading-5">401, katewa nagar, New sanganer road, Sodala, Jaipur, Jaipur, Rajasthan, 302019</p>
+
+                                                    <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">{user.shipping_address['house']} {user.shipping_address['area']} {user.shipping_address['street']} {user.shipping_address['city']} {user.shipping_address['pincode']} </p>
                                                 </div>
                                                 <div class="flex justify-center flex-col">
                                                     <p class="text-base text-white font-semibold leading-4">Billing Address</p>
-                                                    <p class=" lg:w-full text-gray-300 xl:w-48 text-sm leading-5">401, katewa nagar, New sanganer road, Sodala, Jaipur, Jaipur, Rajasthan, 302019</p>
+                                                    <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">{user.billing_address['house']} {user.billing_address['area']} {user.billing_address['street']} {user.billing_address['city']} {user.billing_address['pincode']}</p>
+                                                </div>
+                                                <div class="flex justify-center flex-col">
+                                                    <p class="text-base text-white font-semibold leading-4">Order Delivery Address</p>
+                                                    <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">{location.state.house} {location.state.area} {location.state.street} {location.state.city} {location.state.pincode}</p>
                                                 </div>
 
                                             </div>
@@ -155,10 +182,49 @@ function Customers() {
                                             <p class="text-lg font-semibold leading-6  text-gray-800">$8.00</p>
                                         </div>
                                         <div class="w-full flex justify-center items-center">
-                                            <button className="w-full px-2 text-sm sm:text-lg sm:px-8 py-3 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">Place order</button>
+                                            <button onClick={(e) => {
+                                                e.preventDefault();
+                                                // setloading(true);
+                                                axios.post("https://singhpublications.onrender.com/api/order/createorder", {
+
+
+                                                    "ProductsArray": user.cart,
+                                                    "totalAmount": location.state.totalAmount,
+                                                    "ordered_by": user.email,
+                                                    "delivery_status": "pending",
+                                                    "delivery_address": location.state.house + ' ' + location.state.street + ' ' + location.state.area + ' ' + location.state.city + ' ' + location.state.pincode,
+                                                    "invoice_file": ""
+
+                                                }, {
+                                                    headers: {
+                                                        'Authorization': `Bearer ${user.accessToken}`
+                                                    },
+                                                    params: {
+                                                        'id': user.id
+                                                    }
+                                                },).then((res) => {
+                                                    // let newuser=res.data;
+                                                    // newuser['accessToken']=user.accessToken;
+                                                    // localStorage.setItem('pubuser', JSON.stringify(newuser));
+                                                    // setuser(newuser);
+                                                    setloading(false);
+                                                    console.log(res.data);
+                                                    navigate('/orderplaced');
+                                                    // navigate('/accountsetting');
+                                                    // localStorage.setItem('pubuser', JSON.stringify(res.data));
+                                                }
+                                                ).catch((err) => {
+                                                    setloading(false);
+                                                    alert("error");
+                                                    console.log(err);
+                                                }
+                                                )
+                                            }} className="w-full px-2 text-sm sm:text-lg sm:px-8 py-3 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">Place order</button>
                                         </div>
                                     </div>
+
                                 </div>
+
                             </div>
                             <div class="customer-details bg-[#315ED2] shadow-2xl w-full xl:w-96 hidden xl:flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
                                 <h3 class="text-xl text-white font-semibold leading-5">Customer Details</h3>
@@ -176,12 +242,16 @@ function Customers() {
                                     <div class="billing-shipping mt-5 w-full flex justify-center flex-wrap gap-5">
                                         <div class="flex justify-center flex-col xl:mt-8">
                                             <p class="text-base text-white font-semibold leading-4">Shipping Address</p>
-                                            
+
                                             <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">{user.shipping_address['house']} {user.shipping_address['area']} {user.shipping_address['street']} {user.shipping_address['city']} {user.shipping_address['pincode']} </p>
                                         </div>
                                         <div class="flex justify-center flex-col">
                                             <p class="text-base text-white font-semibold leading-4">Billing Address</p>
                                             <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">{user.billing_address['house']} {user.billing_address['area']} {user.billing_address['street']} {user.billing_address['city']} {user.billing_address['pincode']}</p>
+                                        </div>
+                                        <div class="flex justify-center flex-col">
+                                            <p class="text-base text-white font-semibold leading-4">Order Delivery Address</p>
+                                            <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">{location.state.house} {location.state.area} {location.state.street} {location.state.city} {location.state.pincode}</p>
                                         </div>
 
                                     </div>
