@@ -40,14 +40,10 @@ function Customers() {
     const [loading, setloading] = useState(true);
     const [items, setitems] = useState([]);
     const [total_price, settotal_price] = useState(0);
-    async function checkuser() {
-        const auth = getAuth(app);
-        auth.onAuthStateChanged(async (user) => {
-            if (!user) {
-                navigate('/login');
-            }
-
-        });
+   async function checkuser() {
+        if(localStorage.getItem('pubuser')===null){
+            navigate('/login');
+        }
     }
     async function getitems() {
         let arr = [];

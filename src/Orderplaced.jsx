@@ -8,14 +8,10 @@ import app from './Firebase';
 import { useEffect } from "react";
 function Orderplaced() {
     const navigate = useNavigate();
-    async function checkuser() {
-        const auth = getAuth(app);
-        auth.onAuthStateChanged(async (user) => {
-            if (!user) {
-                navigate('/login');
-            }
-
-        });
+   async function checkuser() {
+        if(localStorage.getItem('pubuser')===null){
+            navigate('/login');
+        }
     }
     useEffect(() => {
         checkuser();

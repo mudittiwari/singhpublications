@@ -88,14 +88,10 @@ function Wishlist() {
     const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
     const [items, setitems] = useState([]);
     const [loading, setloading] = useState(false);
-    async function checkuser() {
-        const auth = getAuth(app);
-        auth.onAuthStateChanged(async (user) => {
-            if (!user) {
-                navigate('/login');
-            }
-
-        });
+   async function checkuser() {
+        if(localStorage.getItem('pubuser')===null){
+            navigate('/login');
+        }
     }
     async function getitems() {
         setloading(true);

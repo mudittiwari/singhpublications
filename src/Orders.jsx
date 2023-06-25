@@ -55,14 +55,10 @@ function Orders() {
     const [orders, setorders] = useState([]);
     const [loading, setloading] = useState(true);
     const [total_price, settotal_price] = useState(0);
-    async function checkuser() {
-        const auth = getAuth(app);
-        auth.onAuthStateChanged(async (user) => {
-            if (!user) {
-                navigate('/login');
-            }
-
-        });
+   async function checkuser() {
+        if(localStorage.getItem('pubuser')===null){
+            navigate('/login');
+        }
     }
     async function getitems() {
         setloading(true);

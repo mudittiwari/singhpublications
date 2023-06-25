@@ -15,14 +15,10 @@ function BillingAddress() {
     const [city, setcity] = useState(user.billing_address.city);
     const [pincode, setpincode] = useState(user.billing_address.pincode);
     const [loading, setloading] = useState(false);
-    async function checkuser() {
-        const auth = getAuth(app);
-        auth.onAuthStateChanged(async (user) => {
-            if (!user) {
-                navigate('/login');
-            }
-
-        });
+   async function checkuser() {
+        if(localStorage.getItem('pubuser')===null){
+            navigate('/login');
+        }
     }
     useEffect(() => {
         checkuser();

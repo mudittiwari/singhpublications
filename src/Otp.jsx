@@ -38,27 +38,45 @@ function Otp() {
         }, auth);
     }
     const verifyuser = async () => {
-        generaterecaptcha();
-        let appVerifier = window.recaptchaVerifier;
-        signInWithPhoneNumber(auth, `+91${location.state.phone}`, appVerifier)
-            .then((confirmationResult) => {
-                // auth.setPersistence(auth.Persistence.LOCAL)
-                console.log(confirmationResult);
-                setresult(confirmationResult);
-            }).catch((error) => {
-                toast.warning(error);
-                // Error; SMS not sent
-                // ...
+        console.log(`+91${location.state.phone}`);
+        var config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `https://2factor.in/API/V1/5a45c11e-0ec4-11ee-addf-0200cd936042/SMS/+91${location.state.phone}/AUTOGEN/OTP1`,
+            headers: {}
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
             });
+
     }
     const matchcode = async () => {
         let code = one + two + three + four + five + six;
-        result.confirm(code).then((result) => {
+        var config = {
+          method: 'get',
+        maxBodyLength: Infinity,
+          url: `https://2factor.in/API/V1/5a45c11e-0ec4-11ee-addf-0200cd936042/SMS/VERIFY3/91${location.state.phone}/${code}`,
+          headers: { }
+        };
+        
+        axios(config)
+        .then(function (response) {
+            console.log(response);
+          console.log(JSON.stringify(response.data));
+          if(response.status === 200){
             localStorage.setItem('pubuser', JSON.stringify(location.state.user));
             navigate('/dashboard')
-        }).catch((error) => {
-            console.log(error);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
         });
+        
     }
     useEffect(() => {
         verifyuser();

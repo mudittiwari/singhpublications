@@ -57,14 +57,10 @@ function PurchasedBooks() {
     const [user, setuser] = React.useState(JSON.parse(localStorage.getItem('pubuser')));
     const [orders, setorders] = React.useState([]);
     const [loading, setloading] = React.useState(false);
-    async function checkuser() {
-        const auth = getAuth(app);
-        auth.onAuthStateChanged(async (user) => {
-            if (!user) {
-                navigate('/login');
-            }
-
-        });
+   async function checkuser() {
+        if(localStorage.getItem('pubuser')===null){
+            navigate('/login');
+        }
     }
     async function getitems() {
         setloading(true);

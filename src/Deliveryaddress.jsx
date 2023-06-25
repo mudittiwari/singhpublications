@@ -17,14 +17,10 @@ function Deliveryaddress() {
     const [city, setcity] = useState(user.shipping_address.city);
     const [pincode, setpincode] = useState(user.shipping_address.pincode);
     const [loading, setloading] = useState(false);
-    async function checkuser() {
-        const auth = getAuth(app);
-        auth.onAuthStateChanged(async (user) => {
-            if (!user) {
-                navigate('/login');
-            }
-
-        });
+   async function checkuser() {
+        if(localStorage.getItem('pubuser')===null){
+            navigate('/login');
+        }
     }
     useEffect(() => {
         checkuser();

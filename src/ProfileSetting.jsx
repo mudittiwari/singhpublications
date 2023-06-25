@@ -13,14 +13,10 @@ function ProfileSetting() {
     const [fname, setfname] = useState(user.firstname);
     const [lname, setlname] = useState(user.lastname);
     const [email, setemail] = useState(user.email);
-    async function checkuser() {
-        const auth = getAuth(app);
-        auth.onAuthStateChanged(async (user) => {
-            if (!user) {
-                navigate('/login');
-            }
-
-        });
+   async function checkuser() {
+        if(localStorage.getItem('pubuser')===null){
+            navigate('/login');
+        }
     }
     useEffect(() => {
         checkuser();

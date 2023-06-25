@@ -14,14 +14,10 @@ function Product() {
     const navigate = useNavigate();
     const [loading, setloading] = React.useState(false);
     const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
-    async function checkuser() {
-        const auth = getAuth(app);
-        auth.onAuthStateChanged(async (user) => {
-            if (!user) {
-                navigate('/login');
-            }
-
-        });
+   async function checkuser() {
+        if(localStorage.getItem('pubuser')===null){
+            navigate('/login');
+        }
     }
     useEffect(() => {
         if (localStorage.getItem('pubuser') === null) {

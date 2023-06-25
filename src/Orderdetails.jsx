@@ -47,14 +47,10 @@ function BookComp(props) {
 
 function Orderdetails() {
     const navigate = useNavigate();
-    async function checkuser() {
-        const auth = getAuth(app);
-        auth.onAuthStateChanged(async (user) => {
-            if (!user) {
-                navigate('/login');
-            }
-
-        });
+   async function checkuser() {
+        if(localStorage.getItem('pubuser')===null){
+            navigate('/login');
+        }
     }
     const location = useLocation();
     useEffect(() => {
