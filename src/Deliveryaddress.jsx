@@ -84,7 +84,7 @@ function Deliveryaddress() {
         setloading(true);
         // console.log("mudit tiwari");
         // e.preventDefault();
-        axios.post("http://localhost:5000/api/user/updateshippingaddress", {
+        axios.post("https://singhpublications.onrender.com/api/user/updateshippingaddress", {
             "house": house,
             "street": street,
             "area": area,
