@@ -35,6 +35,7 @@ import retailer from './assets/Singh Retail banner (2).jpg';
 import Signupverification from './Signupotp';
 import Forgetpassword from './Forgetpassword';
 import Resetpassword from './Resetpassword';
+import Books from './Books';
 // import Partner from './Partner';
 
 
@@ -57,6 +58,7 @@ function App() {
           <Route path="/profilesetting" element={<ProfileSetting />} />
           <Route path="/accountsetting" element={<AccountSetting />} />
           <Route path="/books" element={<PurchasedBooks />} />
+          <Route path="/allbooks" element={<Books />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/viewbook" element={<Pdfview />} />

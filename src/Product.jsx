@@ -50,6 +50,7 @@ function Product() {
                         <h1 className="text-md font-bold mb-0 mx-0 w-max mt-0" style={{ 'color': '#315ED2', 'maxWidth': '100%' }}>{location.state.title}</h1>
                         <h1 className="text-base font-semibold mb-0 mx-0 w-max mt-0" style={{ 'color': '#777777' }}>{location.state.category}</h1>
                         <h1 className="text-sm font-medium mb-0 mx-0 w-max mt-0" style={{ 'color': '#777777' }}>{location.state.subtitle}</h1>
+                        <h1 className="text-sm font-medium mb-0 mx-0 w-max mt-0" style={{ 'color': '#777777' }}>Price: {location.state.price} Rs.</h1>
                         <div className="star-whishlist flex justify-between">
                             <div className='w-full mt-1 flex items-center'>
                                 <h1 className="text-base font-medium mb-0 mr-2  w-max mt-0" style={{ 'color': '#777777' }}>{location.state.rating}</h1>

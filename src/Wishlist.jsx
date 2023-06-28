@@ -102,6 +102,7 @@ function Wishlist() {
             const element = wishlist[index];
             await axios.get(`https://singhpublications.onrender.com/api/product/products`, { params: { id: element } }).then((res) => {
                 arr.push(res.data);
+                console.log(res);
             }
             ).catch((err) => {
                 console.log(err);

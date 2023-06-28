@@ -33,7 +33,7 @@ function Dashboard() {
                         </div>
                         <div className="box p-1 h-full sm:p-10 shadow-2xl grid gap-5 max-w-[300px] cursor-pointer rounded-lg" onClick={(e) => {
                             e.preventDefault();
-                            navigate('/');
+                            navigate('/allbooks');
                         }}>
                             <div className="icon w-fit mx-auto p-3 sm:p-9 text-4xl sm:text-8xl text-[#315ED2]"><i class="fa-solid fa-book-bookmark"></i></div>
                             <h2 className="text-2xl">Get Books</h2>

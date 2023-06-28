@@ -56,6 +56,11 @@ function Signupverification() {
                                             alert("error");
                                         });
         }
+        else{
+            console.log('not matched');
+            toast.warning('Please enter a valid OTP');
+            return;
+        }
     }
     useEffect(() => {
         document.title = 'Singh Publication | Signup Verification';
