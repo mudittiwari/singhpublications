@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-import file from './assets/file.pdf';
+const file = require('./assets/file.pdf');
 
 
 function Pdfview() {
