@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-const file = require('./assets/file.pdf');
-
+import { Document,Page } from 'react-pdf/dist/esm/entry.webpack';
+// import file from './assets/file.pdf';
 
 function Pdfview() {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-
+  const [file, setFile] = useState('./assets/file.pdf');
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
     setNumPages(nextNumPages);
   }
