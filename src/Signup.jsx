@@ -256,7 +256,7 @@ function Signup() {
                                         return;
                                     }
                                     setLoading(true);
-                                    axios.post("https://singhpublications.onrender.com/api/user/signupverification",{
+                                    axios.post("https://singhpublication.in/api/user/signupverification",{
                                         email: email,
                                     }).then((res) => {
                                         setLoading(false);

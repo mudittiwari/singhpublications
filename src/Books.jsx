@@ -40,7 +40,7 @@ function BookComp(props) {
                     // console.log(user.accessToken);
                     e.preventDefault();
                     setloading(true);
-                    axios.post("https://singhpublications.onrender.com/api/user/addtocart", {
+                    axios.post("https://singhpublication.in/api/user/addtocart", {
 
 
                         "product_id": props.prod.id,
@@ -84,7 +84,7 @@ function BookComp(props) {
                         e.preventDefault();
                         if (user) {
 
-                            axios.post("https://singhpublications.onrender.com/api/user/addtowishlist", {
+                            axios.post("https://singhpublication.in/api/user/addtowishlist", {
 
 
                                 "product_id": props.prod.id,
@@ -127,7 +127,7 @@ function BookComp(props) {
                 e.preventDefault();
                 if (user) {
 
-                    axios.post("https://singhpublications.onrender.com/api/user/addtowishlist", {
+                    axios.post("https://singhpublication.in/api/user/addtowishlist", {
 
 
                         "product_id": props.prod.id,
@@ -170,7 +170,7 @@ function Books()
     const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
     async function getallprods() {
         setLoading(true);
-        axios.get('https://singhpublications.onrender.com/api/product/getproducts').then((res) => {
+        axios.get('https://singhpublication.in/api/product/getproducts').then((res) => {
             // console.log(res);
             setLoading(false);
             setProducts(res.data);

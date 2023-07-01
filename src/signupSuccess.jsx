@@ -90,7 +90,7 @@ function SignupSuccess() {
                                     return;
                                 }
                                 setloading(true);
-                                axios.post("https://singhpublications.onrender.com/api/user/login", {
+                                axios.post("https://singhpublication.in/api/user/login", {
                                     email: email,
                                     // mobileNumber: mobileNumber,
                                     password: password,

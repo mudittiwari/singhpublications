@@ -68,7 +68,7 @@ function Product() {
                                     e.preventDefault();
                                     if (user) {
 
-                                        axios.post("https://singhpublications.onrender.com/api/user/addtowishlist", {
+                                        axios.post("https://singhpublication.in/api/user/addtowishlist", {
 
 
                                             "product_id": location.state.id,
@@ -115,7 +115,7 @@ function Product() {
                             // console.log(user.accessToken);
                             e.preventDefault();
                             setloading(true);
-                            axios.post("https://singhpublications.onrender.com/api/user/addtocart", {
+                            axios.post("https://singhpublication.in/api/user/addtocart", {
 
 
                                 "product_id": location.state.id,
@@ -159,7 +159,7 @@ function Product() {
                                 // console.log(user.accessToken);
                                 e.preventDefault();
                                 setloading(true);
-                                axios.post("https://singhpublications.onrender.com/api/user/addtocart", {
+                                axios.post("https://singhpublication.in/api/user/addtocart", {
 
 
                                     "product_id": location.state.id,
@@ -204,7 +204,7 @@ function Product() {
                             e.preventDefault();
                             navigate('/deliveryaddress',{state:{product_id:location.state.id,type:"shortcut","totalAmount":location.state.price}})
                             // setloading(true);
-                            // axios.post("https://singhpublications.onrender.com/api/user/addtocart", {
+                            // axios.post("https://singhpublication.in/api/user/addtocart", {
 
 
                             //     "product_id": location.state.id,

@@ -69,7 +69,7 @@ function ShippingAddress() {
                                 // console.log(user.accessToken);
                                 setloading(true);
                                 e.preventDefault();
-                                axios.post("https://singhpublications.onrender.com/api/user/updateshippingaddress", {
+                                axios.post("https://singhpublication.in/api/user/updateshippingaddress", {
 
 
                                     "house": house,

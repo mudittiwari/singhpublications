@@ -99,7 +99,7 @@ const Contact = () => {
 
                                     setloading(true);
                                     e.preventDefault();
-                                    axios.post('https://singhpublications.onrender.com/contact', {
+                                    axios.post('https://singhpublication.in/contact', {
                                         name: name,
                                         phone: phone,
                                         subject: subject,

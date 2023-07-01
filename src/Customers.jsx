@@ -54,7 +54,7 @@ function Customers() {
         console.log(cart);
         for (let index = 0; index < cart.length; index++) {
             const element = cart[index];
-            await axios.get(`https://singhpublications.onrender.com/api/product/products`, { params: { id: element } }).then((res) => {
+            await axios.get(`https://singhpublication.in/api/product/products`, { params: { id: element } }).then((res) => {
                 arr.push(res.data);
                 price += res.data.price;
             }
@@ -74,7 +74,7 @@ function Customers() {
         setloading(true);
         let arr = [];
         let price = 0;
-        await axios.get(`https://singhpublications.onrender.com/api/product/products`, { params: { id: location.state.product_id } }).then((res) => {
+        await axios.get(`https://singhpublication.in/api/product/products`, { params: { id: location.state.product_id } }).then((res) => {
                 arr.push(res.data);
                 price += res.data.price;
             }
@@ -185,7 +185,7 @@ function Customers() {
                                             <button onClick={(e) => {
                                                 e.preventDefault();
                                                 // setloading(true);
-                                                axios.post("https://singhpublications.onrender.com/api/order/createorder", {
+                                                axios.post("https://singhpublication.in/api/order/createorder", {
                                                     "ProductsArray": user.cart,
                                                     "totalAmount": location.state.totalAmount,
                                                     "ordered_by": user.email,

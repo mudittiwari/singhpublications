@@ -42,7 +42,7 @@ function BookComp(props) {
                         // console.log(user.accessToken);
                         props.setloading(true);
                         e.preventDefault();
-                        axios.post("https://singhpublications.onrender.com/api/user/removefromwishlist", {
+                        axios.post("https://singhpublication.in/api/user/removefromwishlist", {
 
 
                             "product_id": props.prod.id,
@@ -100,7 +100,7 @@ function Wishlist() {
         let wishlist = JSON.parse(localStorage.getItem('pubuser')).wishlist;
         for (let index = 0; index < wishlist.length; index++) {
             const element = wishlist[index];
-            await axios.get(`https://singhpublications.onrender.com/api/product/products`, { params: { id: element } }).then((res) => {
+            await axios.get(`https://singhpublication.in/api/product/products`, { params: { id: element } }).then((res) => {
                 arr.push(res.data);
                 console.log(res);
             }

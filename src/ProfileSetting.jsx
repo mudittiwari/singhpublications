@@ -68,7 +68,7 @@ function ProfileSetting() {
                             // console.log(user.accessToken);
                             setloading(true);
                             e.preventDefault();
-                            axios.post("https://singhpublications.onrender.com/api/user/updateuser", {
+                            axios.post("https://singhpublication.in/api/user/updateuser", {
 
                                 'firstname': fname,
                                 'lastname': lname,

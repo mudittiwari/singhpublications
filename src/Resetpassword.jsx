@@ -100,7 +100,7 @@ function Resetpassword() {
                                     return;
                                 }
                                 setloading(true);
-                                axios.post("https://singhpublications.onrender.com/api/user/resetpassword", {
+                                axios.post("https://singhpublication.in/api/user/resetpassword", {
                                     email: location.state.email,
                                     // mobileNumber: mobileNumber,
                                     newpassword: password,
