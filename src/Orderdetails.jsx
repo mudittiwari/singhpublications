@@ -68,18 +68,7 @@ function Orderdetails() {
                         <h1 className="text-lg font-semibold flex items-center" style={{ 'color': '#315ED2' }}>{location.state.order.status} <span className="text-lg font-normal mr-1 text-gray-400">13 Jan 2023</span></h1>
                         <h1 className="text-lg font-normal mr-1" style={{ 'color': '#777777' }}>  </h1>
                     </div>
-                    <h1 className="text-lg font-semibold ml-3" style={{ 'color': '#315ED2' }}>Add Review</h1>
-                    <textarea className="mt-4 rounded-3xl p-4 focus:outline-none resize-none w-full max-w-xl" style={{  'border': '1px solid #777777' }} name="" id="" cols="20" rows="5" placeholder="Review"></textarea>
-                    <div className=' mt-4 w-full flex justify-center items-center mx-auto'>
-                        <img className='mx-1 w-8' src={star} alt="" />
-                        <img className='mx-1 w-8' src={star} alt="" />
-                        <img className='mx-1 w-8' src={star} alt="" />
-                        <img className='mx-1 w-8' src={star} alt="" />
-                        <img className='mx-1 w-8' src={star} alt="" />
-                    </div>
-                    <button className="btn mt-5 cursor-pointer w-fit px-14 py-4 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">
-                        Submit
-                    </button>
+                   
                 </div>
             </div>
         </>

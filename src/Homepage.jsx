@@ -51,14 +51,13 @@ function BookComp(props) {
 
             <div className="flex justify-between mt-2 gap-5">
                 <button type="button" className="w-full px-5 py-4 bg-white border border-[#777777] text-[#777777] font-bold rounded-l-xl" onClick={(e) => {
-                    let user = JSON.parse(localStorage.getItem('pubuser'));
                     if (user === null) {
                         navigate('/login');
                         return;
                     }
                     // console.log(user.accessToken);
                     e.preventDefault();
-                    setloading(true);
+                    props.setLoading(true);
                     axios.post("https://singhpublication.in/api/user/addtocart", {
 
 
@@ -74,15 +73,16 @@ function BookComp(props) {
                             'id': user.id
                         }
                     },).then((res) => {
-                        setloading(false);
+                        props.setLoading(false);
                         let newuser = res.data;
                         newuser['accessToken'] = user.accessToken;
                         localStorage.setItem('pubuser', JSON.stringify(newuser));
-                        window.location.reload(false)
+                        toast.info("Added to cart");
+                        setuser(newuser);
                         // localStorage.setItem('pubuser', JSON.stringify(res.data));
                     }
                     ).catch((err) => {
-                        setloading(false);
+                        props.setLoading(false);
                         console.log(err);
                         if (err.response.status === 400) {
                             toast.info("Product already in cart");
@@ -99,10 +99,10 @@ function BookComp(props) {
                     <button type="button" onClick={(e) => {
                         toast.info("Product already in wishlist");
                     }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[red]  rounded-r-xl text-2xl"><i className="fa-solid fa-heart"></i></button> : <button type="button" onClick={(e) => {
-                        let user = JSON.parse(localStorage.getItem('pubuser'));
                         e.preventDefault();
+                        props.setLoading(true);
                         if (user) {
-
+                            
                             axios.post("https://singhpublication.in/api/user/addtowishlist", {
 
 
@@ -116,13 +116,16 @@ function BookComp(props) {
                                     'id': user.id
                                 }
                             },).then((res) => {
+                                props.setLoading(false);
                                 let newuser = res.data;
                                 newuser['accessToken'] = user.accessToken;
                                 localStorage.setItem('pubuser', JSON.stringify(newuser));
-                                window.location.reload(false)
+                                setuser(newuser);
+                                toast.info("Added to wishlist");
 
                             }
                             ).catch((err) => {
+                                props.setLoading(false);
                                 console.log(err);
                                 if (err.response.status === 400) {
                                     toast.info("Product already in wishlist");
@@ -369,7 +372,7 @@ function Home() {
                         <BookComp />
                         <BookComp /> */}
                     {products.map((prod, index) => {
-                        return <BookComp key={index} prod={prod} user={user} />
+                        return <BookComp key={index} prod={prod} user={user} setLoading={setLoading} />
                     })}
 
                 </div>

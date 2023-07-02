@@ -94,6 +94,7 @@ function Orders() {
         setorders(ordrs);
     }
     useEffect(() => {
+        console.log(localStorage.getItem('pubuser'));
         checkuser();
         getitems();
         document.title = 'Singh Publication | Orders';

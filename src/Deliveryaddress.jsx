@@ -118,10 +118,11 @@ function Deliveryaddress() {
         )
     }
     async function orderwithoutshippingaddress() {
+        console.log(location.state.type);
         if (location.state.type == 'regular')
             navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode } })
         else if (location.state.type == 'shortcut')
-            navigate('/customers', { state: { "totalAmount": location.state.totalAmount, product_id: location.state.product_id, 'type': 'regular', house, area, street, city, pincode } })
+            navigate('/customers', { state: { "totalAmount": location.state.totalAmount, product_id: location.state.product_id, 'type': 'shortcut', house, area, street, city, pincode } })
     }
     useEffect(() => {
         checkuser();

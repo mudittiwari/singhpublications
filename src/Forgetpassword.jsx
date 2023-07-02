@@ -38,6 +38,10 @@ function Forgetpassword() {
             navigate('/resetpassword', { state: { email: location.state.email } });
             
         }
+        else{
+            console.log('not matched')
+            toast.warning('Please enter a valid OTP');
+        }
     }
 
     useEffect(() => {

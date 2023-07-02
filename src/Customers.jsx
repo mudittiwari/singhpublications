@@ -85,9 +85,11 @@ function Customers() {
             )
         setitems(arr);
         settotal_price(price);
+        setloading(false);
     }
 
     useEffect(() => {
+        // console.log(location.state.type);
         checkuser();
         if(location.state.type=='regular')
             getitems();
@@ -184,7 +186,7 @@ function Customers() {
                                         <div class="w-full flex justify-center items-center">
                                             <button onClick={(e) => {
                                                 e.preventDefault();
-                                                // setloading(true);
+                                                setloading(true);
                                                 axios.post("https://singhpublication.in/api/order/createorder", {
                                                     "ProductsArray": user.cart,
                                                     "totalAmount": location.state.totalAmount,
@@ -207,6 +209,9 @@ function Customers() {
                                                     // setuser(newuser);
                                                     setloading(false);
                                                     console.log(res.data);
+                                                    let newuser = res.data;
+                                                    newuser['accessToken'] = user.accessToken;
+                                                    localStorage.setItem('pubuser', JSON.stringify(newuser));
                                                     navigate('/orderplaced');
                                                     // navigate('/accountsetting');
                                                     // localStorage.setItem('pubuser', JSON.stringify(res.data));
@@ -240,11 +245,12 @@ function Customers() {
                                     <div class="billing-shipping mt-5 w-full flex justify-center flex-wrap gap-5">
                                         <div class="flex justify-center flex-col xl:mt-8">
                                             <p class="text-base text-white font-semibold leading-4">Shipping Address</p>
-
+                                            {user.shipping_address['house']==''?<p className='text-gray-300 xl:w-48  text-sm'>N/A</p>:<span></span>}
                                             <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">{user.shipping_address['house']} {user.shipping_address['area']} {user.shipping_address['street']} {user.shipping_address['city']} {user.shipping_address['pincode']} </p>
                                         </div>
                                         <div class="flex justify-center flex-col">
                                             <p class="text-base text-white font-semibold leading-4">Billing Address</p>
+                                            {user.billing_address['house']==''?<p className='text-gray-300 xl:w-48  text-sm'>N/A</p>:<span></span>}
                                             <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">{user.billing_address['house']} {user.billing_address['area']} {user.billing_address['street']} {user.billing_address['city']} {user.billing_address['pincode']}</p>
                                         </div>
                                         <div class="flex justify-center flex-col">

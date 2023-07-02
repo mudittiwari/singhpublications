@@ -27,16 +27,6 @@ function Otp() {
     const ref6 = useRef(null);
     const auth = getAuth(app);
     const [result, setresult] = useState();
-    const generaterecaptcha = () => {
-        window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
-            'size': 'invisible',
-            'callback': (response) => {
-                // reCAPTCHA solved, allow signInWithPhoneNumber.
-                // onSignInSubmit();
-                console.log(response);
-            }
-        }, auth);
-    }
     const verifyuser = async () => {
         console.log(`+91${location.state.phone}`);
         var config = {
@@ -74,6 +64,7 @@ function Otp() {
           }
         })
         .catch(function (error) {
+            toast.warning("Invalid OTP");
           console.log(error);
         });
         

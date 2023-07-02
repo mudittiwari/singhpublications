@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 function BookComp(props) {
     const navigate = useNavigate();
-    const [loading, setloading] = React.useState(false);
     const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
     return (
         <div className=' my-4 max-w-md rounded-xl p-5' style={{ 'border': '1px solid #777777' }} >
@@ -39,7 +38,7 @@ function BookComp(props) {
                     }
                     // console.log(user.accessToken);
                     e.preventDefault();
-                    setloading(true);
+                    props.setLoading(true);
                     axios.post("https://singhpublication.in/api/user/addtocart", {
 
 
@@ -55,15 +54,18 @@ function BookComp(props) {
                             'id': user.id
                         }
                     },).then((res) => {
-                        setloading(false);
+                        console.log(res);
+                        props.setLoading(false);
                         let newuser = res.data;
                         newuser['accessToken'] = user.accessToken;
                         localStorage.setItem('pubuser', JSON.stringify(newuser));
-                        window.location.reload(false)
+                        toast.info("Added to cart");
+                        setuser(newuser);
+                        // window.location.reload(false)
                         // localStorage.setItem('pubuser', JSON.stringify(res.data));
                     }
                     ).catch((err) => {
-                        setloading(false);
+                        props.setLoading(false);
                         console.log(err.response.status);
                         if (err.response.data === "product already in cart") {
                             toast.info("Product already in cart");
@@ -209,7 +211,7 @@ function Books()
                         <BookComp />
                         <BookComp /> */}
                     {products.map((prod, index) => {
-                        return <BookComp key={index} prod={prod} user={user} />
+                        return <BookComp key={index} prod={prod} user={user} setLoading={setLoading} />
                     })}
 
                 </div>

@@ -12,20 +12,57 @@ import "react-toastify/dist/ReactToastify.css";
 function Product() {
     const location = useLocation();
     const navigate = useNavigate();
+    const [review, setreview] = useState("");
+    const [rating, setrating] = useState(0);
     const [loading, setloading] = React.useState(false);
     const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
-   async function checkuser() {
-        if(localStorage.getItem('pubuser')===null){
+    async function checkuser() {
+        if (localStorage.getItem('pubuser') === null) {
             navigate('/login');
         }
     }
+
+    function checkuserorder() {
+        if (user != null) {
+            // console.log(user.orders);
+            for (let i = 0; i < user.orders.length; i++) {
+                if (user.orders[i].ProductsArray.includes(location.state.id)) {
+                    return 1;
+                }
+
+            }
+            return 0;
+        }
+        return 0;
+    }
+    async function addreview() {
+        axios.post("https://singhpublication.in/api/user/addreview", {
+            id: location.state.id,
+            review: review,
+            username: user.firstname+" "+user.lastname,
+            rating: rating
+
+        }, {
+            headers: {
+                'Authorization': `Bearer ${user.accessToken}`
+            }
+        }).then((res) => {
+            console.log(res);
+            location.state=res.data;
+            setrating(0);
+            setreview("");
+            console.log(location.state);
+        }).catch((err) => {console.log(err)});
+    }
     useEffect(() => {
+        window.scrollTo(0, 0);
         if (localStorage.getItem('pubuser') === null) {
             setuser(null);
         }
         else {
             setuser(JSON.parse(localStorage.getItem('pubuser')));
         }
+        
         document.title = 'Singh Publication | Book';
     }, []);
     return (
@@ -202,7 +239,7 @@ function Product() {
                             }
                             // console.log(user.accessToken);
                             e.preventDefault();
-                            navigate('/deliveryaddress',{state:{product_id:location.state.id,type:"shortcut","totalAmount":location.state.price}})
+                            navigate('/deliveryaddress', { state: { product_id: location.state.id, type: "shortcut", "totalAmount": location.state.price } })
                             // setloading(true);
                             // axios.post("https://singhpublication.in/api/user/addtocart", {
 
@@ -261,8 +298,36 @@ function Product() {
                             <h1 className="text-base font-medium mb-0 mx-0 mt-0">Dimensions: <span className="font-normal">{location.state.dimensions}</span></h1>
 
                         </div>
+
                     </div>
                     <h1 className="text-2xl font-medium mb-3 mt-10" style={{ 'color': '#315ED2' }}>Customer Reviews</h1>
+                    {location.state.reviews.length == 0 && <h1 className="text-lg font-semibold ml-0" style={{ 'color': '#315ED2' }}>No Reviews</h1>}
+                    {location.state.reviews.map((review, index) => {
+                        return <div key={index}>
+                            <h1 className="text-lg font-semibold ml-3" style={{ 'color': '#315ED2' }}>{review.username}</h1>
+                            <h1 className="text-lg font-semibold ml-3" >{review.review}</h1>
+                        </div>
+                    })}
+                    {checkuserorder() == 1 &&
+                        <div className="w-full flex flex-col items-center mt-10">
+                            <h1 className="text-lg font-semibold ml-3" style={{ 'color': '#315ED2' }}>Add Review</h1>
+                            <textarea value={review} onChange={(e)=>{
+                                setreview(e.target.value);
+                            }} className="mt-4 rounded-3xl p-4 focus:outline-none resize-none w-full max-w-xl" style={{ 'border': '1px solid #777777' }} name="" id="" cols="20" rows="5" placeholder="Review"></textarea>
+                            <div className=' mt-4 w-full flex justify-center items-center mx-auto'>
+                                <img onClick={()=>{setrating(1)}} className='mx-1 w-8 cursor-pointer' src={star} alt="" />
+                                <img onClick={()=>{setrating(2)}} className='mx-1 w-8 cursor-pointer' src={star} alt="" />
+                                <img onClick={()=>{setrating(3)}} className='mx-1 w-8 cursor-pointer' src={star} alt="" />
+                                <img onClick={()=>{setrating(4)}} className='mx-1 w-8 cursor-pointer' src={star} alt="" />
+                                <img onClick={()=>{setrating(5)}} className='mx-1 w-8 cursor-pointer' src={star} alt="" />
+                            </div>
+                            <button className="btn mt-5 cursor-pointer w-fit px-14 py-4 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" onClick={(e) => {
+                                e.preventDefault();
+                                addreview();
+                            }}>
+                                Submit
+                            </button>
+                        </div>}
                 </div>
             </div>
         </>
