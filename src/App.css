@@ -80,5 +80,7 @@
 width:100% !important;
 }
 canvas{
-  width:100% !important;
+  width:80% !important;
+  height:auto !important;
+  border:1px solid black;
 }

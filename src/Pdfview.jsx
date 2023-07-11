@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { usePdf } from 'react-pdf-js';
-import file from '../src/assets/policy.pdf'
+import file from '../src/assets/terms.pdf'
 const MyPdfViewer = () => {
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(null);
@@ -44,7 +44,9 @@ const MyPdfViewer = () => {
   return (
     <div>
       {loading && <span>Loading...</span>}
-      <canvas width="100%" height="100%" ref={canvasEl} />
+      <div className='flex justify-center mt-10 flex-col items-center'>
+      <canvas ref={canvasEl} />
+      </div>
       {renderPagination(page, pages)}
     </div>
   );
