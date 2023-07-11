@@ -101,7 +101,7 @@ const Contact = () => {
 
                                     setloading(true);
                                     e.preventDefault();
-                                    axios.post('https://singhpublication.in/api/contact', {
+                                    axios.post('http://localhost:5000/api/contact', {
                                         name: name,
                                         phone: phone,
                                         subject: subject,
