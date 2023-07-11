@@ -39,40 +39,42 @@ const Contact = () => {
                             <h1 className="text-5xl font-semibold text-center">Contact us</h1>
                             <div className="w-full grid gap-[1.1vw]">
                                 <div className="relative z-0">
-                                    <input type="text" name="name" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
-                                    <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white" value={name} onChange={(e) => {
+                                    <input type="text" value={name} onChange={(e) => {
                                         setName(e.target.value);
-                                    }}>Your name</label>
+                                    }} name="name" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
+                                    <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white" >Your name</label>
                                 </div>
                                 <div className="relative z-0">
-                                    <input type="text" name="name" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
-                                    <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white" value={phone} onChange={(e) => {
+                                    <input type="text"  value={phone} onChange={(e) => {
                                         setPhone(e.target.value);
-                                    }}>Phone Number</label>
+                                    }} name="name" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
+                                    <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white">Phone Number</label>
                                 </div>
                                 <div className="relative z-0">
-                                    <input type="text" name="name" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
-                                    <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white" value={subject} onChange={(e) => {
+                                    <input type="text"  value={subject} onChange={(e) => {
                                         setSubject(e.target.value);
-                                    }}>Subject</label>
+                                    }} name="name" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
+                                    <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white">Subject</label>
                                 </div>
                                 <div className="relative z-0">
-                                    <input type="text" name="email" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
-                                    <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white" value={email} onChange={(e) => {
+                                    <input type="text" value={email} onChange={(e) => {
                                         setEmail(e.target.value);
                                     }
-                                    }>Your email</label>
+                                    } name="email" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
+                                    <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white" >Your email</label>
                                 </div>
                                 <div className="relative z-0">
-                                    <textarea name="message" rows="5" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" "></textarea>
-                                    <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white" value={description} onChange={(e) => {
+                                    <textarea value={description} onChange={(e) => {
                                         setDescription(e.target.value);
-                                    }}>Your message</label>
+                                    }} name="message" rows="5" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" "></textarea>
+                                    <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white" >Your message</label>
                                 </div>
                             </div>
                             <div className="flex justify-center mt-5">
                                 <button type="button" onClick={(e) => {
-                                    if (name === '') {
+                                    console.log(name)
+                                    if (name.trim().length == 0) {
+                                       
                                         toast.warning('Please enter your name');
                                         return;
                                     }
@@ -99,7 +101,7 @@ const Contact = () => {
 
                                     setloading(true);
                                     e.preventDefault();
-                                    axios.post('https://singhpublication.in/contact', {
+                                    axios.post('https://singhpublication.in/api/contact', {
                                         name: name,
                                         phone: phone,
                                         subject: subject,

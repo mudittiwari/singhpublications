@@ -153,15 +153,19 @@ function Customers() {
                                                     <p class="text-base text-white font-semibold leading-4">Shipping Address</p>
 
                                                     <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">
-                                                        {user.shipping_address['house']==''?<p className='text-gray-300 xl:w-48  text-sm'>N/A</p>:<span></span>}
+                                                        {user.shipping_address['house']==''?<p className='text-gray-300 xl:w-48  text-sm'>{location.state.house} {location.state.area} {location.state.street} {location.state.city} {location.state.pincode}</p>:<span></span>}
                                                         {user.shipping_address['house']}
                                                      {user.shipping_address['area']} {user.shipping_address['street']} {user.shipping_address['city']} {user.shipping_address['pincode']} </p>
                                                 </div>
-                                                <div class="flex justify-center flex-col">
+                                                <div class="flex justify-center flex-col xl:mt-8">
                                                     <p class="text-base text-white font-semibold leading-4">Billing Address</p>
-                                                    {user.billing_address['house']==''?<p className='text-gray-300 xl:w-48  text-sm'>N/A</p>:<span></span>}
-                                                    <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">{user.billing_address['house']} {user.billing_address['area']} {user.billing_address['street']} {user.billing_address['city']} {user.billing_address['pincode']}</p>
+
+                                                    <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">
+                                                        {user.billing_address['house']==''?<p className='text-gray-300 xl:w-48  text-sm'>{location.state.house} {location.state.area} {location.state.street} {location.state.city} {location.state.pincode}</p>:<span></span>}
+                                                        {user.billing_address['house']}
+                                                     {user.billing_address['area']} {user.billing_address['street']} {user.billing_address['city']} {user.billing_address['pincode']} </p>
                                                 </div>
+                                                
                                                 <div class="flex justify-center flex-col">
                                                     <p class="text-base text-white font-semibold leading-4">Order Delivery Address</p>
                                                     <p class="w-48 lg:w-full text-gray-300 xl:w-48  text-sm leading-5">{location.state.house} {location.state.area} {location.state.street} {location.state.city} {location.state.pincode}</p>
@@ -193,6 +197,7 @@ function Customers() {
                                                     "ordered_by": user.email,
                                                     "delivery_status": "pending",
                                                     "delivery_address": location.state.house + ' ' + location.state.street + ' ' + location.state.area + ' ' + location.state.city + ' ' + location.state.pincode,
+                                                    "billing_address":user.billing_address['house']==''? location.state.house + ' ' + location.state.street + ' ' + location.state.area + ' ' + location.state.city + ' ' + location.state.pincode:user.billing_address['house'] + ' ' + user.billing_address['street'] + ' ' + user.billing_address['area'] + ' ' + user.billing_address['city'] + ' ' + user.billing_address['pincode'],
                                                     "invoice_file": ""
 
                                                 }, {
