@@ -9,6 +9,8 @@ import { useNavigate,useLocation } from 'react-router-dom';
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import app from './Firebase';
 import LoadingBar from './comps/Loadingbar';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 function BookComp(props) {
     const navigate = useNavigate();
     return (
@@ -126,6 +128,7 @@ function Cart() {
         // console.log("muidt tiwari")
         if(location.state?.code!=undefined){
             let code=location.state.code;
+            let status=false;
             console.log(code);
             //traverse in the items array and check if item name is equal to code
             for (let index = 0; index < items.length; index++) {
@@ -133,11 +136,16 @@ function Cart() {
                 console.log(element.title,code)
                 if(element.title===code){
                     setcouponstatus(true);
+                    status=true;
+                    toast.success("Coupon Applied");
                     settotal_price(total_price-element.price);
-                    console.log(total_price-element.price);
+                    // console.log(total_price-element.price);
                     break;
                 }
+                
             }
+            if(items.length>0 && status==false)
+                toast.info("Please add the item in cart to avail the coupon");
             // console.log(flag);
         }
     }
@@ -151,6 +159,18 @@ function Cart() {
     return (
         <>
             {loading && <LoadingBar />}
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
             {/* <div className='w-full px-5'>
                 <div className=' w-full min-h-[100vh] py-10 relative grid grid-cols-1 md:grid-cols-2 items-center' >
                     <div className='w-full h-fit sticky top-28 rounded-xl p-5 text-white text-center flex flex-col items-center bg-[#315ED2]'>

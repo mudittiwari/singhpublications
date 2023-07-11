@@ -45,13 +45,13 @@ const Contact = () => {
                                     <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white" >Your name</label>
                                 </div>
                                 <div className="relative z-0">
-                                    <input type="text"  value={phone} onChange={(e) => {
+                                    <input type="text" value={phone} onChange={(e) => {
                                         setPhone(e.target.value);
                                     }} name="name" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
                                     <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white">Phone Number</label>
                                 </div>
                                 <div className="relative z-0">
-                                    <input type="text"  value={subject} onChange={(e) => {
+                                    <input type="text" value={subject} onChange={(e) => {
                                         setSubject(e.target.value);
                                     }} name="name" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
                                     <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white">Subject</label>
@@ -74,7 +74,7 @@ const Contact = () => {
                                 <button type="button" onClick={(e) => {
                                     console.log(name)
                                     if (name.trim().length == 0) {
-                                       
+
                                         toast.warning('Please enter your name');
                                         return;
                                     }
@@ -158,7 +158,7 @@ const Contact = () => {
                         <iframe className='w-full rounded-md h-80' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.6169804468354!2d75.76172679999999!3d26.883907599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5558aea2575%3A0xd53fbb24d469e795!2sSingh%20Publication!5e0!3m2!1sen!2sin!4v1683869607111!5m2!1sen!2sin" frameBorder="0" style={{ border: 0 }} allowFullScreen="" aria-hidden="false" tabIndex="0"></iframe>
                         <div className="address flex sm:flex-nowrap gap-6 text-lg">
                             <div className="icon text-2xl"><i className="fa-solid fa-location-dot text-black"></i></div>
-                            <a href='https://www.google.com/maps/place/Singh+Publication,+401,+New+Sanganer+Rd,+Katewa+Nagar,+Devi+Nagar,+Shyam+Nagar,+Jaipur,+Rajasthan+302019/@26.883908,75.761727,15z/data=!4m6!3m5!1s0x396db5558aea2575:0xd53fbb24d469e795!8m2!3d26.8839076!4d75.7617268!16s%2Fg%2F11tghjkpdy?hl=en&gl=IN' className='text-sm sm:text-2xls'>401, katewa nagar, New sanganer road, Sodala, Jaipur, Jaipur, Rajasthan, 302019</a>
+                            <a href='https://www.google.com/maps/place/Singh+Publication,+401,+New+Sanganer+Rd,+Katewa+Nagar,+Devi+Nagar,+Shyam+Nagar,+Jaipur,+Rajasthan+302019/@26.883908,75.761727,15z/data=!4m6!3m5!1s0x396db5558aea2575:0xd53fbb24d469e795!8m2!3d26.8839076!4d75.7617268!16s%2Fg%2F11tghjkpdy?hl=en&gl=IN' className='text-sm sm:text-2xls'><h3 className='text-sm sm:text-2xl'>401, katewa nagar, New sanganer road, Sodala, Jaipur, Jaipur, Rajasthan, 302019</h3></a>
                         </div>
                         <div className="address flex flex-wrap sm:flex-nowrap gap-6 text-lg">
                             <div className="icon text-2xl"><i className="fa-solid fa-clock text-black"></i></div>

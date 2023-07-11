@@ -152,6 +152,20 @@ function Faq() {
                                 </p>
                             </details>
                         </div>
+                        <div className="py-3 sm:py-5">
+                            <details className="group bg-blue-400 p-5 text-white rounded-md">
+                                <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
+                                    <span>How do i contact support?</span>
+                                    <span className="transition group-open:rotate-180">
+                                        <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+                                        </svg>
+                                    </span>
+                                </summary>
+                                <p className=" mt-3 group-open:animate-fadeIn">
+                                    You can mail us on <a className="text-[#315ED2]" href="mailto:singhpublicationjaipur@gmail.com"> singhpublicationjaipur@gmail.com</a> or visit the contact us page at <a className="text-[#315ED2]" href="https://singhpublication.in/#/contact"> https://singhpublication.in/#/contact</a>
+                                </p>
+                            </details>
+                        </div>
                     </div>
                 </div>
 

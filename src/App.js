@@ -36,7 +36,6 @@ import Signupverification from './Signupotp';
 import Forgetpassword from './Forgetpassword';
 import Resetpassword from './Resetpassword';
 import Books from './Books';
-import Coupon from './Coupon';
 // import Partner from './Partner';
 
 
@@ -63,7 +62,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/viewbook" element={<Pdfview />} />
-          <Route path="/applycoupon/:code" element={<Coupon />} />
           <Route path="/careers" element={<Career />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />

@@ -62,7 +62,7 @@ function Policy() {
                     applicable privacy law may mean you have certain rights regarding your personal
                     information. Learn more about <span className="text-[#315ED2]">your privacy rights.</span></p>
                 <p><span className="text-lg font-bold">How do you exercise your rights?</span> The easiest way to exercise your rights is by
-                    visiting______ , or by contacting us. We will consider and act upon any requestin
+                    visiting <span className="text-[#315ED2]">https://singhpublication.in/#/privacypolicy</span>, or by contacting us. We will consider and act upon any requestin
                     accordance with applicable data protection laws.</p>
                 <p>Want to learn more about what Singh Publication does with any information we
                     collect? <span className="text-[#315ED2]">Review the privacy notice in full.</span></p>
@@ -106,15 +106,11 @@ function Policy() {
                 </ul>
 
                 <p><span className="text-lg font-bold">Sensitive Information.</span> We do not process sensitive information.</p>
-                <p><span className="text-lg font-bold">Payment Data.</span> We may collect data necessary to process your payment if you make
-                    purchases, such as your payment instrument number, and the security code
-                    associated with your payment instrument. All payment data is stored by_______ .
-                    You may find their privacy notice link(s) here:_______ .</p>
                 <p><span className="text-lg font-bold">Social Media Login Data.</span> We may provide you with the option to register with us
                     using your existing social media account details, like your Facebook, Twitter, or other
                     social media account. If you choose to register in this way, we will collect the
                     Information described in the section called "<span className="text-[#315ED2]">HOW DO WE HANDLE YOUR SOCIAL
-                    LOGINS?</span>" below.</p>
+                        LOGINS?</span>" below.</p>
                 <p>All personal information that you provide to us must be true, complete, and
                     accurate,and you must notify us of any changes to such personal information.</p>
                 <h2 className="text-lg md:text-2xl font-medium ">2. HOW DO WE PROCESS YOUR INFORMATION?</h2>
@@ -151,7 +147,7 @@ function Policy() {
                         <li>         We may process your information if you have given us permission
                             (i.e., consent) to use your personal information for a specific purpose. You can
                             withdraw your consent at any time. Learn more about <span className="text-[#315ED2]">withdrawing your
-                            consent.</span></li>
+                                consent.</span></li>
                         <li><span className="text-lg font-bold">Legal Obligations:</span> We may process your information where we believe it is
                             necessary for compliance with our legal obligations, such as to cooperate with
                             a law enforcement body or regulatory agency, exercise or defend our legal
@@ -283,13 +279,13 @@ function Policy() {
                     portability. In certain circumstances, you may also have the right to object to the
                     processing of your personal information. You can make such a request by contacting
                     us by using the contact details provided in the section "<span className="text-[#315ED2]">HOW CAN YOU CONTACT
-                    US ABOUT THIS NOTICE?</span>" below.</p>
+                        US ABOUT THIS NOTICE?</span>" below.</p>
                 <p>We will consider and act upon any request in accordance with applicable data
                     protection laws.
                 </p>
                 <p>If you are located in the EEA or UK and you believe we are unlawfully processing
                     your personal information, you also have the right to complain to your <span className="text-[#315ED2]">Member State
-                    data protection authority</span> or <span className="text-[#315ED2]">UK data protection authority.</span>
+                        data protection authority</span> or <span className="text-[#315ED2]">UK data protection authority.</span>
                 </p>
                 <p>If you are located in Switzerland, you may contact the Federal Data Protection and
                     Information Commissioner.
@@ -372,7 +368,7 @@ function Policy() {
                     to be informed of how we are protecting your information.</p>
                 <h2 className="text-lg md:text-2xl font-medium ">12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h2>
                 <p>If you have questions or comments about this notice, you may email us at
-                    _______ or contact us by post at:</p>
+                    <a className="text-[#315ED2]" href="mailto:singhpublicationjaipur@gmail.com"> singhpublicationjaipur@gmail.com</a></p>
                 <p>Singh Publication
                     401, katewa nagar, New sanganer road, Sodala
                     Jaipur, Rajasthan 302019
@@ -383,7 +379,7 @@ function Policy() {
                 <p>Based on the applicable laws of your country, you may have the right to request
                     access to the personal information we collect from you, change that information, or
                     delete it. To request to review, update, or delete your personal information, please
-                    visit:_______ .</p>
+                    visit: <span className="text-[#315ED2]">https://singhpublication.in/#/contact</span> .</p>
 
             </div>
             {/* <iframe src={policy}   title="testPdf" height="100%" width="100%"/> */}

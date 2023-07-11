@@ -10,6 +10,7 @@ import axios from "axios";
 import app from './Firebase';
 import LoadingBar from "./comps/Loadingbar";
 function BookComp(props) {
+    const navigate = useNavigate();
     return (
         <div className='  rounded-xl p-5 relative flex justify-center flex-wrap gap-5' style={{ 'border': '1px solid #315ED2', 'width': '400px' }} >
             <img src={props.book.image_url} className="h-40" alt="" />
@@ -40,7 +41,7 @@ function BookComp(props) {
                         if (props.book.category == 'audiobook')
                             alert("This is an audiobook")
                         else
-                            window.open(props.book.file);
+                            navigate('/viewbook');
 
                     }} className=" btn cursor-pointer w-fit px-5 py-2 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">
                         Read
@@ -74,8 +75,14 @@ function PurchasedBooks() {
                 let arr = [];
                 for (let j = 0; j < res.data[i].ProductsArray.length; j++) {
                     await axios.get(`https://singhpublication.in/api/product/products`, { params: { id: res.data[i].ProductsArray[j] } }).then((res) => {
-                        if (res.data.category == 'ebook' || res.data.category == 'audiobook')
+                        if ((res.data.category == 'ebook' || res.data.category == 'audiobook'))
+                        {
+                            for(let i=0;i<ordrs.length;i++){
+                                if(ordrs[i].id==res.data.id)
+                                    return;
+                            }
                             arr.push(res.data);
+                        }
                     }
                     ).catch((err) => {
                         console.log(err);

@@ -60,11 +60,6 @@ function Otp() {
           console.log(JSON.stringify(response.data));
           if(response.status === 200){
             localStorage.setItem('pubuser', JSON.stringify(location.state.user));
-            if(location.state.from === 'coupon')
-            {
-                navigate('/cart',{state:{code:location.state.code}});
-                return;
-            }
             navigate('/dashboard')
           }
         })
@@ -76,7 +71,7 @@ function Otp() {
     }
     useEffect(() => {
         verifyuser();
-        // console.log(location.state)
+        console.log(location.state.user)
         document.title = 'Singh Publication | Login';
     }, []);
 

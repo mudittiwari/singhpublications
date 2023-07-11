@@ -80,7 +80,12 @@
 width:100% !important;
 }
 canvas{
-  width:80% !important;
-  height:auto !important;
-  border:1px solid black;
+  width: 100% !important;
+  height: 100% !important;
+}
+@media (min-width: 786px) {
+  canvas{
+    width: 80% !important;
+    height: 80vh !important;
+  }
 }
