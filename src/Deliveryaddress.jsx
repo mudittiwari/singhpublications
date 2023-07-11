@@ -220,7 +220,7 @@ function Deliveryaddress() {
             localStorage.setItem('pubuser', JSON.stringify(newuser));
             setuser(newuser);
             if (location.state.type == 'regular')
-                navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode } })
+                navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code } })
             else if (location.state.type == 'shortcut')
                 navigate('/customers', { state: { "totalAmount": location.state.totalAmount, product_id: location.state.product_id, 'type': 'regular', house, area, street, city, pincode } })
             // localStorage.setItem('pubuser', JSON.stringify(res.data));
@@ -257,7 +257,7 @@ function Deliveryaddress() {
             localStorage.setItem('pubuser', JSON.stringify(newuser));
             setuser(newuser);
             if (location.state.type == 'regular')
-                navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode } })
+                navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code } })
             else if (location.state.type == 'shortcut')
                 navigate('/customers', { state: { "totalAmount": location.state.totalAmount, product_id: location.state.product_id, 'type': 'regular', house, area, street, city, pincode } })
             // localStorage.setItem('pubuser', JSON.stringify(res.data));
@@ -272,7 +272,7 @@ function Deliveryaddress() {
     async function orderwithoutshippingaddress() {
         console.log(location.state.type);
         if (location.state.type == 'regular')
-            navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode } })
+            navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code } })
         else if (location.state.type == 'shortcut')
             navigate('/customers', { state: { "totalAmount": location.state.totalAmount, product_id: location.state.product_id, 'type': 'shortcut', house, area, street, city, pincode } })
     }
@@ -362,7 +362,7 @@ function Deliveryaddress() {
                                     return;
                                 }
                                 if (user.shipping_address.house == '' && user.billing_address.house == '') {
-                                    
+
                                     setShowModal2(true);
                                     return;
                                 }
@@ -376,7 +376,7 @@ function Deliveryaddress() {
                                 }
                                 else {
                                     if (location.state.type == 'regular')
-                                        navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode } })
+                                        navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code,couponstatus:location.state.couponstatus } })
                                     else if (location.state.type == 'shortcut')
                                         navigate('/customers', { state: { "totalAmount": location.state.totalAmount, product_id: location.state.product_id, 'type': 'regular', house, area, street, city, pincode } })
                                 }

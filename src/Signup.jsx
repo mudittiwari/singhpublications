@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import axios from "axios";
 import playstore from './assets/undraw_mobile_payments_re_7udl.svg';
 import LoadingBar from "./comps/Loadingbar";
@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Signup() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [firstName, setFirstName] = React.useState("");
     const [lastName, setLastName] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -262,7 +263,7 @@ function Signup() {
                                         setLoading(false);
                                        if(res.status==200)
                                        {
-                                        navigate("/signupverification", { state: { otp: res.data,email:email,firstName,lastName,gender,birthDate,mobileNumber,password,password2 } });
+                                        navigate("/signupverification", { state: { otp: res.data,email:email,firstName,lastName,gender,birthDate,mobileNumber,password,password2,from:location.state?.from,code:location.state?.code } });
                                        }
 
                                     }).catch((err) => {

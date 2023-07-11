@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import playstore from './assets/undraw_login_re_4vu2.svg';
 import LoadingBar from "./comps/Loadingbar";
@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 
 function Login() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [loading, setloading] = React.useState(false);
@@ -125,6 +126,11 @@ function Login() {
                                     if (res.status === 200) {
                                         // localStorage.setItem("pubuser", JSON.stringify(res.data));
                                         // console.log(localStorage.getItem("pubuser"));
+                                        if(location.state?.from)
+                                        {
+                                            navigate("/otp", { state: { phone: res.data.phone_number, user: res.data,from:location.state.from,code:location.state.code } });
+                                            return;
+                                        }
                                         navigate("/otp", { state: { phone: res.data.phone_number, user: res.data } });
                                     } else {
                                         alert("Invalid Credentials");
@@ -142,7 +148,7 @@ function Login() {
                         </div>
                         <p className="text-lg text-center text-gray-400 flex w-fit mx-auto">Don&#x27;t have an account yet? <button onClick={(e) => {
                             e.preventDefault();
-                            navigate("/signup");
+                            navigate("/signup",{state:{from:location.state?.from,code:location.state?.code}});
 
                         }} className="text-[#315ED2] font-normal text-xl ml-2">
                             Sign up

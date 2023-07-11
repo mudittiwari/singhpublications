@@ -32,7 +32,7 @@ function Signupverification() {
         if(code==location.state.otp)
         {
             console.log('matched');
-            axios.post("http://localhost:5000/api/user/register",
+            axios.post("https://singhpublication.in/api/user/register",
                                         {
                                             firstname: location.state.firstName,
                                             lastname: location.state.lastName,
@@ -48,6 +48,11 @@ function Signupverification() {
                                             setLoading(false);
                                             if (res.data === "success") {
                                                 // navigate("/login");
+                                                if(location.state.from==='coupon')
+                                                {
+                                                    navigate('/login',{state:{code:location.state.code,from:location.state.from}})
+                                                    return;
+                                                }
                                                 navigate("/signupSuccess");
                                             }
                                         })
