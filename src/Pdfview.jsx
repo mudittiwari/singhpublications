@@ -31,6 +31,7 @@ const MyPdfViewer = () => {
 
   const [loading, numPages] = usePdf({
     file: file,
+    scale:2,
     page,
     canvasEl
   });
