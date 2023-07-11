@@ -32,7 +32,7 @@ function Signupverification() {
         if(code==location.state.otp)
         {
             console.log('matched');
-            axios.post("https://singhpublication.in/api/user/register",
+            axios.post("http://localhost:5000/api/user/register",
                                         {
                                             firstname: location.state.firstName,
                                             lastname: location.state.lastName,

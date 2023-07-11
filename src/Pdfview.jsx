@@ -1,42 +1,52 @@
-import React, { useState } from 'react';
-import { Document,Page } from 'react-pdf/dist/esm/entry.webpack';
-// import file from './assets/file.pdf';
+import React, { useState, useEffect, useRef } from 'react';
+import { usePdf } from 'react-pdf-js';
+import file from '../src/assets/policy.pdf'
+const MyPdfViewer = () => {
+  const [page, setPage] = useState(1);
+  const [pages, setPages] = useState(null);
 
-function Pdfview() {
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [file, setFile] = useState('./assets/file.pdf');
-  function onDocumentLoadSuccess({ numPages: nextNumPages }) {
-    setNumPages(nextNumPages);
+  const renderPagination = (page, pages) => {
+    if (!pages) {
+      return null;
+    }
+    let previousButton = <li className="previous" onClick={() => setPage(page - 1)}><a href="#"><i className="fa fa-arrow-left"></i> Previous</a></li>;
+    if (page === 1) {
+      previousButton = <li className="previous disabled"><a href="#"><i className="fa fa-arrow-left"></i> Previous</a></li>;
+    }
+    let nextButton = <li className="next" onClick={() => setPage(page + 1)}>Next <i className="fa fa-arrow-right"></i></li>;
+    if (page === pages) {
+      nextButton = <li className="next disabled"><a href="#">Next <i className="fa fa-arrow-right"></i></a></li>;
+    }
+    return (
+      <nav>
+        <ul className="pager">
+          {previousButton}
+          {nextButton}
+        </ul>
+      </nav>
+    );
   }
 
-  const goToPrevPage = () =>
-    setPageNumber(pageNumber - 1 <= 1 ? 1 : pageNumber - 1);
+  const canvasEl = useRef(null);
 
-  const goToNextPage = () =>
-    setPageNumber(
-      pageNumber + 1 >= numPages ? numPages : pageNumber + 1,
-    );
+  const [loading, numPages] = usePdf({
+    file: file,
+    page,
+    canvasEl
+  });
+
+  useEffect(() => {
+    setPages(numPages);
+    // console.log(numPages)
+  }, [numPages]);
 
   return (
-    <>
-
-      <div className="w-full h-max my-5 py-5 flex items-center justify-center
-            ">
-        <div className="w-4/5 h-max py-5 bg-white flex flex-col items-center justify-center rounded-lg
-            " style={{ 'border': '1px solid #777777' }}>
-          <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
-            <Page pageNumber={pageNumber} />
-          </Document>
-        </div>
-      </div>
-      <nav className='flex justify-between px-10'>
-        <button className=" text-white px-12 py-2 mt-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }} onClick={goToPrevPage}>Prev</button>
-        <button className=" text-white px-12 py-2 mt-5 rounded-2xl focus:outline-none" style={{ 'backgroundColor': "#315ED2" }} onClick={goToNextPage}>Next</button>
-
-      </nav>
-
-    </>
+    <div>
+      {loading && <span>Loading...</span>}
+      <canvas width="100%" height="100%" ref={canvasEl} />
+      {renderPagination(page, pages)}
+    </div>
   );
 }
-export default Pdfview;
+
+export default MyPdfViewer;
