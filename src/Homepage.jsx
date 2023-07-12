@@ -15,7 +15,7 @@ import axios from 'axios';
 import Carousel from 'react-material-ui-carousel'
 import { Favorite } from '@mui/icons-material';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import { useEffect } from 'react';
 import LoadingBar from './comps/Loadingbar';
@@ -189,6 +189,7 @@ function BookComp(props) {
 function Home() {
     const [products, setProducts] = useState([]);
     const navigate = useNavigate();
+    const location = useLocation();
     const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
     const [loading, setLoading] = useState(true);
     async function getallprods() {
@@ -223,6 +224,10 @@ function Home() {
         //     navigate('/login');
         // }
         // checkuser();
+        if(location.state && location.state.error === 'coupon'){
+            console.log("hello")
+            toast.error("Invalid Coupon");
+        }
         getallprods();
         document.title = 'Singh Publication | Home';
     }, []);

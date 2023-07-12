@@ -8,13 +8,26 @@ import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth
 import { useState } from "react";
 import axios from "axios";
 import app from './Firebase';
+import { useRef } from "react";
 import LoadingBar from "./comps/Loadingbar";
+import audio from '../src/assets/audio.mp3';
+const AudioPlayer = ({visible ,audioSrc }) => {
+    const audioRef = useRef(null);
+  
+    useEffect(() => {
+      audioRef.current.play();
+    }, [visible]);
+  
+    return (
+      <audio className={visible} ref={audioRef} src={audioSrc} controls />
+    );
+  };
 function BookComp(props) {
     const navigate = useNavigate();
     return (
         <div className='  rounded-xl p-5 relative flex justify-center flex-wrap gap-5' style={{ 'border': '1px solid #315ED2', 'width': '400px' }} >
             <img src={props.book.image_url} className="h-40" alt="" />
-            <div className='text-center'>
+            <div className='flex flex-col items-start text-center'>
                 <h1 className="text-md font-bold" style={{ 'color': '#315ED2' }}>{props.book.title}</h1>
                 <h1 className="text-base font-semibold" style={{ 'color': '#777777' }}>{props.book.category}</h1>
                 <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>{props.book.subtitle}</h1>
@@ -30,8 +43,18 @@ function BookComp(props) {
                 <div className="flex justify-left mt-3 flex-wrap gap-5">
                     <button onClick={(e) => {
                         e.preventDefault();
-                        if (props.book.category == 'ebook')
+                        if(props.book.category == 'ebook')
+                        {
                             alert("This is an Ebook")
+                            return;
+                        }
+                        // if(props.visible=="hidden")
+                        //     props.setvisible("visible");
+                        // else
+                        //     props.setvisible("hidden");
+                        // props.setvisible(!props.visible);
+                        // if (props.book.category == 'ebook')
+                        //     alert("This is an Ebook")
 
                     }} className=" btn cursor-pointer w-fit px-5 py-2 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">
                         Listen
@@ -58,6 +81,7 @@ function PurchasedBooks() {
     const [user, setuser] = React.useState(JSON.parse(localStorage.getItem('pubuser')));
     const [orders, setorders] = React.useState([]);
     const [loading, setloading] = React.useState(false);
+    const [visible, setvisible] = React.useState("hidden");
    async function checkuser() {
         if(localStorage.getItem('pubuser')===null){
             navigate('/login');
@@ -115,6 +139,7 @@ function PurchasedBooks() {
     return (
         <>
             {loading && <LoadingBar />}
+            <AudioPlayer visible={visible} audioSrc={audio} />
             <div className='w-full px-5'>
                 <div className='w-full  flex justify-center flex-col items-center flex-wrap' >
                     <h1 className="text-5xl text-center font-medium mb-5 mt-5" style={{ 'color': '#315ED2' }}>Purchased Books</h1>
@@ -122,7 +147,7 @@ function PurchasedBooks() {
                         
                         {orders.length == 0 ? <h1 className="text-2xl font-medium mb-5 mt-5" style={{ 'color': 'gray' }}>No Book Purchased Till Now</h1> : orders.map((item, index) => {
                             return (
-                                <BookComp key={index} book={item} user={user} />
+                                <BookComp key={index} book={item} user={user} setvisible={setvisible} visible={visible} />
                             )
                         })}
                     </div>

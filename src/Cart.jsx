@@ -5,7 +5,7 @@ import star from './assets/star.png';
 import { useState } from 'react';
 import axios from 'axios';
 import playstore from './assets/undraw_empty_cart_co35.svg';
-import { useNavigate,useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import app from './Firebase';
 import LoadingBar from './comps/Loadingbar';
@@ -39,7 +39,7 @@ function BookComp(props) {
                     <h1 className="text-sm font-medium" style={{ 'color': '#777777' }}>11 Jan 2023</h1>
                 </div>
                 <div className='mt-5 flex flex-wrap items-center justify-around gap-2 pt-1 border-t-2'>
-                    <h1 className="md:text-2xl text-lg font-bold" style={{ 'color': '#315ED2' }}>{props.code===props.prod.title && props.couponstatus?0: props.prod.price} Rs.</h1>
+                    <h1 className="md:text-2xl text-lg font-bold" style={{ 'color': '#315ED2' }}>{props.code === props.prod.title && props.couponstatus ? 0 : props.prod.price} Rs.</h1>
                     <button className=" btn mt-3 cursor-pointer w-fit px-7 py-3 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full" onClick={(e) => {
                         // console.log(user.accessToken);
                         props.setloading(true);
@@ -86,14 +86,14 @@ function BookComp(props) {
 
 function Cart() {
     const navigate = useNavigate();
-    const location=useLocation();
+    const location = useLocation();
     const [user, setuser] = useState(JSON.parse(localStorage.getItem('pubuser')));
     const [loading, setloading] = useState(true);
     const [items, setitems] = useState([]);
     const [couponstatus, setcouponstatus] = useState(false);
     const [total_price, settotal_price] = useState(0);
     async function checkuser() {
-        if(localStorage.getItem('pubuser')===null){
+        if (localStorage.getItem('pubuser') === null) {
             navigate('/login');
         }
     }
@@ -123,28 +123,29 @@ function Cart() {
     }
     useEffect(() => {
         checkcoupon();
-    },[items]);
-    async function checkcoupon(){
+    }, [items]);
+    async function checkcoupon() {
         // console.log("muidt tiwari")
-        if(location.state?.code!=undefined){
-            let code=location.state.code;
-            let status=false;
+        if (location.state?.code != undefined) {
+            let code = location.state.code;
+            let status = false;
             console.log(code);
             //traverse in the items array and check if item name is equal to code
             for (let index = 0; index < items.length; index++) {
                 const element = items[index];
-                console.log(element.title,code)
-                if(element.title===code){
+                console.log(element.title, code)
+                if (element.title === code) {
                     setcouponstatus(true);
-                    status=true;
+                    status = true;
                     toast.success("Coupon Applied");
-                    settotal_price(total_price-element.price);
+                    settotal_price(total_price - element.price);
+                    console.log(total_price - element.price);
                     // console.log(total_price-element.price);
                     break;
                 }
-                
+
             }
-            if(items.length>0 && status==false)
+            if (items.length > 0 && status == false)
                 toast.info("Please add the item in cart to avail the coupon");
             // console.log(flag);
         }
@@ -232,7 +233,7 @@ function Cart() {
                                     alert("No items in cart");
                                     return;
                                 }
-                                navigate('/deliveryaddress', { state: { "totalAmount": total_price,'type':'regular',"code":location.state?.code,couponstatus } });
+                                navigate('/deliveryaddress', { state: { "totalAmount": total_price, 'type': 'regular', "code": location.state?.code, couponstatus,urlcode:location.state?.urlcode } });
                             }} className="btn cursor-pointer w-fit px-2 sm:px-5 py-3 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:border-white text-[#315ED2] hover:text-white  font-bold rounded-full">
                                 Proceed to Buy
                             </button>

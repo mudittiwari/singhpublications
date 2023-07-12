@@ -24,9 +24,9 @@ function BookComp(props) {
                     </div>
                 </div>
                 <div class="flex justify-between space-x-8 items-start w-full">
-                    <p class="text-base  xl:text-lg leading-6">{props.prod.price} <span class="text-red-300 line-through"> {props.prod.price}</span></p>
+                    <p class="text-base  xl:text-lg leading-6">{ props.prod.price} <span class="text-red-300 line-through"> {props.prod.price}</span></p>
                     <p class="text-base  xl:text-lg leading-6 text-gray-800">01</p>
-                    <p class="text-base  xl:text-lg font-semibold leading-6 text-gray-800">{props.prod.price}</p>
+                    <p class="text-base  xl:text-lg font-semibold leading-6 text-gray-800">{props.code===props.prod.title && props.couponstatus?0:props.prod.price}</p>
                 </div>
             </div>
         </div>
@@ -91,6 +91,7 @@ function Customers() {
     useEffect(() => {
         // console.log(location.state.type);
         checkuser();
+        // console.log(location.state);
         if(location.state.type=='regular')
             getitems();
         if(location.state.type=='shortcut')
@@ -111,9 +112,9 @@ function Customers() {
                             <div class="flex flex-col justify-start items-start w-full space-y-4 md:space-y-6 xl:space-y-8">
                                 <div class="items-order flex flex-col justify-start items-start  px-4 py-4 md:py-6 md:p-6 xl:p-8 shadow-2xl w-full">
                                     <p class="text-lg md:text-xl  font-semibold leading-6 xl:leading-5 text-gray-800">Items to be order</p>
-                                    {items.map((item) => {
+                                    {items.map((item,key) => {
                                         return (
-                                            <BookComp prod={item} />
+                                            <BookComp key={key} prod={item} couponstatus={location.state.couponstatus}  code={location.state.code} />
                                         );
                                     })}
 
@@ -224,6 +225,15 @@ function Customers() {
                                                 ).catch((err) => {
                                                     setloading(false);
                                                     alert("error");
+                                                    console.log(err);
+                                                }
+                                                )
+                                                axios.post("https://singhpublication.in/api/deletecoupon",{
+                                                    coupon:location.state.urlcode
+                                                }).then((res)=>{
+                                                    console.log(res);
+                                                }
+                                                ).catch((err)=>{
                                                     console.log(err);
                                                 }
                                                 )

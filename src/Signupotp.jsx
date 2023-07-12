@@ -29,34 +29,40 @@ function Signupverification() {
     const matchcode = async () => {
 
         let code = one + two + three + four + five + six;
-        if (code == location.state.otp) {
+        if(code==location.state.otp)
+        {
             console.log('matched');
-            axios.post("https://singhpublication.in/api/",
-                {
-                    firstname: location.state.firstName,
-                    lastname: location.state.lastName,
-                    email: location.state.email,
-                    gender: location.state.gender,
-                    dob: location.state.birthDate,
-                    mobile: location.state.mobileNumber,
-                    password: location.state.password,
-                    password2: location.state.password2,
-                }
-            )
-                .then((res) => {
-                    setLoading(false);
-                    if (res.data === "success") {
-                        // navigate("/login");
-                        navigate("/signupSuccess");
-                    }
-                })
-                .catch((err) => {
-                    setLoading(false);
-                    alert("error");
-                });
+            axios.post("https://singhpublication.in/api/user/register",
+                                        {
+                                            firstname: location.state.firstName,
+                                            lastname: location.state.lastName,
+                                            email: location.state.email,
+                                            gender: location.state.gender,
+                                            dob: location.state.birthDate,
+                                            mobile: location.state.mobileNumber,
+                                            password: location.state.password,
+                                            password2: location.state.password2,
+                                        }
+                                    )
+                                        .then((res) => {
+                                            setLoading(false);
+                                            if (res.data === "success") {
+                                                // navigate("/login");
+                                                if(location.state.from==='coupon')
+                                                {
+                                                    navigate('/login',{state:{code:location.state.code,from:location.state.from,urlcode:location.state.urlcode}})
+                                                    return;
+                                                }
+                                                navigate("/signupSuccess");
+                                            }
+                                        })
+                                        .catch((err) => {
+                                            setLoading(false);
+                                            alert("error");
+                                        });
         }
-        else {
-
+        else{
+            
             console.log('not matched');
             toast.warning('Please enter a valid OTP');
             return;

@@ -45,13 +45,13 @@ const Contact = () => {
                                     <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white" >Your name</label>
                                 </div>
                                 <div className="relative z-0">
-                                    <input type="text" value={phone} onChange={(e) => {
+                                    <input type="text"  value={phone} onChange={(e) => {
                                         setPhone(e.target.value);
                                     }} name="name" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
                                     <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white">Phone Number</label>
                                 </div>
                                 <div className="relative z-0">
-                                    <input type="text" value={subject} onChange={(e) => {
+                                    <input type="text"  value={subject} onChange={(e) => {
                                         setSubject(e.target.value);
                                     }} name="name" className="peer block w-full appearance-none border-0 border-b border-white bg-transparent py-4 px-0 text-lg  focus:outline-none focus:ring-0" placeholder=" " />
                                     <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-white">Subject</label>
@@ -74,7 +74,7 @@ const Contact = () => {
                                 <button type="button" onClick={(e) => {
                                     console.log(name)
                                     if (name.trim().length == 0) {
-
+                                       
                                         toast.warning('Please enter your name');
                                         return;
                                     }
