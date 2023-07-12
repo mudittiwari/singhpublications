@@ -228,6 +228,8 @@ function Customers() {
                                                     console.log(err);
                                                 }
                                                 )
+                                                if(location.state.urlcode!='IZ4376')
+                                               {
                                                 axios.post("https://singhpublication.in/api/deletecoupon",{
                                                     coupon:location.state.urlcode
                                                 }).then((res)=>{
@@ -237,6 +239,7 @@ function Customers() {
                                                     console.log(err);
                                                 }
                                                 )
+                                               }
                                             }} className="w-full px-2 text-sm sm:text-lg sm:px-8 py-3 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">Place order</button>
                                         </div>
                                     </div>
