@@ -48,31 +48,30 @@ function Otp() {
     const matchcode = async () => {
         let code = one + two + three + four + five + six;
         var config = {
-          method: 'get',
-        maxBodyLength: Infinity,
-          url: `https://2factor.in/API/V1/5a45c11e-0ec4-11ee-addf-0200cd936042/SMS/VERIFY3/91${location.state.phone}/${code}`,
-          headers: { }
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: `https://2factor.in/API/V1/5a45c11e-0ec4-11ee-addf-0200cd936042/SMS/VERIFY3/91${location.state.phone}/${code}`,
+            headers: {}
         };
-        
+
         axios(config)
-        .then(function (response) {
-            console.log(response);
-          console.log(JSON.stringify(response.data));
-          if(response.status === 200){
-            localStorage.setItem('pubuser', JSON.stringify(location.state.user));
-            if(location.state.from === 'coupon')
-            {
-                navigate('/cart',{state:{code:location.state.code,urlcode:location.state.urlcode}});
-                return;
-            }
-            navigate('/dashboard')
-          }
-        })
-        .catch(function (error) {
-            toast.warning("Invalid OTP");
-          console.log(error);
-        });
-        
+            .then(function (response) {
+                console.log(response);
+                console.log(JSON.stringify(response.data));
+                if (response.status === 200) {
+                    localStorage.setItem('pubuser', JSON.stringify(location.state.user));
+                    if (location.state.from === 'coupon') {
+                        navigate('/cart', { state: { code: location.state.code, urlcode: location.state.urlcode } });
+                        return;
+                    }
+                    navigate('/dashboard')
+                }
+            })
+            .catch(function (error) {
+                toast.warning("Invalid OTP");
+                console.log(error);
+            });
+
     }
     useEffect(() => {
         verifyuser();
@@ -105,19 +104,19 @@ function Otp() {
                 <div className="otp-form flex items-center w-full px-[5vw] py-[5vw] bg-white">
                     <form action="" className="mx-auto w-full grid justify-center text-center gap-[1vw] p-[1vw] rounded-md shadow-2xl">
                         <div className="text">
-                            <h1 className="py-5 text-3xl font-semibold ">OTP is sent to {location.state.phone}</h1>
+                            <h1 className="py-5 text-3xl font-semibold ">Verification code is sent to {location.state.email}</h1>
                         </div>
-                        <div className="input flex gap-5 ">
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                        <div className="input flex justify-center z-0 h-16 px-2 md:px-5 gap-2 md:gap-5">
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input ref={ref1} onChange={(e) => {
                                     e.preventDefault();
                                     setcode1(e.target.value);
                                     if (e.target.value.length === 1) {
                                         ref2.current.focus();
                                     }
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input onKeyDown={(e) => {
                                     if (e.key === 'Backspace') {
                                         ref1.current.focus();
@@ -128,9 +127,9 @@ function Otp() {
                                     if (e.target.value.length === 1) {
                                         ref3.current.focus();
                                     }
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input onKeyDown={(e) => {
                                     if (e.key === 'Backspace') {
                                         ref2.current.focus();
@@ -141,9 +140,9 @@ function Otp() {
                                     if (e.target.value.length === 1) {
                                         ref4.current.focus();
                                     }
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input onKeyDown={(e) => {
                                     if (e.key === 'Backspace') {
                                         ref3.current.focus();
@@ -154,9 +153,9 @@ function Otp() {
                                     if (e.target.value.length === 1) {
                                         ref5.current.focus();
                                     }
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input ref={ref5} onKeyDown={(e) => {
                                     if (e.key === 'Backspace') {
                                         ref4.current.focus();
@@ -167,9 +166,9 @@ function Otp() {
                                     if (e.target.value.length === 1) {
                                         ref6.current.focus();
                                     }
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input onKeyDown={(e) => {
                                     if (e.key === 'Backspace') {
                                         ref5.current.focus();
@@ -177,15 +176,19 @@ function Otp() {
                                 }} ref={ref6} onChange={(e) => {
                                     e.preventDefault();
                                     setcode6(e.target.value);
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
                         </div>
-                        <div className="flex mt-5 justify-center">
+                        <div className="resend-otp my-3">
+                            <p className="text-base font-semibold text-gray-500">Didn't receive OTP code?</p>
+                            <button className=" text-red-700">Resend Code</button>
+                        </div>
+                        <div className="flex justify-center">
                             <button onClick={(e) => {
                                 e.preventDefault();
                                 // navigate('/');
                                 matchcode()
-                            }} className=" w-fit mt-10 px-14 py-3 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full" >
+                            }} className=" w-fit px-14 py-3 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full" >
                                 Verify
                             </button>
                         </div>

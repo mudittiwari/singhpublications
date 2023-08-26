@@ -29,40 +29,38 @@ function Signupverification() {
     const matchcode = async () => {
 
         let code = one + two + three + four + five + six;
-        if(code==location.state.otp)
-        {
+        if (code == location.state.otp) {
             console.log('matched');
             axios.post("https://singhpublication.in/api/user/register",
-                                        {
-                                            firstname: location.state.firstName,
-                                            lastname: location.state.lastName,
-                                            email: location.state.email,
-                                            gender: location.state.gender,
-                                            dob: location.state.birthDate,
-                                            mobile: location.state.mobileNumber,
-                                            password: location.state.password,
-                                            password2: location.state.password2,
-                                        }
-                                    )
-                                        .then((res) => {
-                                            setLoading(false);
-                                            if (res.data === "success") {
-                                                // navigate("/login");
-                                                if(location.state.from==='coupon')
-                                                {
-                                                    navigate('/login',{state:{code:location.state.code,from:location.state.from,urlcode:location.state.urlcode}})
-                                                    return;
-                                                }
-                                                navigate("/signupSuccess");
-                                            }
-                                        })
-                                        .catch((err) => {
-                                            setLoading(false);
-                                            alert("error");
-                                        });
+                {
+                    firstname: location.state.firstName,
+                    lastname: location.state.lastName,
+                    email: location.state.email,
+                    gender: location.state.gender,
+                    dob: location.state.birthDate,
+                    mobile: location.state.mobileNumber,
+                    password: location.state.password,
+                    password2: location.state.password2,
+                }
+            )
+                .then((res) => {
+                    setLoading(false);
+                    if (res.data === "success") {
+                        // navigate("/login");
+                        if (location.state.from === 'coupon') {
+                            navigate('/login', { state: { code: location.state.code, from: location.state.from, urlcode: location.state.urlcode } })
+                            return;
+                        }
+                        navigate("/signupSuccess");
+                    }
+                })
+                .catch((err) => {
+                    setLoading(false);
+                    alert("error");
+                });
         }
-        else{
-            
+        else {
+
             console.log('not matched');
             toast.warning('Please enter a valid OTP');
             return;
@@ -100,17 +98,17 @@ function Signupverification() {
                         <div className="text">
                             <h1 className="py-5 text-3xl font-semibold ">Verification code is sent to {location.state.email}</h1>
                         </div>
-                        <div className="input flex gap-5 ">
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                        <div className="input flex justify-center z-0 h-16 px-2 md:px-5 gap-2 md:gap-5">
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input ref={ref1} onChange={(e) => {
                                     e.preventDefault();
                                     setcode1(e.target.value);
                                     if (e.target.value.length === 1) {
                                         ref2.current.focus();
                                     }
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input onKeyDown={(e) => {
                                     if (e.key === 'Backspace') {
                                         ref1.current.focus();
@@ -121,9 +119,9 @@ function Signupverification() {
                                     if (e.target.value.length === 1) {
                                         ref3.current.focus();
                                     }
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input onKeyDown={(e) => {
                                     if (e.key === 'Backspace') {
                                         ref2.current.focus();
@@ -134,9 +132,9 @@ function Signupverification() {
                                     if (e.target.value.length === 1) {
                                         ref4.current.focus();
                                     }
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input onKeyDown={(e) => {
                                     if (e.key === 'Backspace') {
                                         ref3.current.focus();
@@ -147,9 +145,9 @@ function Signupverification() {
                                     if (e.target.value.length === 1) {
                                         ref5.current.focus();
                                     }
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input ref={ref5} onKeyDown={(e) => {
                                     if (e.key === 'Backspace') {
                                         ref4.current.focus();
@@ -160,9 +158,9 @@ function Signupverification() {
                                     if (e.target.value.length === 1) {
                                         ref6.current.focus();
                                     }
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
-                            <div className='h-6 w-6 md:w-14 md:h-14 mx-4 related flex items-center rounded-md'>
+                            <div className='max-w-[100px] w-full related flex items-center rounded-md'>
                                 <input onKeyDown={(e) => {
                                     if (e.key === 'Backspace') {
                                         ref5.current.focus();
@@ -170,15 +168,19 @@ function Signupverification() {
                                 }} ref={ref6} onChange={(e) => {
                                     e.preventDefault();
                                     setcode6(e.target.value);
-                                }} type="text" className='outline-none w-full text-center h-full rounded-md' />
+                                }} type="text" maxLength={1} className='outline-none w-full text-center h-full rounded-md' />
                             </div>
                         </div>
-                        <div className="flex mt-5 justify-center">
+                        <div className="resend-otp my-3">
+                            <p className="text-base font-semibold text-gray-500">Didn't receive OTP code?</p>
+                            <button className=" text-red-700">Resend Code</button>
+                        </div>
+                        <div className="flex justify-center">
                             <button onClick={(e) => {
                                 e.preventDefault();
                                 // navigate('/');
                                 matchcode()
-                            }} className=" w-fit mt-10 px-14 py-3 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full" >
+                            }} className=" w-fit px-14 py-3 bg-white border-2 border-[#315ED2] text-[#315ED2] rounded-full" >
                                 Verify
                             </button>
                         </div>

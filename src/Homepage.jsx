@@ -7,6 +7,18 @@ import playstore from './assets/banner-5-10 1.png';
 import retailer from './assets/Singh Retail banner (2).jpg';
 import homepagebg from './assets/homepagebg.png';
 import homepagebg2 from './assets/homepagebg2.png';
+import g1 from './assets/g1.jpg';
+import g2 from './assets/g2.jpg';
+import g3 from './assets/g3.jpg';
+import g4 from './assets/g4.jpg';
+import g5 from './assets/g5.jpg';
+import g6 from './assets/g6.jpg';
+import g7 from './assets/g7.jpg';
+import g8 from './assets/g8.jpg';
+import g9 from './assets/g9.jpg';
+import g10 from './assets/g10.jpg';
+import g11 from './assets/g11.jpg';
+import g12 from './assets/g12.jpg';
 import homepagebg3 from './assets/homepagebg3.png';
 import testimonial1 from './assets/testimonial1.JPG';
 import testimonial2 from './assets/testimonial2.jfif';
@@ -15,7 +27,7 @@ import axios from 'axios';
 import Carousel from 'react-material-ui-carousel'
 import { Favorite } from '@mui/icons-material';
 import { useState } from 'react';
-import { useNavigate,useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import { useEffect } from 'react';
 import LoadingBar from './comps/Loadingbar';
@@ -102,7 +114,7 @@ function BookComp(props) {
                         e.preventDefault();
                         props.setLoading(true);
                         if (user) {
-                            
+
                             axios.post("https://singhpublication.in/api/user/addtowishlist", {
 
 
@@ -224,7 +236,7 @@ function Home() {
         //     navigate('/login');
         // }
         // checkuser();
-        if(location.state && location.state.error === 'coupon'){
+        if (location.state && location.state.error === 'coupon') {
             console.log("hello")
             toast.error("Invalid Coupon");
         }
@@ -252,11 +264,11 @@ function Home() {
         return (
             // <Paper style={{'borderRadius':'0px !important'}}>
             <div className='w-full flex  justify-center'>
-                <div className='p-5 md:p-10 md:w-[70%] flex flex-wrap md:flex-nowrap md:gap-10 rounded-3xl '>
+                <div className='p-5 md:p-10 md:w-[70%] flex flex-wrap lg:flex-nowrap md:gap-10 rounded-3xl '>
                     <div className='max-w-3xl mx-auto'>
                         <img src={props.image} className="w-full rounded-lg" alt="..." />
                     </div>
-                    <div className='w-full text-center md:text-left'>
+                    <div className='w-full text-center lg:text-left'>
                         <h1 className=' font-semibold  md:font-bold text-[#315ED2] md:text-3xl' >{props.name}</h1>
                         <h3 className='font-normal  md:font-semibold text- black text-xs md:text-lg' >{props.desig1}</h3>
                         <h3 className='font-normal  md:font-semibold text- black text-xs md:text-lg mb-3' >{props.desig2}</h3>
@@ -394,13 +406,54 @@ function Home() {
 
                         <Testimonial name="Mrs. Deby Chakraborty" desig1="Ph.D. Scholar, M.N.(OBG-RAKCON-DU)" desig2="Assistant Professor, Govt. College of Nursing, Agartalla (Tripura)" image={testimonial2} review="This book is written in a very simple language.It is easily understandable and very comprehensive.I hope that students can gain knowledge about research methodology and implement their knowledge.My best wishes to Prof Dr.Sher Singh." />
                         <Testimonial name="Mrs. Gulshan Roy Chowdhury" desig1="Ph.D. Scholar, M.N.(OBG-RAKCON-DU)" desig2="Lecturer, College of Nursing ABVIMS & Dr. R.M.L. Hospital, New Delhi" image={testimonial1} review="VERY SYSTEMATIC AND ORGANISED CONTENTS OF EACH CHAPTER IN A COMPREHENSIVE AND EASY LANGUAGE. EXAMPLES IN THE STATISTICS CHAPTER ARE VERY RELEVANT AND EFFECTIVELY MENTIONED." />
-                        <Testimonial name="Mrs. Gulshan Roy Chowdhury" desig1="Ph.D. Scholar, M.N.(OBG-RAKCON-DU)" desig2="Lecturer, College of Nursing ABVIMS & Dr. R.M.L. Hospital, New Delhi" image={testimonial1} review="VERY SYSTEMATIC AND ORGANISED CONTENTS OF EACH CHAPTER IN A COMPREHENSIVE AND EASY LANGUAGE. EXAMPLES IN THE STATISTICS CHAPTER ARE VERY RELEVANT AND EFFECTIVELY MENTIONED." />
-                        <Testimonial name="Mrs. Gulshan Roy Chowdhury" desig1="Ph.D. Scholar, M.N.(OBG-RAKCON-DU)" desig2="Lecturer, College of Nursing ABVIMS & Dr. R.M.L. Hospital, New Delhi" image={testimonial1} review="VERY SYSTEMATIC AND ORGANISED CONTENTS OF EACH CHAPTER IN A COMPREHENSIVE AND EASY LANGUAGE. EXAMPLES IN THE STATISTICS CHAPTER ARE VERY RELEVANT AND EFFECTIVELY MENTIONED." />
-                        {/* <Testimonial />
-                        <Testimonial /> */}
+
                     </Carousel>
 
                 </div>
+                <div className="gallery">
+                    <h1 className="text-5xl font-medium mx-auto w-max my-5 sm:my-10" style={{ 'color': '#315ED2' }}>Gallery</h1>
+                    <div className="gallery-images px-5 sm:px-[10vw]  my-5 sm:my-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 items-center">
+                        <div className="img h-60">
+                            <img src={g1} className='w-full h-full bg-gray-300' alt="" />
+
+
+                        </div>
+                        <div className="img h-60">
+                            <img src={g2} className='w-full h-full bg-gray-300' alt="" />
+                        </div>
+                        <div className="img h-60">
+                            <img src={g3} className='w-full h-full bg-gray-300' alt="" />
+                        </div>
+                        <div className="img h-60">
+                            <img src={g4} className='w-full h-full bg-gray-300' alt="" />
+                        </div>
+                        <div className="img h-60">
+                            <img src={g5} className='w-full h-full bg-gray-300' alt="" />
+                        </div>
+                        <div className="img h-60">
+                            <img src={g6} className='w-full h-full bg-gray-300' alt="" />
+                        </div>
+                        <div className="img h-60">
+                            <img src={g7} className='w-full h-full bg-gray-300' alt="" />
+                        </div>
+                        <div className="img h-60">
+                            <img src={g8} className='w-full h-full bg-gray-300' alt="" />
+                        </div>
+                        <div className="img h-60">
+                            <img src={g9} className='w-full h-full bg-gray-300' alt="" />
+                        </div>
+                        <div className="img h-60">
+                            <img src={g10} className='w-full h-full bg-gray-300' alt="" />
+                        </div>
+                        <div className="img h-60">
+                            <img src={g11} className='w-full h-full bg-gray-300' alt="" />
+                        </div>
+                        <div className="img h-60">
+                            <img src={g12} className='w-full h-full bg-gray-300' alt="" />
+                        </div>
+                    </div>
+                </div>
+
                 <div className='retailer w-full sm:my-10'>
                     <button onClick={(e) => {
                         e.preventDefault();

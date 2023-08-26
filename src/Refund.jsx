@@ -7,7 +7,7 @@ function Refund() {
             <div className="w-full">
                 <div className="policy lg:w-1/2 grid gap-3 sm:gap-5 py-[2vw] px-[10vw] mx-auto">
                     <h1 className="text-2xl md:text-5xl font-medium text-center text-[#315ED2] mb-3 sm:mb-10">Return & Refund Policy</h1>
-                    <p>Thanks for shopping at My Site (change this).</p>
+                    <p>Thanks for shopping at singhpublication.in.</p>
                     <p>If you are not entirely satisfied with your purchase, we're here to help</p>
                     <h2 className="text-lg md:text-2xl font-medium ">Returns</h2>
                     <p>You have 30 (change this) calendar days to return an item from the date you received it.</p>

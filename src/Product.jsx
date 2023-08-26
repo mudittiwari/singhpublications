@@ -137,7 +137,7 @@ function Product() {
                                     else {
                                         navigate('/login');
                                     }
-                                }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] text-[#777777] text-2xl"><i className="fa-regular fa-heart"></i></button>
+                                }} className="w-16 h-full flex justify-center items-center px-4 py-4 bg-white border border-[#777777] rounded-[50%] text-[#777777] text-2xl"><i className="fa-regular fa-heart"></i></button>
                             }
                         </div>
 
@@ -273,7 +273,7 @@ function Product() {
                             // }
                             // )
 
-                        }} className="w-fit px-10 py-2 border-2 border-[#315ED2] text-[#315ED2] hover:text-white hover:bg-[#315ED2] rounded-full">
+                        }} className="w-fit px-10 uppercase py-2 border-2 border-[#315ED2] text-[#315ED2] hover:text-white hover:bg-[#315ED2] rounded-full">
                             Buy Now
                         </button>
                     </div>
