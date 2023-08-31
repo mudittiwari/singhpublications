@@ -159,8 +159,7 @@ function Modal2(props) {
                                         type="button"
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            props.changebillingaddress();
-                                            props.changeshippingaddress();
+                                            props.changebothaddress();
                                             props.setShowModal(false);
                                         }}
                                         style={{ 'backgroundColor': "#315ED2" }}
@@ -177,6 +176,8 @@ function Modal2(props) {
         </>
     );
 }
+
+
 function Deliveryaddress() {
     const location = useLocation();
     const navigate = useNavigate();
@@ -194,6 +195,71 @@ function Deliveryaddress() {
         if (localStorage.getItem('pubuser') === null) {
             navigate('/login');
         }
+    }
+
+    function changebothaddress() {
+        setloading(true);
+        // console.log("mudit tiwari");
+        // e.preventDefault();
+        axios.post("https://singhpublication.in/api/user/updateshippingaddress", {
+            "house": house,
+            "street": street,
+            "area": area,
+            "city": city,
+            "pincode": pincode
+
+        }, {
+            headers: {
+                'Authorization': `Bearer ${user.accessToken}`
+            },
+            params: {
+                'id': user.id
+            }
+        },).then((res) => {
+            setloading(false);
+            let newuser = res.data;
+            newuser['accessToken'] = user.accessToken;
+            localStorage.setItem('pubuser', JSON.stringify(newuser));
+            setuser(newuser);
+            axios.post("https://singhpublication.in/api/user/updatebillingaddress", {
+                "house": house,
+                "street": street,
+                "area": area,
+                "city": city,
+                "pincode": pincode
+
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${user.accessToken}`
+                },
+                params: {
+                    'id': user.id
+                }
+            },).then((res) => {
+                setloading(false);
+                let newuser = res.data;
+                newuser['accessToken'] = user.accessToken;
+                localStorage.setItem('pubuser', JSON.stringify(newuser));
+                setuser(newuser);
+                if (location.state.type == 'regular')
+                    navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code, urlcode: location.state.urlcode, couponstatus: location.state.couponstatus } })
+                else if (location.state.type == 'shortcut')
+                    navigate('/customers', { state: { "totalAmount": location.state.totalAmount, product_id: location.state.product_id, 'type': 'regular', house, area, street, city, pincode } })
+                // localStorage.setItem('pubuser', JSON.stringify(res.data));
+            }
+            ).catch((err) => {
+                setloading(false);
+                console.log(err);
+                alert("error");
+            }
+            )
+        }
+        ).catch((err) => {
+            setloading(false);
+            console.log(err);
+            alert("error");
+        }
+        )
     }
     async function changeshippingaddress() {
         setloading(true);
@@ -220,7 +286,7 @@ function Deliveryaddress() {
             localStorage.setItem('pubuser', JSON.stringify(newuser));
             setuser(newuser);
             if (location.state.type == 'regular')
-                navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code,urlcode:location.state.urlcode,couponstatus:location.state.couponstatus } })
+                navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code, urlcode: location.state.urlcode, couponstatus: location.state.couponstatus } })
             else if (location.state.type == 'shortcut')
                 navigate('/customers', { state: { "totalAmount": location.state.totalAmount, product_id: location.state.product_id, 'type': 'regular', house, area, street, city, pincode } })
             // localStorage.setItem('pubuser', JSON.stringify(res.data));
@@ -257,7 +323,7 @@ function Deliveryaddress() {
             localStorage.setItem('pubuser', JSON.stringify(newuser));
             setuser(newuser);
             if (location.state.type == 'regular')
-                navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code,urlcode:location.state.urlcode,couponstatus:location.state.couponstatus } })
+                navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code, urlcode: location.state.urlcode, couponstatus: location.state.couponstatus } })
             else if (location.state.type == 'shortcut')
                 navigate('/customers', { state: { "totalAmount": location.state.totalAmount, product_id: location.state.product_id, 'type': 'regular', house, area, street, city, pincode } })
             // localStorage.setItem('pubuser', JSON.stringify(res.data));
@@ -272,7 +338,7 @@ function Deliveryaddress() {
     async function orderwithoutshippingaddress() {
         console.log(location.state.type);
         if (location.state.type == 'regular')
-            navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code,urlcode:location.state.urlcode,couponstatus:location.state.couponstatus } })
+            navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code, urlcode: location.state.urlcode, couponstatus: location.state.couponstatus } })
         else if (location.state.type == 'shortcut')
             navigate('/customers', { state: { "totalAmount": location.state.totalAmount, product_id: location.state.product_id, 'type': 'shortcut', house, area, street, city, pincode } })
     }
@@ -297,7 +363,7 @@ function Deliveryaddress() {
             />
             <Modal showModal={showModal} setShowModal={setShowModal} changeshippingaddress={changeshippingaddress} orderwithoutshippingaddress={orderwithoutshippingaddress} />
             <Modal1 showModal={showModal1} setShowModal={setShowModal1} changebillingaddress={changebillingaddress} orderwithoutshippingaddress={orderwithoutshippingaddress} />
-            <Modal2 showModal={showModal2} setShowModal={setShowModal2} changeshippingaddress={changeshippingaddress} changebillingaddress={changebillingaddress} orderwithoutshippingaddress={orderwithoutshippingaddress} />
+            <Modal2 showModal={showModal2} setShowModal={setShowModal2} changeshippingaddress={changeshippingaddress} changebillingaddress={changebillingaddress} changebothaddress={changebothaddress} orderwithoutshippingaddress={orderwithoutshippingaddress} />
             <div className="billing min-h-5/6 mt-10  grid grid-cols-1 lg:grid-cols-2 items-center">
                 <div className="welcome-singh h-full p-[3vw] w-full flex flex-col justify-center items-center text-white bg-[#315ED2]">
                     <div className="svg"><img src={playstore} className="w-1/2 mx-auto" alt="..."></img></div>
@@ -376,7 +442,7 @@ function Deliveryaddress() {
                                 }
                                 else {
                                     if (location.state.type == 'regular')
-                                        navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code,couponstatus:location.state.couponstatus,urlcode:location.state.urlcode } })
+                                        navigate('/customers', { state: { "totalAmount": location.state.totalAmount, 'type': 'regular', house, area, street, city, pincode, code: location.state.code, couponstatus: location.state.couponstatus, urlcode: location.state.urlcode } })
                                     else if (location.state.type == 'shortcut')
                                         navigate('/customers', { state: { "totalAmount": location.state.totalAmount, product_id: location.state.product_id, 'type': 'regular', house, area, street, city, pincode } })
                                 }

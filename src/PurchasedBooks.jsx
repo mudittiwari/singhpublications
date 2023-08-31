@@ -15,7 +15,7 @@ const AudioPlayer = ({visible ,audioSrc }) => {
     const audioRef = useRef(null);
   
     useEffect(() => {
-      audioRef.current.play();
+    //   audioRef.current.play();
     }, [visible]);
   
     return (
@@ -43,28 +43,15 @@ function BookComp(props) {
                 <div className="flex justify-left mt-3 flex-wrap gap-5">
                     <button onClick={(e) => {
                         e.preventDefault();
-                        if(props.book.category == 'ebook')
-                        {
-                            alert("This is an Ebook")
-                            return;
-                        }
-                        // if(props.visible=="hidden")
-                        //     props.setvisible("visible");
-                        // else
-                        //     props.setvisible("hidden");
-                        // props.setvisible(!props.visible);
-                        // if (props.book.category == 'ebook')
-                        //     alert("This is an Ebook")
+                        navigate('/audiobook',{state:{book:props.book.audiofile}});
 
                     }} className=" btn cursor-pointer w-fit px-5 py-2 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">
                         Listen
                     </button>
                     <button onClick={(e) => {
                         e.preventDefault();
-                        if (props.book.category == 'audiobook')
-                            alert("This is an audiobook")
-                        else
-                            navigate('/viewbook');
+                    
+                            navigate('/viewbook',{state:{book:props.book.pdffile}});
 
                     }} className=" btn cursor-pointer w-fit px-5 py-2 bg-white border-2 border-[#315ED2] hover:bg-[#315ED2] hover:text-white text-[#315ED2] font-bold rounded-full">
                         Read
@@ -99,7 +86,7 @@ function PurchasedBooks() {
                 let arr = [];
                 for (let j = 0; j < res.data[i].ProductsArray.length; j++) {
                     await axios.get(`https://singhpublication.in/api/product/products`, { params: { id: res.data[i].ProductsArray[j] } }).then((res) => {
-                        if ((res.data.category == 'ebook' || res.data.category == 'audiobook'))
+                        if ((res.data.category == 'E-Book'))
                         {
                             for(let i=0;i<ordrs.length;i++){
                                 if(ordrs[i].id==res.data.id)

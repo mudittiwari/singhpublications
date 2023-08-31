@@ -104,7 +104,7 @@ function Otp() {
                 <div className="otp-form flex items-center w-full px-[5vw] py-[5vw] bg-white">
                     <form action="" className="mx-auto w-full grid justify-center text-center gap-[1vw] p-[1vw] rounded-md shadow-2xl">
                         <div className="text">
-                            <h1 className="py-5 text-3xl font-semibold ">Verification code is sent to {location.state.email}</h1>
+                            <h1 className="py-5 text-3xl font-semibold ">Verification code is sent to {location.state.phone}</h1>
                         </div>
                         <div className="input flex justify-center z-0 h-16 px-2 md:px-5 gap-2 md:gap-5">
                             <div className='max-w-[100px] w-full related flex items-center rounded-md'>

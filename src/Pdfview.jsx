@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { usePdf } from 'react-pdf-js';
-import file from '../src/assets/file.pdf'
+import file from '../src/assets/file.pdf';
+import { useLocation } from 'react-router-dom';
 const MyPdfViewer = () => {
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(null);
+  const location = useLocation();
 
   const renderPagination = (page, pages) => {
     if (!pages) {
@@ -30,7 +32,7 @@ const MyPdfViewer = () => {
   const canvasEl = useRef(null);
 
   const [loading, numPages] = usePdf({
-    file: file,
+    file: location.state.book,
     scale: 2,
     page,
     canvasEl

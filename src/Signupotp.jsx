@@ -55,6 +55,7 @@ function Signupverification() {
                     }
                 })
                 .catch((err) => {
+                    console.log(err);
                     setLoading(false);
                     alert("error");
                 });

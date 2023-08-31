@@ -37,6 +37,7 @@ import Forgetpassword from './Forgetpassword';
 import Resetpassword from './Resetpassword';
 import Books from './Books';
 import Coupon from './Coupon';
+import Audiobook from './audiobook';
 // import Partner from './Partner';
 
 
@@ -78,6 +79,7 @@ function App() {
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/signupSuccess" element={<SignupSuccess />} />
+          <Route path="/audiobook" element={<Audiobook />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/signupverification" element={<Signupverification />} />
@@ -106,3 +108,8 @@ export default App;
 //add page for viewing pdf of the book
 //fix security issues in the api(forget password and other things)
 
+
+
+// work to do next in this project:
+
+// add audio files and pdf files from admin side only
